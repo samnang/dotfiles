@@ -67,3 +67,6 @@
 [submodule "bundle/gist"]
 	path = bundle/gist
 	url = git://github.com/vim-scripts/Gist.vim.git
+[submodule "bundle/markdown_preview"]
+	path = bundle/markdown_preview
+	url = git://github.com/robgleeson/vim-markdown-preview.git
