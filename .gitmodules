@@ -1,0 +1,72 @@
+[submodule "bundle/bufexplorer"]
+	path = bundle/bufexplorer
+	url = git://github.com/markabe/bufexplorer.git
+[submodule "bundle/snippets"]
+	path = bundle/snippets
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "bundle/fuzzyfinder"]
+	path = bundle/fuzzyfinder
+	url = git://github.com/vim-scripts/FuzzyFinder.git
+[submodule "bundle/Command-T"]
+	path = bundle/Command-T
+	url = git://github.com/vim-scripts/Command-T.git
+[submodule "bundle/IndexedSearch"]
+	path = bundle/IndexedSearch
+	url = git://github.com/vim-scripts/IndexedSearch.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "bundle/ruby"]
+	path = bundle/ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "bundle/rails"]
+	path = bundle/rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "bundle/rspec"]
+	path = bundle/rspec
+	url = git://github.com/taq/vim-rspec.git
+[submodule "bundle/Ruby-Single-Test"]
+	path = bundle/Ruby-Single-Test
+	url = git://github.com/vim-scripts/Ruby-Single-Test.git
+[submodule "bundle/rake"]
+	path = bundle/rake
+	url = git://github.com/tpope/vim-rake.git
+[submodule "bundle/javascript"]
+	path = bundle/javascript
+	url = git://github.com/pangloss/vim-javascript.git
+[submodule "bundle/jsbeautify"]
+	path = bundle/jsbeautify
+	url = git://github.com/vim-scripts/jsbeautify.git
+[submodule "bundle/vividchalk"]
+	path = bundle/vividchalk
+	url = git://github.com/tpope/vim-vividchalk.git
+[submodule "bundle/endwise"]
+	path = bundle/endwise
+	url = git://github.com/tpope/vim-endwise.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "markdown_preview"]
+	path = markdown_preview
+	url = git://github.com/robgleeson/vim-markdown-preview.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = git://github.com/ervandew/supertab.git
+[submodule "bundle/checksyntax"]
+	path = bundle/checksyntax
+	url = git://github.com/tomtom/checksyntax_vim.git
+[submodule "bundle/gist"]
+	path = bundle/gist
+	url = git://github.com/vim-scripts/Gist.vim.git
