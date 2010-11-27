@@ -98,7 +98,7 @@ nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
 
-=================== Plugin =====================
+"=================== Plugin =====================
 
 "Command-T
 let g:CommandTMaxHeight=10
