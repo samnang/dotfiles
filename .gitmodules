@@ -58,9 +58,6 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = git://github.com/tpope/vim-markdown.git
-[submodule "markdown_preview"]
-	path = markdown_preview
-	url = git://github.com/robgleeson/vim-markdown-preview.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
