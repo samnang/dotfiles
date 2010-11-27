@@ -20,18 +20,20 @@ set nofoldenable                  "dont fold by default
 
 set backspace=indent,eol,start    " Intuitive backspacing.
 set hidden                        " Handle multiple buffers better.
-set wildmenu                      " Enhanced command line completion.
-set wildmode=list:longest         " Complete files like a shell.
 set title                         " Set the terminal's title
 set number                        " Show line numbers.
 set showbreak=...
 set ruler                         " Show cursor position.
 set wrap                          " Turn on line wrapping.
-set wildmenu                      "enable ctrl-n and ctrl-p to scroll thru matches
+set wildmode=list:longest         " Complete files like a shell.
+set wildmenu                      " Enhanced command line completion.
 set wildignore=*.o,*.obj,*~       "stuff to ignore when tab completing
-set scrolloff=3                   " Show 3 lines of context around the cursor.
 set visualbell                    " No beeping.
 set history=1000                  " Store lots of :cmdline history
+
+set scrolloff=3
+set sidescrolloff=7
+set sidescroll=1
 
 if has("mouse")
   set mouse=a
@@ -47,10 +49,14 @@ set tabstop=2                     " Global tab width.
 set shiftwidth=2                  " And again, related.
 set smarttab
 set autoindent
-set expandtab                    " Use spaces instead of tabs
+set expandtab                     " Use spaces instead of tabs
 
-syntax enable                     " Turn on syntax highlighting.
-filetype plugin indent on         " Turn on file type detection.
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+filetype plugin on
+filetype indent on                " Turn on file type detection.
 syntax on
 colorscheme vividchalk
 set background=dark
@@ -78,9 +84,10 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 
 " Fuzzy Search
-map <leader>f :FuzzyFinderTextMate<Enter>
+"map <leader>f :FuzzyFinderTextMate<Enter>
 map <leader>F :FuzzyFinderFile<Enter>
 map <leader>d :FuzzyFinderFileWithCurrentBufferDir<Enter>
+map <leader>f :FufBuffer<Enter>
 
 " BufExplorer
 map <leader>b :BufExplorer<cr>

@@ -1,5 +1,5 @@
-set columns=120 
-set lines=50
+set columns=80 
+set lines=40
 
 set guifont=bitstream\ vera\ sans\ mono\ 12
 set antialias                     " MacVim: smooth fonts.

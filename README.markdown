@@ -1,7 +1,7 @@
 This is my ~/.vim folder I use on Ubuntu.
 
 Installation/Usage
-=================
+==================
 
 Run the following command from your terminal and enjoy the fireworks!
 
