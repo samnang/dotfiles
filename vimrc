@@ -45,6 +45,7 @@ set ttymouse=xterm2
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
 set directory=/tmp                " Keep swap files in one location
+set timeoutlen=500
 
 set tabstop=2                     " Global tab width.
 set shiftwidth=2                  " And again, related.
