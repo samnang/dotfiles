@@ -76,3 +76,6 @@
 [submodule "bundle/autoclose"]
 	path = bundle/autoclose
 	url = git://github.com/Townk/vim-autoclose.git
+[submodule "bundle/rvm"]
+	path = bundle/rvm
+	url = git://github.com/csexton/rvm.vim.git

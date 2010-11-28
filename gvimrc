@@ -1,6 +1,8 @@
 set columns=80 
 set lines=40
 
+set cursorline
+
 set guifont=bitstream\ vera\ sans\ mono\ 12
 set antialias                     " MacVim: smooth fonts.
 set encoding=utf-8                " Use UTF-8 everywhere.

@@ -28,7 +28,8 @@ set wrap                          " Turn on line wrapping.
 set wildmode=list:longest         " Complete files like a shell.
 set wildmenu                      " Enhanced command line completion.
 set wildignore=*.o,*.obj,*~       "stuff to ignore when tab completing
-set visualbell                    " No beeping.
+set novisualbell
+set noerrorbells
 set history=1000                  " Store lots of :cmdline history
 
 set scrolloff=3
@@ -110,6 +111,10 @@ vmap <D-]> >gv
 "Command-T
 let g:CommandTMaxHeight=10
 let g:CommandTMatchWindowAtTop=1
+
+let g:fuzzy_matching_limit=200
+let g:fuzzy_ceiling=10000
+let g:fuzzy_ignore="teamsite;tags;*.log;*.jpg;*.gif;*.png;.git/**/*;.svn;.svn/**/*;"
 
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
