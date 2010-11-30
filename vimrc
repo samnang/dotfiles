@@ -24,7 +24,7 @@ set title                         " Set the terminal's title
 set number                        " Show line numbers.
 set showbreak=...
 set ruler                         " Show cursor position.
-set wrap                          " Turn on line wrapping.
+set nowrap                          " Turn on line wrapping.
 set wildmode=list:longest         " Complete files like a shell.
 set wildmenu                      " Enhanced command line completion.
 set wildignore=*.o,*.obj,*~       "stuff to ignore when tab completing
@@ -51,7 +51,8 @@ set tabstop=2                     " Global tab width.
 set shiftwidth=2                  " And again, related.
 set smarttab
 set autoindent
-set expandtab                     " Use spaces instead of tabs
+set noexpandtab                     " Use spaces instead of tabs
+set pastetoggle=<F3>
 
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
@@ -115,7 +116,7 @@ let g:CommandTMatchWindowAtTop=1
 
 let g:fuzzy_matching_limit=200
 let g:fuzzy_ceiling=10000
-let g:fuzzy_ignore="teamsite;tags;*.log;*.jpg;*.gif;*.png;.git/**/*;.svn;.svn/**/*;"
+let g:fuzzy_ignore="teamsite;tags;*.log;*.jpg;*.gif;*.png;.git/**/*;.hg/**/*;.svn;.svn/**/*;"
 
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
