@@ -1,5 +1,5 @@
 #!/bin/bash
-git clone git://github.com/jfgomez86/vimfiles.git ~/.vim
+git clone git://github.com/samnang/vimfiles.git ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc
 cd ~/.vim
 git submodule init
