@@ -11,3 +11,7 @@ set background=light              " Background.
 set go-=m go-=T go-=l go-=L go-=r go-=R go-=b go-=F
 
 colorscheme vividchalk
+
+"Load NERDTree and put cursor in other window
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p

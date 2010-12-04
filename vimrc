@@ -89,7 +89,7 @@ map <leader>tm :tabmove
 " Fuzzy Search
 "map <leader>f :FuzzyFinderTextMate<Enter>
 map <leader>F :FuzzyFinderFile<Enter>
-map <leader>d :FuzzyFinderFileWithCurrentBufferDir<Enter>
+"map <leader>d :FuzzyFinderFileWithCurrentBufferDir<Enter>
 map <leader>f :FufBuffer<Enter>
 
 " BufExplorer
@@ -108,6 +108,14 @@ nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
 
+function DelBufferAndNext()
+    let s:old_bufnr = bufnr('%')
+    bnext
+    exec s:old_bufnr . 'bd'
+    unlet s:old_bufnr
+endfunction
+command -nargs=0 BD call DelBufferAndNext()
+nnoremap <leader>d :call DelBufferAndNext()<CR>
 "=================== Plugin =====================
 
 "Command-T
