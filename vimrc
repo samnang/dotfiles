@@ -87,9 +87,6 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 
 " Fuzzy Search
-"map <leader>f :FuzzyFinderTextMate<Enter>
-map <leader>F :FuzzyFinderFile<Enter>
-"map <leader>d :FuzzyFinderFileWithCurrentBufferDir<Enter>
 map <leader>f :FufBuffer<Enter>
 
 " BufExplorer
@@ -107,6 +104,9 @@ nmap <D-[> <<
 nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
+
+"ctrl + f for saving file in insert mode
+inoremap <c-f> <c-o>:w<cr>
 
 function DelBufferAndNext()
     let s:old_bufnr = bufnr('%')
