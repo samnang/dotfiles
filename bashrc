@@ -81,6 +81,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias oss='cd /media/Documents/Resources/OSS'
 alias psp='cd /media/Documents/Work/Personal'
 alias ysp='cd /media/Development/'
 
@@ -109,8 +110,22 @@ fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-PS1='[\W$(__git_ps1 " (%s)")]\$ '
-export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+function prompt {
+	local LIGHT_RED="\[\033[1;31m\]"
+	local LIGHT_GREEN="\[\033[1;32m\]"
+	local NO_COLOUR="\[\033[0m\]"
+
+	local TITLEBAR='\[\033]0;\u@\h\007\]'
+
+	export GIT_PS1_SHOWDIRTYSTATE=true
+	export GIT_PS1_SHOWUNTRACKEDFILES=true
+	export GIT_PS1_SHOWUPSTREAM=auto
+	export GIT_PS1_SHOWSTASHSTATE=true
+
+	PS1="$TITLEBAR\n\W/$LIGHT_GREEN\$(__git_ps1 ' (%s)') $LIGHT_RED\$(~/.rvm/bin/rvm-prompt i v g)\n$NO_COLOUR$ "
+}
+#call the prompt function to set things in motion
+prompt
 
 export ANDROID_HOME=~/android_dev/sdk
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
