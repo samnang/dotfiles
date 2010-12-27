@@ -81,6 +81,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias autotest='autotest -s rspec2'
 alias oss='cd /media/Documents/Resources/OSS'
 alias psp='cd /media/Documents/Work/Personal'
 alias ysp='cd /media/Development/'

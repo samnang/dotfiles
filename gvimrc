@@ -1,4 +1,4 @@
-set columns=80 
+set columns=180 
 set lines=40
 
 set cursorline

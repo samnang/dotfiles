@@ -47,11 +47,12 @@ set nowritebackup                 " And again.
 set directory=/tmp                " Keep swap files in one location
 set timeoutlen=500
 
-set tabstop=2                     " Global tab width.
-set shiftwidth=2                  " And again, related.
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 set smarttab
 set autoindent
-set noexpandtab                     " Use spaces instead of tabs
 set pastetoggle=<F3>
 
 set foldmethod=indent   "fold based on indent
