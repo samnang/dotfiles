@@ -77,17 +77,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias autotest='autotest -s rspec2'
-alias oss='cd /media/Documents/Resources/OSS'
-alias psp='cd /media/Documents/Work/Personal'
-alias ysp='cd /media/Development/'
-
-alias devpc='sshfs administrator@yoolk.dev:/var/www /media/Development; ssh administrator@yoolk.dev'
-
+alias wsp='guake -r workspace; guake -n . -r autotest; guake -n . -r spork; guake -n . -r sever; guake -n . -r irb;'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -128,6 +118,7 @@ function prompt {
 #call the prompt function to set things in motion
 prompt
 
+export EDITOR=vim
 export ANDROID_HOME=~/android_dev/sdk
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
 export PATH=~/android_dev/sdk/tools:"${PATH}"

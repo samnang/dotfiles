@@ -24,7 +24,7 @@ set title                         " Set the terminal's title
 set number                        " Show line numbers.
 set showbreak=...
 set ruler                         " Show cursor position.
-set nowrap                          " Turn on line wrapping.
+set nowrap                        " Turn off line wrapping.
 set wildmode=list:longest         " Complete files like a shell.
 set wildmenu                      " Enhanced command line completion.
 set wildignore=*.o,*.obj,*~       "stuff to ignore when tab completing
@@ -58,6 +58,8 @@ set pastetoggle=<F3>
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
+
+autocmd BufRead,BufNewFile  *.md setlocal wrap linebreak
 
 filetype plugin on
 filetype indent on                " Turn on file type detection.
