@@ -118,6 +118,7 @@ function prompt {
 #call the prompt function to set things in motion
 prompt
 
+export TERM=xterm-256color
 export EDITOR=vim
 export ANDROID_HOME=~/android_dev/sdk
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
