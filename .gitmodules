@@ -28,12 +28,6 @@
 [submodule "bundle/rails"]
 	path = bundle/rails
 	url = git://github.com/tpope/vim-rails.git
-[submodule "bundle/rspec"]
-	path = bundle/rspec
-	url = git://github.com/taq/vim-rspec.git
-[submodule "bundle/Ruby-Single-Test"]
-	path = bundle/Ruby-Single-Test
-	url = git://github.com/vim-scripts/Ruby-Single-Test.git
 [submodule "bundle/rake"]
 	path = bundle/rake
 	url = git://github.com/tpope/vim-rake.git
@@ -67,15 +61,9 @@
 [submodule "bundle/gist"]
 	path = bundle/gist
 	url = git://github.com/vim-scripts/Gist.vim.git
-[submodule "bundle/markdown_preview"]
-	path = bundle/markdown_preview
-	url = git://github.com/robgleeson/vim-markdown-preview.git
 [submodule "bundle/l9"]
 	path = bundle/l9
 	url = git://github.com/vim-scripts/L9.git
 [submodule "bundle/autoclose"]
 	path = bundle/autoclose
 	url = git://github.com/Townk/vim-autoclose.git
-[submodule "bundle/rvm"]
-	path = bundle/rvm
-	url = git://github.com/csexton/rvm.vim.git
