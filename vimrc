@@ -129,6 +129,9 @@ let g:fuzzy_matching_limit=200
 let g:fuzzy_ceiling=10000
 let g:fuzzy_ignore="teamsite;tags;*.log;*.jpg;*.gif;*.png;.git/**/*;.hg/**/*;.svn;.svn/**/*;"
 
+"Ack
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
 autocmd BufReadPost * call SetCursorPosition()
