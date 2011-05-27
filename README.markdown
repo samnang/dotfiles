@@ -1,4 +1,4 @@
-This is my ~/.vim folder I use on Ubuntu.
+This is my ~/.vim folder I use on Macbook Pro.
 
 Installation/Usage
 ==================
