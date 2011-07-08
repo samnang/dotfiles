@@ -36,9 +36,7 @@ set scrolloff=3
 set sidescrolloff=7
 set sidescroll=1
 
-if has("mouse")
-  set mouse=a
-endif
+set mouse-=a
 set mousehide
 set ttymouse=xterm2
 
@@ -53,7 +51,7 @@ set softtabstop=2
 set expandtab
 set smarttab
 set autoindent
-set pastetoggle=<F3>
+set pastetoggle=<F2>
 
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels

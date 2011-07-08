@@ -1,7 +1,10 @@
 set columns=180 
 set lines=41
-
 set cursorline
+
+if has("mouse")
+  set mouse=a
+endif
 
 set guifont=Monaco:h18
 set antialias                     " MacVim: smooth fonts.

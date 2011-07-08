@@ -16,3 +16,6 @@ alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
 
 alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+
+# Custom alias
+alias work='cd /Volumes/Documents/Work/'
