@@ -1,0 +1,17 @@
+hardstatus string "%1 "
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ Screen ][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d     %{W}%c %{g}]'
+
+# Default screens
+screen -t vim       0
+stuff "vim\015"
+
+screen -t server    1
+screen -t 'console' 2
+screen -t 'log'     3
+
+# Skip the pointless startup message
+startup_message off
+
+# Don't say 'Wuff Wuff' every time the process beeps
+vbell_msg ""
