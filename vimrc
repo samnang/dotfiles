@@ -1,13 +1,55 @@
-filetype off                      "necessary on some Linux distros for pathogen to properly load bundles
-
-call pathogen#runtime_append_all_bundles() "load pathogen managed plugins
-call pathogen#helptags()
-
 set nocompatible                  " Must come first because it changes other options.
+filetype off                      " Necessary on some Linux distros for pathogen to properly load bundles
+
+" *********************************************
+" *          Vundle - Vim Plugins             *
+" *********************************************
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-endwise'
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'ervandew/supertab'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'Raimondi/delimitMate'
+Bundle 'mattn/zencoding-vim'
+Bundle 'vim-scripts/IndexedSearch'
+Bundle 'vim-scripts/L9.git'
+Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-haml'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+
+" *********************************************
+" *                 Settings                  *
+" *********************************************
+set encoding=utf-8
+syntax enable
+filetype plugin indent on         " load file type plugins + indentation
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
 set showmatch                     " Show matching brackets/parenthesis
+
+set nowrap                        " don't wrap lines
+set tabstop=2 shiftwidth=2        " a tab is two spaces (or set this to 4)
+set expandtab                     " use spaces, not tabs (optional)
+set backspace=indent,eol,start    " backspace through everything in insert mode"
+set autoindent                    " match indentation of previous line
+set pastetoggle=<F2>
 
 set incsearch                     " Find as you type search
 set hlsearch                      " Highlight search terms
@@ -18,13 +60,10 @@ set foldmethod=indent             "fold based on indent
 set foldnestmax=3                 "deepest fold is 3 levels
 set nofoldenable                  "dont fold by default
 
-set backspace=indent,eol,start    " Intuitive backspacing.
 set hidden                        " Handle multiple buffers better.
 set title                         " Set the terminal's title
 set number                        " Show line numbers.
-set showbreak=...
 set ruler                         " Show cursor position.
-set nowrap                        " Turn off line wrapping.
 set wildmode=list:longest         " Complete files like a shell.
 set wildmenu                      " Enhanced command line completion.
 set wildignore=*.o,*.obj,*~       "stuff to ignore when tab completing
@@ -34,107 +73,41 @@ set history=1000                  " Store lots of :cmdline history
 
 set scrolloff=3
 set sidescrolloff=7
-set sidescroll=1
 
 set mouse-=a
 set mousehide
 set ttymouse=xterm2
+set sidescroll=1
 
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
 set directory=/tmp                " Keep swap files in one location
 set timeoutlen=500
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set smarttab
-set autoindent
-set pastetoggle=<F2>
-
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
-
-autocmd BufRead,BufNewFile  *.md setlocal wrap linebreak
-
-filetype plugin on
-filetype indent on                " Turn on file type detection.
-syntax on
-colorscheme vividchalk
 set background=dark
 
 set laststatus=2                  " Show the status line all the time
-" Useful status information at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
-"================ Mapping ===================
+colorscheme vividchalk
+
+" *********************************************
+" *               Key Bindings                *
+" *********************************************
 let mapleader = ","
 
-"make <c-l> clear the highlight as well as redraw
-nnoremap <C-L> :nohls<CR><C-L>
-inoremap <C-L> <C-O>:nohls<CR>
+" Clear last search highlighting
+nnoremap <cr> :noh<cr>
 
-" Tab
-map <leader>tt :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>to :tabonly<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-map <leader>tm :tabmove
+" Easier navigation between split windows
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
-" Fuzzy Search
-map <leader>f :FufBuffer<Enter>
+" Insert blank lines without going into insert mode
+nmap go o<esc>
+nmap gO O<esc>
 
-" BufExplorer
-map <leader>b :BufExplorer<cr>
-
-" NERDTree
-silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
-nnoremap <silent> <C-f> :call FindInNERDTree()<CR> 
-
-" map to CommandT TextMate style finder
-nnoremap <leader>c :CommandT<CR>
-
-"Key mapping for textmate-like indentation
-nmap <D-[> <<
-nmap <D-]> >>
-vmap <D-[> <gv
-vmap <D-]> >gv
-
-"ctrl + f for saving file in insert mode
-inoremap <c-f> <c-o>:w<cr>
-
-function DelBufferAndNext()
-    let s:old_bufnr = bufnr('%')
-    bnext
-    exec s:old_bufnr . 'bd'
-    unlet s:old_bufnr
-endfunction
-command -nargs=0 BD call DelBufferAndNext()
-nnoremap <leader>d :call DelBufferAndNext()<CR>
-"=================== Plugin =====================
-
-"Command-T
-let g:CommandTMaxHeight=10
-let g:CommandTMatchWindowAtTop=1
-
-let g:fuzzy_matching_limit=200
-let g:fuzzy_ceiling=10000
-let g:fuzzy_ignore="teamsite;tags;*.log;*.jpg;*.gif;*.png;.git/**/*;.hg/**/*;.svn;.svn/**/*;"
-
-"jump to last cursor position when opening a file
-"dont do it when writing a commit log entry
-autocmd BufReadPost * call SetCursorPosition()
-function! SetCursorPosition()
-    if &filetype !~ 'commit\c'
-        if line("'\"") > 0 && line("'\"") <= line("$")
-            exe "normal! g`\""
-            normal! zz
-        endif
-    end
-endfunction
+" Shortcut for =>
+imap <C-l> <Space>=><Space>
