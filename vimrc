@@ -27,6 +27,7 @@ Bundle 'vim-scripts/IndexedSearch'
 Bundle 'vim-scripts/L9.git'
 Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
+Bundle 'git://gist.github.com/287147.git'
 
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-haml'
