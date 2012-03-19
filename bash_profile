@@ -1,4 +1,6 @@
 export EDITOR="vim"
+export NODE_PATH="/usr/local/lib/node"
+export PATH=/usr/local/bin:$PATH
 
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
@@ -9,6 +11,7 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 [[ -s "/Users/samnang/.rvm/scripts/rvm" ]] && source "/Users/samnang/.rvm/scripts/rvm"
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 function prompt {
 	local LIGHT_RED="\[\033[1;31m\]"
