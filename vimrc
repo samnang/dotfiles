@@ -98,7 +98,7 @@ colorscheme vividchalk
 let mapleader = ","
 
 " Clear last search highlighting
-nnoremap <cr> :noh<cr>
+nnoremap <Space> :noh<cr>
 
 " Easier navigation between split windows
 nnoremap <c-j> <c-w>j
