@@ -11,7 +11,6 @@ ln -s ~/.dotfiles/bash_aliases ~/.bash_aliases
 ln -s ~/.dotfiles/bash_profile ~/.bash_profile
 ln -s ~/.dotfiles/irbrc ~/.irbrc
 ln -s ~/.dotfiles/gemrc ~/.gemrc
-ln -s ~/.dotfiles/gemrc ~/.gemrc
 ln -s ~/.dotfiles/gitconfig ~/.gitconfig
 
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
