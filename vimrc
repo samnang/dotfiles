@@ -85,11 +85,11 @@ set nowritebackup                 " And again.
 set directory=/tmp                " Keep swap files in one location
 set timeoutlen=500
 
-set background=dark
-
 set laststatus=2                  " Show the status line all the time
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
+set t_Co=256                      " Set terminal to 256 colors
+set background=dark
 colorscheme vividchalk
 
 " *********************************************
