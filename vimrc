@@ -112,3 +112,10 @@ nmap gO O<esc>
 
 " Shortcut for =>
 imap <C-l> <Space>=><Space>
+
+" *********************************************
+" *           Plugin Customization            *
+" *********************************************
+
+"# ctrlp.vim
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX 
