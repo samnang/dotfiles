@@ -27,6 +27,7 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'vim-scripts/IndexedSearch'
 Bundle 'vim-scripts/L9.git'
 Bundle 'vim-scripts/matchit.zip'
+Bundle 'vim-scripts/AutoTag'
 Bundle 'godlygeek/tabular'
 Bundle 'git://gist.github.com/287147.git'
 
@@ -93,6 +94,38 @@ set t_Co=256                      " Set terminal to 256 colors
 set background=dark
 colorscheme vividchalk
 
+
+" *********************************************
+" *                 Functions                 *
+" *********************************************
+
+" Find Cucumber's unused steps
+command! CucumberFindUnusedSteps :call CucumberFindUnusedSteps()
+function! CucumberFindUnusedSteps()
+  let olderrorformat = &l:errorformat
+  try
+    set errorformat=%m#\ %f:%l
+    cexpr system('bundle exec cucumber --no-profile --no-color --format usage --dry-run features \| grep "NOT MATCHED BY ANY STEPS" -B1 \| egrep -v "(--\|NOT MATCHED BY ANY STEPS)"')
+    cwindow
+  finally
+    let &l:errorformat = olderrorformat
+  endtry
+endfunction
+
+" Ack current word in command mode
+function! AckGrep()
+  let command = "ack ".expand("<cword>")
+  cexpr system(command)
+  cw
+endfunction
+
+function! AckVisual()
+  normal gv"xy
+  let command = "ack ".@x
+  cexpr system(command)
+  cw
+endfunction
+
 " *********************************************
 " *               Key Bindings                *
 " *********************************************
@@ -114,9 +147,27 @@ nmap gO O<esc>
 " Shortcut for =>
 imap <C-l> <Space>=><Space>
 
+" indent/unindent visual mode selection with tab/shift+tab
+vmap <tab> >gv
+vmap <s-tab> <gv
+
+" F7 reformats the whole file and leaves you where you were (unlike gg)
+map <silent> <F7> mzgg=G'z :delmarks z<CR>:echo "Reformatted."<CR>
+
+" AckGrep current word
+map <leader>a :call AckGrep()<CR>
+" AckVisual current selection
+vmap <leader>a :call AckVisual()<CR>
+
+" File tree browser - backslash
+map \ :NERDTreeToggle<CR>
+" File tree browser showing current file - pipe (shift-backslash)
+map \| :NERDTreeFind<CR>
+
 " *********************************************
 " *           Plugin Customization            *
 " *********************************************
 
 "# ctrlp.vim
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
