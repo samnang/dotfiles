@@ -94,6 +94,7 @@ set t_Co=256                      " Set terminal to 256 colors
 set background=dark
 colorscheme vividchalk
 
+autocmd BufWritePre * :%s/\s\+$//e " Don't leave trailing whitespace
 
 " *********************************************
 " *                 Functions                 *
@@ -169,5 +170,13 @@ map \| :NERDTreeFind<CR>
 " *********************************************
 
 "# ctrlp.vim
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX 
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+
+" *********************************************
+" *        Local Vimrc Customization          *
+" *********************************************
+if filereadable('~/.vim/local.vim')
+  so ~/.vim/local.vim
+endif
