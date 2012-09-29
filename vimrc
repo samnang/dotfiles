@@ -116,14 +116,20 @@ endfunction
 " Ack current word in command mode
 function! AckGrep()
   let command = "ack ".expand("<cword>")
-  cexpr system(command)
+  cgetexpr system(command)
   cw
 endfunction
 
 function! AckVisual()
   normal gv"xy
-  let command = "ack ".@x
-  cexpr system(command)
+
+  let escape_chars = ['(', ')']
+  for char in escape_chars
+    let @x = escape(@x, char)
+  endfor
+
+  let command = "ack ".shellescape(@x)
+  cgetexpr system(command)
   cw
 endfunction
 
@@ -173,10 +179,9 @@ map \| :NERDTreeFind<CR>
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
-
 " *********************************************
 " *        Local Vimrc Customization          *
 " *********************************************
-if filereadable('~/.vim/local.vim')
-  so ~/.vim/local.vim
+if filereadable(expand('~/.vimrc.local'))
+  so ~/.vimrc.local
 endif
