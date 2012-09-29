@@ -29,6 +29,7 @@ Bundle 'vim-scripts/L9.git'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/AutoTag'
 Bundle 'godlygeek/tabular'
+Bundle 'skalnik/vim-vroom'
 Bundle 'git://gist.github.com/287147.git'
 
 Bundle 'tpope/vim-cucumber'
@@ -133,6 +134,16 @@ function! AckVisual()
   cw
 endfunction
 
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+
 " *********************************************
 " *               Key Bindings                *
 " *********************************************
@@ -161,6 +172,14 @@ vmap <s-tab> <gv
 " F7 reformats the whole file and leaves you where you were (unlike gg)
 map <silent> <F7> mzgg=G'z :delmarks z<CR>:echo "Reformatted."<CR>
 
+" open files in directory of current file
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+
+" rename current file
+map <leader>n :call RenameFile()<cr>
+
 " AckGrep current word
 map <leader>a :call AckGrep()<CR>
 " AckVisual current selection
@@ -170,6 +189,10 @@ vmap <leader>a :call AckVisual()<CR>
 map \ :NERDTreeToggle<CR>
 " File tree browser showing current file - pipe (shift-backslash)
 map \| :NERDTreeFind<CR>
+
+let g:vroom_map_keys = 0
+silent! map <unique> <Leader>t :VroomRunTestFile<CR>
+silent! map <unique> <Leader>T :VroomRunNearestTest<CR>
 
 " *********************************************
 " *           Plugin Customization            *
