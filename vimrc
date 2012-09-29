@@ -193,6 +193,7 @@ map \| :NERDTreeFind<CR>
 let g:vroom_map_keys = 0
 silent! map <unique> <Leader>t :VroomRunTestFile<CR>
 silent! map <unique> <Leader>T :VroomRunNearestTest<CR>
+silent! map <unique> <Leader>w :!bundle exec cucumber --profile=wip<CR>
 
 " *********************************************
 " *           Plugin Customization            *
