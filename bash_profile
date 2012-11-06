@@ -1,6 +1,7 @@
 export EDITOR="vim"
 export NODE_PATH="/usr/local/lib/node"
-export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH="/usr/local/share/npm/bin":$PATH
 
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases

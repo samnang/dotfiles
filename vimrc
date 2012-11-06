@@ -93,9 +93,9 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 
 set t_Co=256                      " Set terminal to 256 colors
 set background=dark
-colorscheme vividchalk
+colorscheme Tomorrow-Night-Bright
 
-autocmd BufWritePre * :%s/\s\+$//e " Don't leave trailing whitespace
+autocmd FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
 " *********************************************
 " *                 Functions                 *
