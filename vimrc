@@ -34,6 +34,7 @@ Bundle 'git://gist.github.com/287147.git'
 
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-haml'
+Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 
