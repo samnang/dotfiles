@@ -19,24 +19,28 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'ervandew/supertab'
-Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
 Bundle 'Raimondi/delimitMate'
-Bundle 'mattn/zencoding-vim'
 Bundle 'vim-scripts/IndexedSearch'
 Bundle 'vim-scripts/L9.git'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/AutoTag'
 Bundle 'godlygeek/tabular'
 Bundle 'skalnik/vim-vroom'
+Bundle 'majutsushi/tagbar'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'sandeepravi/refactor-rails.vim'
+Bundle 'terryma/vim-expand-region'
 Bundle 'git://gist.github.com/287147.git'
 
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-haml'
 Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'othree/html5.vim'
 
 " *********************************************
 " *                 Settings                  *
@@ -69,9 +73,10 @@ set hidden                        " Handle multiple buffers better.
 set title                         " Set the terminal's title
 set number                        " Show line numbers.
 set ruler                         " Show cursor position.
+set cursorline                    " Highlight current line
 set wildmode=list:longest         " Complete files like a shell.
 set wildmenu                      " Enhanced command line completion.
-set wildignore=*.o,*.obj,*~       "stuff to ignore when tab completing
+set wildignore=*.o,*.obj,*~       " Stuff to ignore when tab completing
 set novisualbell
 set noerrorbells
 set history=1000                  " Store lots of :cmdline history
@@ -97,6 +102,7 @@ set background=dark
 colorscheme Tomorrow-Night-Bright
 
 autocmd FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
+autocmd BufRead,BufNewFile *.thor set filetype=ruby
 
 " *********************************************
 " *                 Functions                 *
@@ -116,9 +122,14 @@ function! CucumberFindUnusedSteps()
 endfunction
 
 " Ack current word in command mode
-function! AckGrep()
-  let command = "ack ".expand("<cword>")
-  cgetexpr system(command)
+function! AckGrep(word)
+  if empty(a:word)
+    let word = expand("<cword>")
+  else
+    let word = a:word
+  endif
+
+  cgetexpr system("ag --search-files ".word)
   cw
 endfunction
 
@@ -130,9 +141,7 @@ function! AckVisual()
     let @x = escape(@x, char)
   endfor
 
-  let command = "ack ".shellescape(@x)
-  cgetexpr system(command)
-  cw
+  call AckGrep(shellescape(@x))
 endfunction
 
 function! RenameFile()
@@ -159,6 +168,9 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" Open the definition in a new split
+nnoremap <c-\> <c-w>g<c-]>
+
 " Insert blank lines without going into insert mode
 nmap go o<esc>
 nmap gO O<esc>
@@ -182,9 +194,10 @@ map <leader>v :view %%
 map <leader>n :call RenameFile()<cr>
 
 " AckGrep current word
-map <leader>a :call AckGrep()<CR>
+map <leader>a :call AckGrep('')<CR>
 " AckVisual current selection
 vmap <leader>a :call AckVisual()<CR>
+command! -nargs=? Ag call AckGrep(<q-args>)
 
 " File tree browser - backslash
 map \ :NERDTreeToggle<CR>
@@ -196,6 +209,8 @@ silent! map <unique> <Leader>t :VroomRunTestFile<CR>
 silent! map <unique> <Leader>T :VroomRunNearestTest<CR>
 silent! map <unique> <Leader>w :!bundle exec cucumber --profile=wip<CR>
 
+nnoremap <silent> <F9> :TagbarToggle<CR>
+
 " *********************************************
 " *           Plugin Customization            *
 " *********************************************
@@ -203,6 +218,9 @@ silent! map <unique> <Leader>w :!bundle exec cucumber --profile=wip<CR>
 "# ctrlp.vim
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+" vim-gitgutter
+highlight clear SignColumn
 
 " *********************************************
 " *        Local Vimrc Customization          *
