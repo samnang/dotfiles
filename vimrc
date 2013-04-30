@@ -32,6 +32,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'sandeepravi/refactor-rails.vim'
 Bundle 'terryma/vim-expand-region'
+Bundle 'ngmy/vim-rubocop'
 Bundle 'git://gist.github.com/287147.git'
 
 Bundle 'vim-ruby/vim-ruby'
@@ -83,6 +84,9 @@ set history=1000                  " Store lots of :cmdline history
 
 set scrolloff=3
 set sidescrolloff=7
+
+set splitbelow
+set splitright
 
 set mouse-=a
 set mousehide
@@ -178,6 +182,9 @@ nmap gO O<esc>
 " Shortcut for =>
 imap <C-l> <Space>=><Space>
 
+" Convert old hash to new Ruby 1.9 syntax
+map <leader>: :%s/:\(\w\+\)\(\s*=>\s*\)/\1: /gc<CR>
+
 " indent/unindent visual mode selection with tab/shift+tab
 vmap <tab> >gv
 vmap <s-tab> <gv
@@ -210,6 +217,9 @@ silent! map <unique> <Leader>T :VroomRunNearestTest<CR>
 silent! map <unique> <Leader>w :!bundle exec cucumber --profile=wip<CR>
 
 nnoremap <silent> <F9> :TagbarToggle<CR>
+
+"Run Ruby code analyzer
+map <leader><leader> :RuboCop<cr>
 
 " *********************************************
 " *           Plugin Customization            *
