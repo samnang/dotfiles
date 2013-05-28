@@ -1,5 +1,5 @@
 [user]
-	name = Samnang Chhun
+  name = Samnang Chhun
   email = samnang.chhun@gmail.com
 [github]
   user = samnang
@@ -7,17 +7,17 @@
 [color]
   ui = true
 [alias]
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	df = diff
-	lg = log -p
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit -n 15
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	ls = ls-file
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  l = log --graph --decorate --pretty=oneline --abbrev-commit -n 20
+  lg = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lgp = log -p
+  ls = ls-file
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 [core]
-	excludesfile = /Users/samnang/.gitignore_global
+  excludesfile = /Users/samnang/.gitignore_global
 [merge]
-	tool = vimdiff
+  tool = vimdiff
