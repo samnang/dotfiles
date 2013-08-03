@@ -1,7 +1,9 @@
 export EDITOR="vim"
 export NODE_PATH="/usr/local/lib/node"
 export PATH=$HOME/bin:$PATH
-export PATH="/usr/local/share/npm/bin":$PATH
+export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+export PATH="/usr/local/share/npm/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases

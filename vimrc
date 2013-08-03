@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-endwise'
@@ -32,11 +33,11 @@ Bundle 'majutsushi/tagbar'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'terryma/vim-expand-region'
 Bundle 'git://gist.github.com/287147.git'
+Bundle 't9md/vim-ruby-xmpfilter'
 
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-haml'
-Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'othree/html5.vim'
@@ -64,7 +65,7 @@ set hlsearch                      " Highlight search terms
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
 
-set foldmethod=indent             "fold based on indent
+set foldmethod=syntax             "fold based on indent
 set foldnestmax=3                 "deepest fold is 3 levels
 set nofoldenable                  "dont fold by default
 
@@ -156,10 +157,24 @@ function! RenameFile()
     endif
 endfunction
 
+function! PryToggle()
+  let @a = "require 'pry'; binding.pry"
+  let wordsFromLine = getline('.')
+  if @a ==? wordsFromLine
+    normal dd
+  else
+    normal o
+    normal "ap
+  endif
+endfunction
+
 " *********************************************
 " *               Key Bindings                *
 " *********************************************
 let mapleader = ","
+
+" Toggle Folding
+nnoremap <leader>f za
 
 " Clear last search highlighting
 nnoremap <Space> :noh<cr>
@@ -218,6 +233,18 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 
 "Run Ruby code analyzer
 map <leader><leader> :RuboCop<cr>
+
+imap <Leader>d <ESC>:call PryToggle()<CR>
+nmap <Leader>d :call PryToggle()<CR>
+
+" xmpfilter Terminal
+nmap <buffer> <F5> <Plug>(xmpfilter-run)
+xmap <buffer> <F5> <Plug>(xmpfilter-run)
+imap <buffer> <F5> <Plug>(xmpfilter-run)
+
+nmap <buffer> <F4> <Plug>(xmpfilter-mark)
+xmap <buffer> <F4> <Plug>(xmpfilter-mark)
+imap <buffer> <F4> <Plug>(xmpfilter-mark)
 
 " *********************************************
 " *           Plugin Customization            *
