@@ -15,11 +15,8 @@ alias ls='ls -G'
 alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
 alias tree='tree -L 1'
 
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-
 # Custom alias
 alias work='cd /Volumes/Documents/Work/'
 alias proxy='ssh -L 8765:localhost:8765 pair@184.106.240.141'
 
-alias migrate='rake db:migrate && rake db:test:prepare'
+alias rmigrate='rake db:migrate && rake db:test:prepare'

@@ -13,12 +13,15 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 [[ -s "/Users/samnang/.rvm/scripts/rvm" ]] && source "/Users/samnang/.rvm/scripts/rvm"
+
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 function prompt {
 	local LIGHT_RED="\[\033[1;31m\]"
@@ -32,8 +35,11 @@ function prompt {
 	export GIT_PS1_SHOWUPSTREAM=auto
 	export GIT_PS1_SHOWSTASHSTATE=true
 
-	PS1="$TITLEBAR\n\W/$LIGHT_GREEN\$(__git_ps1 ' (%s)') $LIGHT_RED\$(~/.rvm/bin/rvm-prompt i v g)\n$NO_COLOUR$ "
+	PS1="$TITLEBAR\n\W/$LIGHT_GREEN\$(__git_ps1 ' (%s)') $LIGHT_RED\$(rbenv version-name)\n$NO_COLOUR$ "
 }
 
 #call the prompt function to set things in motion
 prompt
+
+source ~/.git-prompt.sh
+source ~/.git-completion.bash
