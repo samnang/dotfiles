@@ -7,11 +7,13 @@
 [color]
   ui = true
 [alias]
+  aa = add -A
   st = status
   ci = commit
   br = branch
   co = checkout
   df = diff
+  dc = diff --cached
   l = log --graph --decorate --pretty=oneline --abbrev-commit -n 20
   lg = log --graph --decorate --pretty=oneline --abbrev-commit --all
   lgp = log -p
@@ -21,3 +23,5 @@
   excludesfile = /Users/samnang/.gitignore_global
 [merge]
   tool = vimdiff
+[push]
+	default = simple
