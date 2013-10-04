@@ -15,6 +15,10 @@ alias ls='ls -G'
 alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
 alias tree='tree -L 1'
 
+alias rb=rbenv
+alias r=rails
+alias z=zeus
+
 # Custom alias
 alias work='cd /Volumes/Documents/Copy/Work/'
 

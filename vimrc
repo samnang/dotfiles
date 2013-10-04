@@ -244,6 +244,7 @@ map \ :NERDTreeToggle<CR>
 map \| :NERDTreeFind<CR>
 
 let g:vroom_map_keys = 0
+let g:vroom_use_bundle_exec = 0
 silent! map <unique> <Leader>t :VroomRunTestFile<CR>
 silent! map <unique> <Leader>T :VroomRunNearestTest<CR>
 silent! map <unique> <Leader>w :!bundle exec cucumber --profile=wip<CR>
@@ -277,6 +278,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " vim-gitgutter
 highlight clear SignColumn
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 
 " *********************************************
 " *        Local Vimrc Customization          *

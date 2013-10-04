@@ -14,14 +14,17 @@
   co = checkout
   df = diff
   dc = diff --cached
-  l = log --graph --decorate --pretty=oneline --abbrev-commit -n 20
-  lg = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  l = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative --color -n 20
+  lg = log --graph --decorate --pretty=oneline --abbrev-commit --all --color
   lgp = log -p
   ls = ls-file
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+  cleanup = remote prune
 [core]
   excludesfile = /Users/samnang/.gitignore_global
 [merge]
   tool = vimdiff
 [push]
 	default = simple
+[heroku]
+	account = personal

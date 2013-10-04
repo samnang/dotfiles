@@ -35,7 +35,9 @@ function prompt {
 	export GIT_PS1_SHOWUPSTREAM=auto
 	export GIT_PS1_SHOWSTASHSTATE=true
 
-	PS1="$TITLEBAR\n\W/$LIGHT_GREEN\$(__git_ps1 ' (%s)') $LIGHT_RED\$(rbenv version-name)\n$NO_COLOUR$ "
+  rbenv='$(rbenv version-name)'
+
+	PS1="$TITLEBAR\n\W/$LIGHT_GREEN\$(__git_ps1 ' (%s)') $LIGHT_RED${rbenv}\n$NO_COLOUR$ "
 }
 
 #call the prompt function to set things in motion
