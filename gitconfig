@@ -8,12 +8,17 @@
   ui = true
 [alias]
   aa = add -A
-  st = status
+  st = status -sb
   ci = commit
   br = branch
   co = checkout
   df = diff
   dc = diff --cached
+  up = pull --rebase --prune
+  wip = !git add -A && git commit -m "WIP"
+  undo = reset HEAD~1 --mixed
+  bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
+  bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
   l = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative --color -n 20
   lg = log --graph --decorate --pretty=oneline --abbrev-commit --all --color
   lgp = log -p
@@ -22,9 +27,12 @@
   cleanup = remote prune
 [core]
   excludesfile = /Users/samnang/.gitignore_global
+	autocrlf = input
 [merge]
   tool = vimdiff
 [push]
 	default = simple
 [heroku]
 	account = personal
+[init]
+	templatedir = ~/.git_template

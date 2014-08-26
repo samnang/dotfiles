@@ -5,49 +5,54 @@ filetype off                      " Necessary on some Linux distros for pathogen
 " *          Vundle - Vim Plugins             *
 " *********************************************
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'Raimondi/delimitMate'
+Plugin 'vim-scripts/IndexedSearch'
+Plugin 'vim-scripts/L9.git'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'godlygeek/tabular'
+Plugin 'skalnik/vim-vroom'
+Plugin 'majutsushi/tagbar'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'git://gist.github.com/287147.git'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-haml'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'othree/html5.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'fatih/vim-go'
+Plugin 'bogado/file-line'
+Plugin 't9md/vim-ruby-xmpfilter'
 
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-endwise'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'msanders/snipmate.vim'
-Bundle 'ervandew/supertab'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
-Bundle 'Raimondi/delimitMate'
-Bundle 'vim-scripts/IndexedSearch'
-Bundle 'vim-scripts/L9.git'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/AutoTag'
-Bundle 'godlygeek/tabular'
-Bundle 'skalnik/vim-vroom'
-Bundle 'majutsushi/tagbar'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'terryma/vim-expand-region'
-Bundle 'git://gist.github.com/287147.git'
-Bundle 't9md/vim-ruby-xmpfilter'
-
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-haml'
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'othree/html5.vim'
+call vundle#end()
+syntax enable
+filetype plugin indent on         " load file type plugins + indentation
 
 " *********************************************
 " *                 Settings                  *
 " *********************************************
 set encoding=utf-8
-syntax enable
-filetype plugin indent on         " load file type plugins + indentation
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
@@ -74,6 +79,8 @@ set title                         " Set the terminal's title
 set number                        " Show line numbers.
 set ruler                         " Show cursor position.
 set cursorline                    " Highlight current line
+set colorcolumn=81
+set list listchars=tab:»·,trail:· " Display extra whitespace
 set wildmode=list:longest         " Complete files like a shell.
 set wildmenu                      " Enhanced command line completion.
 set wildignore=*.o,*.obj,*~       " Stuff to ignore when tab completing
@@ -106,6 +113,11 @@ colorscheme Tomorrow-Night-Bright
 
 autocmd FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
 autocmd BufRead,BufNewFile *.thor set filetype=ruby
+
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+" Allow stylesheets to autocomplete hyphenated words
+autocmd FileType css,scss,sass setlocal iskeyword+=-
 
 " *********************************************
 " *                 Functions                 *
@@ -157,17 +169,6 @@ function! RenameFile()
     endif
 endfunction
 
-function! PryToggle()
-  let @a = "require 'pry'; binding.pry"
-  let wordsFromLine = getline('.')
-  if @a ==? wordsFromLine
-    normal dd
-  else
-    normal o
-    normal "ap
-  endif
-endfunction
-
 """ FocusMode
 function! ToggleFocusMode()
   if (&foldcolumn != 12)
@@ -186,6 +187,19 @@ function! ToggleFocusMode()
     execute 'colorscheme ' . g:colors_name
   endif
 endfunc
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 " *********************************************
 " *               Key Bindings                *
@@ -249,37 +263,82 @@ silent! map <unique> <Leader>t :VroomRunTestFile<CR>
 silent! map <unique> <Leader>T :VroomRunNearestTest<CR>
 silent! map <unique> <Leader>w :!bundle exec cucumber --profile=wip<CR>
 
-nnoremap <silent> <F9> :TagbarToggle<CR>
-
 "Run Ruby code analyzer
+let g:vimrubocop_keymap = 0
 map <leader><leader> :RuboCop<cr>
 
-imap <Leader>d <ESC>:call PryToggle()<CR>
-nmap <Leader>d :call PryToggle()<CR>
-
-" xmpfilter Terminal
-nmap <buffer> <F5> <Plug>(xmpfilter-run)
-xmap <buffer> <F5> <Plug>(xmpfilter-run)
-imap <buffer> <F5> <Plug>(xmpfilter-run)
-
-nmap <buffer> <F4> <Plug>(xmpfilter-mark)
-xmap <buffer> <F4> <Plug>(xmpfilter-mark)
-imap <buffer> <F4> <Plug>(xmpfilter-mark)
-
 nnoremap <F1> :call ToggleFocusMode()<cr>
+
+nnoremap <leader>. :CtrlPTag<cr>
+
+nnoremap <silent> <Leader>? :TagbarToggle<CR>
+
+map <leader>gr :topleft :split config/routes.rb<cr>
+map <leader>gg :topleft :split Gemfile<cr>
+
+nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader>D <Plug>DashGlobalSearch
+
+" vim.go
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap <Leader>gds <Plug>(go-def-split)
+
+" vim-ruby-xmpfilter
+let g:xmpfilter_cmd = "seeing_is_believing"
+autocmd FileType ruby nmap <buffer> <leader>m <Plug>(seeing_is_believing-mark)
+autocmd FileType ruby xmap <buffer> <leader>m <Plug>(seeing_is_believing-mark)
+autocmd FileType ruby imap <buffer> <leader>m <Plug>(seeing_is_believing-mark)
+
+autocmd FileType ruby nmap <buffer> <F4> <Plug>(seeing_is_believing-clean)
+autocmd FileType ruby xmap <buffer> <F4> <Plug>(seeing_is_believing-clean)
+autocmd FileType ruby imap <buffer> <F4> <Plug>(seeing_is_believing-clean)
+
+" xmpfilter compatible
+autocmd FileType ruby nmap <buffer> <leader>r <Plug>(seeing_is_believing-run_-x)
+autocmd FileType ruby xmap <buffer> <leader>r <Plug>(seeing_is_believing-run_-x)
+autocmd FileType ruby imap <buffer> <leader>r <Plug>(seeing_is_believing-run_-x)
+
+" auto insert mark at appropriate spot.
+autocmd FileType ruby nmap <buffer> <F5> <Plug>(seeing_is_believing-run)
+autocmd FileType ruby xmap <buffer> <F5> <Plug>(seeing_is_believing-run)
+autocmd FileType ruby imap <buffer> <F5> <Plug>(seeing_is_believing-run)
 
 " *********************************************
 " *           Plugin Customization            *
 " *********************************************
 
-"# ctrlp.vim
+" ctrlp.vim
+let g:ctrlp_match_window = 'max:15'
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 " vim-gitgutter
 highlight clear SignColumn
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+
+" vim-rubocop
+if filereadable(expand('./.hound.yml'))
+  let g:vimrubocop_config = './.hound.yml'
+endif
 
 " *********************************************
 " *        Local Vimrc Customization          *
@@ -287,3 +346,6 @@ let g:gitgutter_eager = 0
 if filereadable(expand('~/.vimrc.local'))
   so ~/.vimrc.local
 endif
+
+set exrc
+set secure
