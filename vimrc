@@ -25,7 +25,8 @@ Plugin 'vim-scripts/IndexedSearch'
 Plugin 'vim-scripts/L9.git'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'godlygeek/tabular'
-Plugin 'skalnik/vim-vroom'
+Plugin 'tpope/vim-dispatch'
+Plugin 'thoughtbot/vim-rspec'
 Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'git://gist.github.com/287147.git'
@@ -44,6 +45,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'fatih/vim-go'
 Plugin 'bogado/file-line'
 Plugin 't9md/vim-ruby-xmpfilter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'milkypostman/vim-togglelist'
 
 call vundle#end()
 syntax enable
@@ -106,10 +109,11 @@ set timeoutlen=500
 
 set laststatus=2                  " Show the status line all the time
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+set autowrite
 
 set t_Co=256                      " Set terminal to 256 colors
 set background=dark
-colorscheme Tomorrow-Night-Bright
+colorscheme solarized
 
 autocmd FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
 autocmd BufRead,BufNewFile *.thor set filetype=ruby
@@ -257,11 +261,10 @@ map \ :NERDTreeToggle<CR>
 " File tree browser showing current file - pipe (shift-backslash)
 map \| :NERDTreeFind<CR>
 
-let g:vroom_map_keys = 0
-let g:vroom_use_bundle_exec = 0
-silent! map <unique> <Leader>t :VroomRunTestFile<CR>
-silent! map <unique> <Leader>T :VroomRunNearestTest<CR>
-silent! map <unique> <Leader>w :!bundle exec cucumber --profile=wip<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>T :call RunNearestSpec()<CR>
+map <Leader>A :call RunAllSpecs()<CR>
+let g:rspec_command = "Dispatch rspec {spec}"
 
 "Run Ruby code analyzer
 let g:vimrubocop_keymap = 0
@@ -273,11 +276,17 @@ nnoremap <leader>. :CtrlPTag<cr>
 
 nnoremap <silent> <Leader>? :TagbarToggle<CR>
 
-map <leader>gr :topleft :split config/routes.rb<cr>
 map <leader>gg :topleft :split Gemfile<cr>
 
 nmap <silent> <leader>d <Plug>DashSearch
 nmap <silent> <leader>D <Plug>DashGlobalSearch
+
+"  Save File
+nnoremap <leader>s :w<cr>
+inoremap <leader>s <C-c>:w<cr>
+
+" Toggles the quickfix window.
+nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
 
 " vim.go
 au FileType go nmap <Leader>i <Plug>(go-info)
