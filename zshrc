@@ -56,6 +56,14 @@ plugins=(rails git heroku httpie fasd github zsh-syntax-highlighting)
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export EDITOR="vim"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -83,6 +91,27 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v='f -e vim' # quick opening files with vim
+
+# ls, the common ones I use a lot shortened for rapid fire usage
+alias l='ls -lFh'     #size,show type,human readable
+alias la='ls -lAFh'   #long list,show almost all,show type,human readable
+alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
+alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
+alias ll='ls -l'      #long list
+alias ldot='ls -ld .*'
+
+alias zshrc='vim ~/.zshrc' # Quick access to the ~/.zshrc file
+
+alias grep='grep --color'
+
+alias t='tail -f'
+
+alias -g G='| grep'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g CP='| pbcopy'
+
+alias rm='rm -i'
 
 #########################
 # Plugins Customization #
