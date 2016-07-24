@@ -16,7 +16,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-endwise'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
@@ -43,10 +43,17 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'fatih/vim-go'
+Plugin 'slim-template/vim-slim'
 Plugin 'bogado/file-line'
 Plugin 't9md/vim-ruby-xmpfilter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'milkypostman/vim-togglelist'
+Plugin 'mxw/vim-jsx'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'wesQ3/vim-windowswap'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()
 syntax enable
@@ -205,6 +212,43 @@ function! InsertTabWrapper()
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
+" Automatically set paste mode in Vim when pasting in insert mode
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+
+" Automatically create non existing directories
+function s:MkNonExDir(file, buf)
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
+    endif
+  endif
+endfunction
+augroup BWCCreateDir
+  autocmd!
+  autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+
 " *********************************************
 " *               Key Bindings                *
 " *********************************************
@@ -348,6 +392,12 @@ let g:gitgutter_eager = 0
 if filereadable(expand('./.hound.yml'))
   let g:vimrubocop_config = './.hound.yml'
 endif
+
+" vim-indent-guides
+let g:indent_guides_guide_size = 1
+
+" vim-airline
+let g:airline_powerline_fonts = 1
 
 " *********************************************
 " *        Local Vimrc Customization          *

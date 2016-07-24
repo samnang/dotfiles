@@ -8,8 +8,11 @@
   ui = true
 [alias]
   aa = add -A
+  o = browse --
   st = status -sb
   ci = commit
+  pf = push --force-with-lease
+  amend = commit -a --amend
   br = branch
   co = checkout
   df = diff
@@ -21,10 +24,14 @@
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
   l = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative --color -n 20
   lg = log --graph --decorate --pretty=oneline --abbrev-commit --all --color
+  lga = log --all --graph --decorate --oneline --simplify-by-decoration
   lgp = log -p
-  ls = ls-file
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+  ls = ls-file
   cleanup = remote prune
+  ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags'"
+  publish = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
+  unpublish = "!git push origin :\"$(git rev-parse --abbrev-ref HEAD)\""
 [core]
   excludesfile = /Users/samnang/.gitignore_global
 	autocrlf = input
@@ -36,3 +43,7 @@
 	account = personal
 [init]
 	templatedir = ~/.git_template
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

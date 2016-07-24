@@ -10,16 +10,18 @@ alias ..4='cd ../../../..'
 
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
 alias ls='ls -G'
 alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
 alias tree='tree -L 1'
 
 alias rb=rbenv
 alias r=rails
-alias z=zeus
+alias gh=ghub
+
+alias ctags="`brew --prefix`/bin/ctags"
+alias tmux='direnv exec / tmux'
+
+alias askme="ruby /Users/samnang/Workspaces/ask_reframing_question.rb"
 
 # Custom alias
-alias work='cd /Volumes/Documents/Copy/Work/'
-
 alias rmigrate='rake db:migrate && rake db:test:prepare'

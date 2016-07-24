@@ -19,6 +19,15 @@ IRB.conf[:PROMPT][:CUSTOM] = {
 }
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 
+def try_require(gem_name)
+  require gem_name
+  yield if block_given?
+
+rescue ScriptError
+end
+try_require 'looksee'
+try_require 'awesome_print'
+
 module TweakIRB
   unless respond_to?(:singleton_class)
     Kernel.module_eval do
