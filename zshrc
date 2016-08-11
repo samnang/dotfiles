@@ -57,6 +57,11 @@ plugins=(rails git heroku httpie fasd github zsh-syntax-highlighting)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 export EDITOR="vim"
+export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+export TMUXIFIER_LAYOUT_PATH="$HOME/Dropbox/Apps/tmuxifier-layouts"
+eval "$(tmuxifier init -)"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
