@@ -101,7 +101,7 @@ alias v='f -e vim' # quick opening files with vim
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
 alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
-alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
+alias lst='ls -ltFh'   #long list,sorted by date,show type,human readable
 alias ll='ls -l'      #long list
 alias ldot='ls -ld .*'
 
@@ -115,8 +115,6 @@ alias -g G='| grep'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g CP='| pbcopy'
-
-alias rm='rm -i'
 
 #########################
 # Plugins Customization #

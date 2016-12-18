@@ -51,10 +51,13 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'milkypostman/vim-togglelist'
 Plugin 'mxw/vim-jsx'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'itspriddle/vim-marked'
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
 syntax enable
@@ -378,7 +381,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
@@ -399,6 +402,12 @@ let g:indent_guides_guide_size = 1
 
 " vim-airline
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#tagbar#enabled = 0
+
+" gist-vim
+let g:gist_post_private = 1
 
 " *********************************************
 " *        Local Vimrc Customization          *
