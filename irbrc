@@ -18,39 +18,3 @@ IRB.conf[:PROMPT][:CUSTOM] = {
   :RETURN => "=> %s\n"
 }
 IRB.conf[:PROMPT_MODE] = :CUSTOM
-
-def try_require(gem_name)
-  require gem_name
-  yield if block_given?
-
-rescue ScriptError
-end
-try_require 'looksee'
-try_require 'awesome_print'
-
-module TweakIRB
-  unless respond_to?(:singleton_class)
-    Kernel.module_eval do
-      def singleton_class
-        class << self; self; end
-      end
-    end
-  end
-
-  def mm
-    (methods - self.class.superclass.instance_methods).sort
-  end
-
-  # Quick benchmarking facility
-  # Based on rue's irbrc => http://pastie.org/179534
-  def quick(repetitions=100, &block)
-    require 'benchmark'
-
-    Benchmark.bmbm do |b|
-      b.report {repetitions.times &block} 
-    end
-    nil
-  end
-end
-
-include TweakIRB
