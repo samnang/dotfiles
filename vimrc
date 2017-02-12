@@ -26,15 +26,13 @@ Plugin 'vim-scripts/L9.git'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-dispatch'
-Plugin 'thoughtbot/vim-rspec'
-" Plugin 'janko-m/vim-test'
+Plugin 'janko-m/vim-test'
 Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'git://gist.github.com/287147.git'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
-Plugin 'rizzatti/funcoo.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-cucumber'
@@ -43,7 +41,6 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
-Plugin 'fatih/vim-go'
 Plugin 'slim-template/vim-slim'
 Plugin 'bogado/file-line'
 Plugin 't9md/vim-ruby-xmpfilter'
@@ -56,8 +53,10 @@ Plugin 'wesQ3/vim-windowswap'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'itspriddle/vim-marked'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'szw/vim-maximizer'
+Plugin 'itspriddle/vim-marked'
 
 call vundle#end()
 syntax enable
@@ -287,14 +286,6 @@ map <leader>: :%s/:\(\w\+\)\(\s*=>\s*\)/\1: /gc<CR>
 vmap <tab> >gv
 vmap <s-tab> <gv
 
-" F7 reformats the whole file and leaves you where you were (unlike gg)
-map <silent> <F7> mzgg=G'z :delmarks z<CR>:echo "Reformatted."<CR>
-
-" open files in directory of current file
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
-map <leader>v :view %%
-
 " rename current file
 map <leader>n :call RenameFile()<cr>
 
@@ -309,18 +300,18 @@ map \ :NERDTreeToggle<CR>
 " File tree browser showing current file - pipe (shift-backslash)
 map \| :NERDTreeFind<CR>
 
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>T :call RunNearestSpec()<CR>
-map <Leader>A :call RunAllSpecs()<CR>
-let g:rspec_command = "Dispatch rspec {spec}"
+" vim-test
+nmap <silent> <leader>R :TestFile -strategy=basic<CR>
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>A :TestSuite<CR>
+nmap <silent> <leader>. :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+let test#strategy = "dispatch"
 
 "Run Ruby code analyzer
 let g:vimrubocop_keymap = 0
 map <leader><leader> :RuboCop<cr>
-
-nnoremap <F1> :call ToggleFocusMode()<cr>
-
-nnoremap <leader>. :CtrlPTag<cr>
 
 nnoremap <silent> <Leader>? :TagbarToggle<CR>
 
@@ -335,16 +326,6 @@ inoremap <leader>s <C-c>:w<cr>
 
 " Toggles the quickfix window.
 nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
-
-" vim.go
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap gd <Plug>(go-def)
-au FileType go nmap <Leader>gds <Plug>(go-def-split)
 
 " vim-ruby-xmpfilter
 let g:xmpfilter_cmd = "seeing_is_believing"
@@ -412,9 +393,6 @@ let g:gist_post_private = 1
 " *********************************************
 " *        Local Vimrc Customization          *
 " *********************************************
-if filereadable(expand('~/.vimrc.local'))
-  so ~/.vimrc.local
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
 endif
-
-set exrc
-set secure
