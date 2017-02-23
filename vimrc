@@ -29,25 +29,15 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'janko-m/vim-test'
 Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'git://gist.github.com/287147.git'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'rizzatti/dash.vim'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-haml'
-Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
-Plugin 'slim-template/vim-slim'
 Plugin 'bogado/file-line'
 Plugin 't9md/vim-ruby-xmpfilter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'milkypostman/vim-togglelist'
-Plugin 'mxw/vim-jsx'
-Plugin 'elixir-lang/vim-elixir'
 Plugin 'slashmili/alchemist.vim'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -57,6 +47,7 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'szw/vim-maximizer'
 Plugin 'itspriddle/vim-marked'
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()
 syntax enable
@@ -272,9 +263,8 @@ nnoremap <c-l> <c-w>l
 " Open the definition in a new split
 nnoremap <c-\> <c-w>g<c-]>
 
-" Insert blank lines without going into insert mode
-nmap go o<esc>
-nmap gO O<esc>
+" puts the caller
+nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
 
 " Shortcut for =>
 imap <C-l> <Space>=><Space>
