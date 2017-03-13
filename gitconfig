@@ -29,7 +29,6 @@
   lgp = log -p
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
   ls = ls-file
-  cleanup = remote prune
   ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags'"
   publish = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
   unpublish = "!git push origin :\"$(git rev-parse --abbrev-ref HEAD)\""
@@ -50,3 +49,5 @@
 	prompt = false
 [rerere]
 	enabled = true
+[commit]
+  template = ~/.gitmessage

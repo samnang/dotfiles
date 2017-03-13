@@ -35,7 +35,6 @@ Plugin 'mattn/gist-vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'bogado/file-line'
-Plugin 't9md/vim-ruby-xmpfilter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'milkypostman/vim-togglelist'
 Plugin 'slashmili/alchemist.vim'
@@ -292,6 +291,7 @@ map \| :NERDTreeFind<CR>
 
 " vim-test
 nmap <silent> <leader>R :TestFile -strategy=basic<CR>
+nmap <silent> <leader>r :TestNearest -strategy=basic<CR>
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>A :TestSuite<CR>
@@ -316,26 +316,6 @@ inoremap <leader>s <C-c>:w<cr>
 
 " Toggles the quickfix window.
 nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
-
-" vim-ruby-xmpfilter
-let g:xmpfilter_cmd = "seeing_is_believing"
-autocmd FileType ruby nmap <buffer> <leader>m <Plug>(seeing_is_believing-mark)
-autocmd FileType ruby xmap <buffer> <leader>m <Plug>(seeing_is_believing-mark)
-autocmd FileType ruby imap <buffer> <leader>m <Plug>(seeing_is_believing-mark)
-
-autocmd FileType ruby nmap <buffer> <F4> <Plug>(seeing_is_believing-clean)
-autocmd FileType ruby xmap <buffer> <F4> <Plug>(seeing_is_believing-clean)
-autocmd FileType ruby imap <buffer> <F4> <Plug>(seeing_is_believing-clean)
-
-" xmpfilter compatible
-autocmd FileType ruby nmap <buffer> <leader>r <Plug>(seeing_is_believing-run_-x)
-autocmd FileType ruby xmap <buffer> <leader>r <Plug>(seeing_is_believing-run_-x)
-autocmd FileType ruby imap <buffer> <leader>r <Plug>(seeing_is_believing-run_-x)
-
-" auto insert mark at appropriate spot.
-autocmd FileType ruby nmap <buffer> <F5> <Plug>(seeing_is_believing-run)
-autocmd FileType ruby xmap <buffer> <F5> <Plug>(seeing_is_believing-run)
-autocmd FileType ruby imap <buffer> <F5> <Plug>(seeing_is_believing-run)
 
 " *********************************************
 " *           Plugin Customization            *
