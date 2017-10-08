@@ -13,13 +13,14 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-endwise'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'Raimondi/delimitMate'
 Plugin 'vim-scripts/IndexedSearch'
 Plugin 'vim-scripts/L9.git'
@@ -36,19 +37,21 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'bogado/file-line'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'milkypostman/vim-togglelist'
+Plugin 'romainl/vim-qf'
 Plugin 'slashmili/alchemist.vim'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'szw/vim-maximizer'
 Plugin 'itspriddle/vim-marked'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'junegunn/goyo.vim'
+Plugin 'tpope/tpope-vim-abolish'
 
 call vundle#end()
+
 syntax enable
 filetype plugin indent on         " load file type plugins + indentation
 
@@ -81,8 +84,8 @@ set hidden                        " Handle multiple buffers better.
 set title                         " Set the terminal's title
 set number                        " Show line numbers.
 set ruler                         " Show cursor position.
-set cursorline                    " Highlight current line
-set colorcolumn=81
+"set cursorline                   " Highlight current line
+"set colorcolumn=81
 set list listchars=tab:»·,trail:· " Display extra whitespace
 set wildmode=list:longest         " Complete files like a shell.
 set wildmenu                      " Enhanced command line completion.
@@ -91,6 +94,7 @@ set novisualbell
 set noerrorbells
 set history=1000                  " Store lots of :cmdline history
 
+set synmaxcol=128                 " Syntax coloring lines that are too long just slows down the world
 set scrolloff=3
 set sidescrolloff=7
 
@@ -102,14 +106,22 @@ set mousehide
 set ttymouse=xterm2
 set sidescroll=1
 
+" Speed up Vim
+let g:ruby_path = system('echo $HOME/.rbenv/shims')
+set lazyredraw
+set ttyfast
+set ttyscroll=3
+
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
+set noswapfile                    " no swap files
 set directory=/tmp                " Keep swap files in one location
 set timeoutlen=500
 
 set laststatus=2                  " Show the status line all the time
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 set autowrite
+set autoread                      " Auto-reload buffers when files are changed on disk
 
 set t_Co=256                      " Set terminal to 256 colors
 set background=dark
@@ -172,25 +184,6 @@ function! RenameFile()
         redraw!
     endif
 endfunction
-
-""" FocusMode
-function! ToggleFocusMode()
-  if (&foldcolumn != 12)
-    set laststatus=0
-    set numberwidth=10
-    set foldcolumn=12
-    set noruler
-    hi FoldColumn ctermbg=none
-    hi LineNr ctermfg=0 ctermbg=none
-    hi NonText ctermfg=0
-  else
-    set laststatus=2
-    set numberwidth=4
-    set foldcolumn=0
-    set ruler
-    execute 'colorscheme ' . g:colors_name
-  endif
-endfunc
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -315,7 +308,16 @@ nnoremap <leader>s :w<cr>
 inoremap <leader>s <C-c>:w<cr>
 
 " Toggles the quickfix window.
-nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
+nmap <leader>q <Plug>(qf_qf_toggle)
+
+" Reload Browser from Vim http://chrismontrois.net/2015/11/05/vim-reload/
+function ReloadBrowser()
+  execute ':silent !osascript ~/.vim/refresh-chrome.applescript' | execute ':redraw!'
+endfunction
+autocmd Filetype html,css,javascript nnoremap <silent> <leader>r :call ReloadBrowser()<CR>
+
+" Pretty format XML
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
 " *********************************************
 " *           Plugin Customization            *
@@ -324,7 +326,6 @@ nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
 " ctrlp.vim
 let g:ctrlp_match_window = 'max:15'
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -359,6 +360,18 @@ let g:airline#extensions#tagbar#enabled = 0
 
 " gist-vim
 let g:gist_post_private = 1
+
+" ale (syntax checker)
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_error = '🔴'
+let g:ale_sign_warning = '👉'
+"nmap <silent> <C-w> <Plug>(ale_next_wrap)
 
 " *********************************************
 " *        Local Vimrc Customization          *

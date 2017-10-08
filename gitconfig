@@ -14,7 +14,7 @@
   pf = push --force-with-lease
   amend = commit -a --amend
   br = branch
-  bl = "!git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) | %(authorname) | (%(color:green)%(committerdate:relative)%(color:reset))| %(contents:subject) ' | column -t -s '|'"
+  bl = for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(authordate:short) %(color:red)%(objectname:short) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - (%(color:green)%(committerdate:relative)%(color:reset))'
   co = checkout
   df = diff
   dc = diff --cached
