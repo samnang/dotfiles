@@ -1,11 +1,16 @@
+# <type>: (If applied, this commit will...) <subject> (Max 50 char)
+# |<----  Using a Maximum Of 50 Characters  ---->|
 
 
-# 50-character subject line
-#
-# 72-character wrapped longer description. This should answer:
-#
-# * Why was this change necessary?
-# * How does it address the problem?
-# * Are there any side effects?
-#
-# Include a link to the ticket, if any.
+# Explain why this change is being made
+# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
+
+# Provide links to any relevant tickets, articles or other resources
+
+# Remember to
+#    Capitalize the subject line
+#    Use the imperative mood in the subject line
+#    Do not end the subject line with a period
+#    Separate subject from body with a blank line
+#    Use the body to explain what and why vs. how
+#    Can use multiple lines with "-" or "*" for bullet points in body
