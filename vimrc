@@ -264,6 +264,8 @@ imap <C-l> <Space>=><Space>
 " Convert old hash to new Ruby 1.9 syntax
 map <leader>: :%s/:\(\w\+\)\(\s*=>\s*\)/\1: /gc<CR>
 
+map <leader>' :%s/'\([^']*\)'/"\1"/gc<CR>
+
 " indent/unindent visual mode selection with tab/shift+tab
 vmap <tab> >gv
 vmap <s-tab> <gv
