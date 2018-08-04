@@ -33,6 +33,8 @@
   ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags'"
   publish = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
   unpublish = "!git push origin :\"$(git rev-parse --abbrev-ref HEAD)\""
+[pager]
+  diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [core]
   excludesfile = /Users/samnang/.gitignore_global
 	autocrlf = input
@@ -43,12 +45,19 @@
 [heroku]
 	account = personal
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [mergetool]
 	prompt = false
 [rerere]
 	enabled = true
 [commit]
   template = ~/.gitmessage
+[url "https://github.com"]
+	insteadOf = git://github.com
+[diff-so-fancy]
+	markEmptyLines = false
+[credential]
+	helper = netrc -f ~/.netrc.gpg -v

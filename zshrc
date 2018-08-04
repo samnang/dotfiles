@@ -49,7 +49,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-nvm rails mix git heroku httpie fasd zsh-syntax-highlighting)
+plugins=()
 
 # User configuration
 
@@ -65,7 +65,6 @@ eval "$(tmuxifier init -)"
 
 eval "$(rbenv init -)"
 eval "$(hub alias -s)"
-eval "$(thefuck --alias)"
 eval "$(direnv hook zsh)"
 
 ### Added by the Heroku Toolbelt
@@ -77,29 +76,22 @@ tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | s
 
 source $ZSH/oh-my-zsh.sh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      echo "Missing node version. Please install it with:\n\nnvm install\n"
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# Defer initialization of nvm until nvm, node or a node-dependent command is
+# run. Ensure this block is only run once if .bashrc gets sourced multiple times
+# by checking whether __init_nvm is a function.
+# https://www.growingwiththeweb.com/2018/01/slow-nvm-init.html
+if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -f __init_nvm)" = function ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  declare -a __node_commands=('nvm' 'node' 'npm' 'yarn' 'gulp' 'grunt' 'webpack')
+  function __init_nvm() {
+    for i in "${__node_commands[@]}"; do unalias $i; done
+    . "$NVM_DIR"/nvm.sh
+    unset __node_commands
+    unset -f __init_nvm
+  }
+  for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
+fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -132,6 +124,9 @@ load-nvmrc
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
+# Z - jump around
+[[ -f ~/.z.sh/z.sh ]] && source ~/.z.sh/z.sh
+
 #########################
 # Plugins Customization #
 #########################
@@ -143,10 +138,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rbenv time)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-
 POWERLEVEL9K_RBENV_BACKGROUND="green"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--no-height --no-reverse'
+# added by travis gem
+[ -f /Users/samnang/.travis/travis.sh ] && source /Users/samnang/.travis/travis.sh

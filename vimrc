@@ -1,59 +1,8 @@
 set nocompatible                  " Must come first because it changes other options.
-filetype off                      " Necessary on some Linux distros for pathogen to properly load bundles
 
-" *********************************************
-" *          Vundle - Vim Plugins             *
-" *********************************************
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-
-" Let Vundle manage Vundle
-Plugin 'gmarik/vundle'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-endwise'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ervandew/supertab'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'w0rp/ale'
-Plugin 'Raimondi/delimitMate'
-Plugin 'vim-scripts/IndexedSearch'
-Plugin 'vim-scripts/L9.git'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-dispatch'
-Plugin 'janko-m/vim-test'
-Plugin 'majutsushi/tagbar'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'rizzatti/dash.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'bogado/file-line'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'romainl/vim-qf'
-Plugin 'slashmili/alchemist.vim'
-Plugin 'wesQ3/vim-windowswap'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'szw/vim-maximizer'
-Plugin 'itspriddle/vim-marked'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'junegunn/goyo.vim'
-Plugin 'tpope/tpope-vim-abolish'
-
-call vundle#end()
-
-syntax enable
-filetype plugin indent on         " load file type plugins + indentation
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
 " *********************************************
 " *                 Settings                  *
@@ -76,7 +25,7 @@ set hlsearch                      " Highlight search terms
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
 
-set foldmethod=syntax             "fold based on indent
+set foldmethod=indent             "fold based on indent
 set foldnestmax=3                 "deepest fold is 3 levels
 set nofoldenable                  "dont fold by default
 
@@ -127,6 +76,8 @@ set t_Co=256                      " Set terminal to 256 colors
 set background=dark
 colorscheme solarized
 
+setglobal complete-=i
+
 autocmd FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
 autocmd BufRead,BufNewFile *.thor set filetype=ruby
 
@@ -138,19 +89,6 @@ autocmd FileType css,scss,sass setlocal iskeyword+=-
 " *********************************************
 " *                 Functions                 *
 " *********************************************
-
-" Find Cucumber's unused steps
-command! CucumberFindUnusedSteps :call CucumberFindUnusedSteps()
-function! CucumberFindUnusedSteps()
-  let olderrorformat = &l:errorformat
-  try
-    set errorformat=%m#\ %f:%l
-    cexpr system('bundle exec cucumber --no-profile --no-color --format usage --dry-run features \| grep "NOT MATCHED BY ANY STEPS" -B1 \| egrep -v "(--\|NOT MATCHED BY ANY STEPS)"')
-    cwindow
-  finally
-    let &l:errorformat = olderrorformat
-  endtry
-endfunction
 
 " Ack current word in command mode
 function! AckGrep(word)
@@ -270,9 +208,6 @@ map <leader>' :%s/'\([^']*\)'/"\1"/gc<CR>
 vmap <tab> >gv
 vmap <s-tab> <gv
 
-" rename current file
-map <leader>n :call RenameFile()<cr>
-
 " AckGrep current word
 map <leader>a :call AckGrep('')<CR>
 " AckVisual current selection
@@ -298,16 +233,19 @@ let test#strategy = "dispatch"
 let g:vimrubocop_keymap = 0
 map <leader><leader> :RuboCop<cr>
 
-nnoremap <silent> <Leader>? :TagbarToggle<CR>
-
-map <leader>gg :topleft :split Gemfile<cr>
+nnoremap <silent> <F8> :TagbarToggle<CR>
 
 nmap <silent> <leader>d <Plug>DashSearch
 nmap <silent> <leader>D <Plug>DashGlobalSearch
 
+nnoremap <leader>? :CtrlPCommandPalette<cr>
+
 "  Save File
 nnoremap <leader>s :w<cr>
 inoremap <leader>s <C-c>:w<cr>
+
+" ALEFix
+nmap <silent> <leader>F <Plug>(ale_fix)
 
 " Toggles the quickfix window.
 nmap <leader>q <Plug>(qf_qf_toggle)
@@ -320,6 +258,17 @@ autocmd Filetype html,css,javascript nnoremap <silent> <leader>r :call ReloadBro
 
 " Pretty format XML
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
+augroup seeingIsBelievingSettings
+  autocmd!
+
+  " Annotate marked lines
+    autocmd FileType ruby nmap <F5> :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
+  " Mark the current line for annotation
+    autocmd FileType ruby nmap <F4> A # => <Esc>
+  " Mark the highlighted lines for annotation
+    autocmd FileType ruby vmap <F4> :norm A # => <Esc>
+augroup END
 
 " *********************************************
 " *           Plugin Customization            *
@@ -368,11 +317,22 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 
+let g:ale_fixers = {
+\   'ruby': ['rubocop'],
+\}
+
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "nmap <silent> <C-w> <Plug>(ale_next_wrap)
 
+let g:commandPalette = {
+    \ 'SeeIsBelieving: Annotate every line': '%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk',
+    \ 'SeeIsBelieving: Clear marks/annotations': '%.!seeing_is_believing --clean',
+    \ 'Github: Browse file on Github': 'Gbrowse',
+    \ 'Maximizer: Toggle': 'MaximizerToggle',
+    \ 'Tagbar: Toggle': 'TagbarToggle',
+    \ 'ALE: Auto Fix (rubocop, prettier, eslint, etc...)': 'ALEFix'}
 " *********************************************
 " *        Local Vimrc Customization          *
 " *********************************************
