@@ -60,4 +60,4 @@
 [diff-so-fancy]
 	markEmptyLines = false
 [credential]
-	helper = netrc -f ~/.netrc.gpg -v
+	helper = osxkeychain

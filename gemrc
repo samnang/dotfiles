@@ -5,5 +5,5 @@
 :bulk_threshold: 1000
 :benchmark: false
 :sources:
-- http://rubygems.org/
-gem: --no-ri --no-rdoc
+- https://rubygems.org/
+gem: --no-document

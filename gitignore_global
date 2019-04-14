@@ -96,9 +96,22 @@ dump.rdb
 .agignore
 Procfile.local
 .terraform/
+.pcloud
 
 # Version Control #
 ###################
 .git
 .hg
 .svn
+
+# VisualStudioCode #
+####################
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ASDF (Version Manager) #
+##########################
+.tool-versions

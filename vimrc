@@ -1,5 +1,3 @@
-set nocompatible                  " Must come first because it changes other options.
-
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -33,8 +31,6 @@ set hidden                        " Handle multiple buffers better.
 set title                         " Set the terminal's title
 set number                        " Show line numbers.
 set ruler                         " Show cursor position.
-"set cursorline                   " Highlight current line
-"set colorcolumn=81
 set list listchars=tab:»·,trail:· " Display extra whitespace
 set wildmode=list:longest         " Complete files like a shell.
 set wildmenu                      " Enhanced command line completion.
@@ -52,14 +48,12 @@ set splitright
 
 set mouse-=a
 set mousehide
-set ttymouse=xterm2
 set sidescroll=1
 
 " Speed up Vim
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
 set lazyredraw
 set ttyfast
-set ttyscroll=3
 
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
@@ -72,9 +66,25 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 set autowrite
 set autoread                      " Auto-reload buffers when files are changed on disk
 
+" onedark.vim
+" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+" If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+" (see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 set t_Co=256                      " Set terminal to 256 colors
 set background=dark
-colorscheme solarized
+colorscheme onedark
 
 setglobal complete-=i
 
@@ -228,6 +238,9 @@ nmap <silent> <leader>A :TestSuite<CR>
 nmap <silent> <leader>. :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 let test#strategy = "dispatch"
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+end
 
 "Run Ruby code analyzer
 let g:vimrubocop_keymap = 0
@@ -256,8 +269,9 @@ function ReloadBrowser()
 endfunction
 autocmd Filetype html,css,javascript nnoremap <silent> <leader>r :call ReloadBrowser()<CR>
 
-" Pretty format XML
+" Pretty format
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+au FileType json setlocal equalprg=python\ -m\ json.tool
 
 augroup seeingIsBelievingSettings
   autocmd!
@@ -308,6 +322,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#tagbar#enabled = 0
+let g:airline_theme='onedark'
 
 " gist-vim
 let g:gist_post_private = 1
@@ -332,7 +347,10 @@ let g:commandPalette = {
     \ 'Github: Browse file on Github': 'Gbrowse',
     \ 'Maximizer: Toggle': 'MaximizerToggle',
     \ 'Tagbar: Toggle': 'TagbarToggle',
-    \ 'ALE: Auto Fix (rubocop, prettier, eslint, etc...)': 'ALEFix'}
+    \ 'ALE: Auto Fix (rubocop, prettier, eslint, etc...)': 'ALEFix',
+    \ 'CarbonNowSh: Create source code images': 'CarbonNowSh',
+    \ 'Goyo: Writing mode': 'Goyo',
+    \ 'Goyo: Writing mode off': 'Goyo!'}
 " *********************************************
 " *        Local Vimrc Customization          *
 " *********************************************

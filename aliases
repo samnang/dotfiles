@@ -1,4 +1,4 @@
-VIM_PATH='/usr/local/bin/vim'
+VIM_PATH='/usr/local/bin/nvim'
 alias v=$VIM_PATH
 alias vi=$VIM_PATH
 alias vim=$VIM_PATH
@@ -21,3 +21,8 @@ alias -g G='| grep'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g CP='| pbcopy'
+
+alias cat='bat'
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+
+alias vm='asdf'

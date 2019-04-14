@@ -1,3 +1,9 @@
+# Enable extended globbing
+setopt extendedglob
+
+# Allow [ or ] whereever you want
+unsetopt nomatch
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/samnang/.oh-my-zsh
 
@@ -5,7 +11,7 @@ export ZSH=/Users/samnang/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="spaceship"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -56,42 +62,24 @@ plugins=()
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export EDITOR="vim"
+# brew list git | grep Git.pm
+# https://stackoverflow.com/a/30506362/35700
+export PERL5LIB=/usr/local/Cellar/git/2.18.0/share/perl5
+
+export EDITOR="nvim"
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export TMUXIFIER_LAYOUT_PATH="$HOME/Dropbox/Apps/tmuxifier-layouts"
 eval "$(tmuxifier init -)"
 
-eval "$(rbenv init -)"
 eval "$(hub alias -s)"
 eval "$(direnv hook zsh)"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# transfer.sh
-transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
-
 source $ZSH/oh-my-zsh.sh
-
-# Defer initialization of nvm until nvm, node or a node-dependent command is
-# run. Ensure this block is only run once if .bashrc gets sourced multiple times
-# by checking whether __init_nvm is a function.
-# https://www.growingwiththeweb.com/2018/01/slow-nvm-init.html
-if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -f __init_nvm)" = function ]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-  declare -a __node_commands=('nvm' 'node' 'npm' 'yarn' 'gulp' 'grunt' 'webpack')
-  function __init_nvm() {
-    for i in "${__node_commands[@]}"; do unalias $i; done
-    . "$NVM_DIR"/nvm.sh
-    unset __node_commands
-    unset -f __init_nvm
-  }
-  for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
-fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -127,18 +115,53 @@ fi
 # Z - jump around
 [[ -f ~/.z.sh/z.sh ]] && source ~/.z.sh/z.sh
 
+# asdf - version manager
+[[ -f ~/.asdf/asdf.sh ]] && source ~/.asdf/asdf.sh && source ~/.asdf/completions/asdf.bash
+
 #########################
 # Plugins Customization #
 #########################
 
-# Powerlevel9k theme
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rbenv time)
+export SPACESHIP_TIME_SHOW=true
+export SPACESHIP_EXIT_CODE_SHOW=true
+export SPACESHIP_PROMPT_PREFIXES_SHOW=false
+export SPACESHIP_DIR_TRUNC_PREFIX=".../"
+export SPACESHIP_PROMPT_ORDER=(
+  time            # Time stamps section
+  # user          # Username section
+  dir             # Current directory section
+  # host          # Hostname section
+  git             # Git section (git_branch + git_status)
+  # hg            # Mercurial section (hg_branch  + hg_status)
+  # package       # Package version
+  # node          # Node.js section
+  ruby            # Ruby section
+  # elixir        # Elixir section
+  # xcode         # Xcode section
+  # swift         # Swift section
+  # golang        # Go section
+  # php           # PHP section
+  # rust          # Rust section
+  # haskell       # Haskell Stack section
+  # julia         # Julia section
+  # docker        # Docker section
+  # aws           # Amazon Web Services section
+  # venv          # virtualenv section
+  # conda         # conda virtualenv section
+  # pyenv         # Pyenv section
+  # dotnet        # .NET section
+  # ember         # Ember.js section
+  # kubecontext   # Kubectl context section
+  # terraform     # Terraform workspace section
+  exec_time       # Execution time
+  line_sep        # Line break
+  # battery       # Battery level and status
+  # vi_mode       # Vi-mode indicator
+  jobs            # Background jobs indicator
+  exit_code       # Exit code section
+  char            # Prompt character
+)
 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_RBENV_BACKGROUND="green"
-
-# added by travis gem
-[ -f /Users/samnang/.travis/travis.sh ] && source /Users/samnang/.travis/travis.sh
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
