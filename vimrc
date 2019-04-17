@@ -39,7 +39,7 @@ set novisualbell
 set noerrorbells
 set history=1000                  " Store lots of :cmdline history
 
-set synmaxcol=128                 " Syntax coloring lines that are too long just slows down the world
+set synmaxcol=200                 " Syntax coloring lines that are too long just slows down the world
 set scrolloff=3
 set sidescrolloff=7
 
@@ -339,6 +339,7 @@ let g:ale_fixers = {
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_set_highlights = 0
 "nmap <silent> <C-w> <Plug>(ale_next_wrap)
 
 let g:commandPalette = {

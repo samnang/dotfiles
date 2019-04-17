@@ -5,7 +5,7 @@ setopt extendedglob
 unsetopt nomatch
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/samnang/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -55,21 +55,15 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=()
+plugins=(z asdf httpie autoupdate)
 
 # User configuration
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# brew list git | grep Git.pm
-# https://stackoverflow.com/a/30506362/35700
-export PERL5LIB=/usr/local/Cellar/git/2.18.0/share/perl5
-
 export EDITOR="nvim"
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
-### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH="$HOME/.tmuxifier/bin:$PATH"
@@ -106,22 +100,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-# aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
-
-# Z - jump around
-[[ -f ~/.z.sh/z.sh ]] && source ~/.z.sh/z.sh
-
-# asdf - version manager
-[[ -f ~/.asdf/asdf.sh ]] && source ~/.asdf/asdf.sh && source ~/.asdf/completions/asdf.bash
 
 #########################
 # Plugins Customization #
 #########################
 
+# Spaceship ZSH
+export SPACESHIP_CHAR_SUFFIX=" "
 export SPACESHIP_TIME_SHOW=true
 export SPACESHIP_EXIT_CODE_SHOW=true
 export SPACESHIP_PROMPT_PREFIXES_SHOW=false

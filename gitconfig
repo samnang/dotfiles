@@ -18,7 +18,7 @@
   co = checkout
   df = diff
   dc = diff --cached
-  pr = "!f() { ~/.dotfiles/bin/open-github-pr-page.sh; }; f"
+  opr = "!f() { ~/.dotfiles/bin/open-github-pr-page.sh; }; f"
   up = pull --rebase --prune
   wip = !git add -A && git commit -m "WIP"
   undo = reset HEAD~1 --mixed
