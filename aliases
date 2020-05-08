@@ -23,7 +23,7 @@ alias -g T='| tail'
 alias -g CP='| pbcopy'
 
 alias cat='bat'
-alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
 
 alias vm='asdf'
 

@@ -53,6 +53,7 @@ config/secrets.yml.key
 ########
 .nvmrc
 **/flow-typed/npm
+node_modules/
 
 # Erlang #
 ##########
@@ -90,6 +91,8 @@ dump.rdb
 #  RubyMine   #
 ###############
 .idea/
+.rakeTasks
+*.iml
 
 #  Utils   #
 ############

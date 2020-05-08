@@ -51,7 +51,7 @@ set mousehide
 set sidescroll=1
 
 " Speed up Vim
-let g:ruby_path = system('echo $HOME/.rbenv/shims')
+let g:ruby_path = system('echo $HOME/.asdf/shims')
 set lazyredraw
 set ttyfast
 
@@ -108,7 +108,8 @@ function! AckGrep(word)
     let word = a:word
   endif
 
-  cgetexpr system("ag --search-files ".word)
+  cgetexpr system("rg --vimgrep --hidden --smart-case ".word)
+  "cgetexpr system("ag --search-files ".word)
   cw
 endfunction
 
@@ -230,11 +231,10 @@ map \ :NERDTreeToggle<CR>
 map \| :NERDTreeFind<CR>
 
 " vim-test
-nmap <silent> <leader>R :TestFile -strategy=basic<CR>
-nmap <silent> <leader>r :TestNearest -strategy=basic<CR>
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>A :TestSuite<CR>
+nmap <silent> <leader>T :TestFile -strategy=basic<CR>
+nmap <silent> <leader>t :TestNearest -strategy=basic<CR>
+nmap <silent> <leader>r :TestNearest<CR>
+nmap <silent> <leader>R :TestFile<CR>
 nmap <silent> <leader>. :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 let test#strategy = "dispatch"
@@ -290,15 +290,24 @@ augroup END
 
 " ctrlp.vim
 let g:ctrlp_match_window = 'max:15'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*   " for Linux/MacOSX
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
+if executable('rg')
+  " Use ripgrep over Grep
+  set grepprg=rg\ --vimgrep\ --hidden\ --smart-case
+
+  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'rg --vimgrep --hidden --files %s'
+
+  " rg is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+elseif executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
+  let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
@@ -308,11 +317,6 @@ endif
 highlight clear SignColumn
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
-
-" vim-rubocop
-if filereadable(expand('./.hound.yml'))
-  let g:vimrubocop_config = './.hound.yml'
-endif
 
 " vim-indent-guides
 let g:indent_guides_guide_size = 1

@@ -4,7 +4,6 @@
 
 call plug#begin('~/.vim/bundle')
 
-Plug 'gmarik/vundle'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-bundler'
@@ -34,9 +33,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'mattn/emmet-vim'
 Plug 'bogado/file-line'
 Plug 'romainl/vim-qf'
-Plug 'slashmili/alchemist.vim'
 Plug 'wesQ3/vim-windowswap'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ludovicchabant/vim-gutentags'
@@ -47,5 +44,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'metakirby5/codi.vim'
 
 call plug#end()
