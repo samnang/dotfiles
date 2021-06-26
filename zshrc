@@ -74,7 +74,7 @@ eval "$(tmuxifier init -)"
 eval "$(hub alias -s)"
 eval "$(direnv hook zsh)"
 
-export STARSHIP_CONFIG=~/.starship/config.toml
+export STARSHIP_CONFIG=~/.starship.toml
 eval "$(starship init zsh)"
 
 source $ZSH/oh-my-zsh.sh

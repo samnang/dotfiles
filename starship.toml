@@ -1,0 +1,14 @@
+[aws]
+disabled = true
+
+[git_branch]
+symbol = ' '
+
+[ruby]
+symbol = ' '
+
+[status]
+disabled = false
+
+[terraform]
+disabled = true
