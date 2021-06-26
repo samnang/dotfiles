@@ -26,5 +26,4 @@ alias cat='bat'
 alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
 
 alias vm='asdf'
-
-alias tfplan='terraform plan | landscape'
+alias ikt='kotlinc-jvm'

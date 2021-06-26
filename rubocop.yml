@@ -1,2 +1,5 @@
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  
 Encoding:
   Enabled: false
