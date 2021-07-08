@@ -1,13 +1,13 @@
 #!/bin/bash
 
-brew install curl git the_silver_searcher zsh zsh-completions
-chsh -s $(which zsh) # chsh -s /bin/zsh
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 
+brew install curl git zsh zsh-completions
+
+chsh -s $(which zsh) # chsh -s /bin/zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-brew tap homebrew/cask-fonts &&
-brew install --cask font-jetbrains-mono-nerd-font
-brew install starship
+brew bundle
 
 curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 curl https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh

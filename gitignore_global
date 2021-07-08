@@ -161,3 +161,6 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+
+# Ignore `brew bundle` lock file
+Brewfile.lock.json
