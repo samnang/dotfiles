@@ -1,6 +1,7 @@
 tap "homebrew/cask-fonts"
-
 cask "font-jetbrains-mono-nerd-font"
+
+cask "aws-vault"
 
 brew "tmux"
 brew "neovim"
@@ -19,6 +20,8 @@ brew "hub"
 brew "jq"
 brew "httpie"
 brew "yarn"
+brew "direnv"
+brew "ruby-build"
 
 tap "gjbae1212/gossm"
 brew "gossm"
