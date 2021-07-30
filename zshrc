@@ -55,7 +55,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z asdf httpie autoupdate)
+plugins=(asdf httpie autoupdate)
 
 # User configuration
 
@@ -69,19 +69,20 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 eval "$(hub alias -s)"
 eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh)"
 
 export STARSHIP_CONFIG=~/.starship.toml
 eval "$(starship init zsh)"
 
 source $ZSH/oh-my-zsh.sh
 
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-[[ -f ~/.aliases ]] && source ~/.aliases
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+[ -f ~/.aliases ] && source ~/.aliases
 
 #########################
 # Plugins Customization #
 #########################
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh

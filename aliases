@@ -3,16 +3,7 @@ alias v=$VIM_PATH
 alias vi=$VIM_PATH
 alias vim=$VIM_PATH
 
-# ls, the common ones I use a lot shortened for rapid fire usage
-alias l='ls -lFh'     #size,show type,human readable
-alias la='ls -lAFh'   #long list,show almost all,show type,human readable
-alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
-alias lst='ls -ltFh'   #long list,sorted by date,show type,human readable
-alias ll='ls -l'      #long list
-alias ldot='ls -ld .*'
-
 alias zshrc='vim ~/.zshrc' # Quick access to the ~/.zshrc file
-
 alias grep='grep --color'
 
 alias t='tail -f'
@@ -23,7 +14,9 @@ alias -g T='| tail'
 alias -g CP='| pbcopy'
 
 alias cat='bat'
+alias l='exa'
+alias ll='exa --all --header --long'
+alias tree='exa --tree'
 alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
 
 alias vm='asdf'
-alias ikt='kotlinc-jvm'
