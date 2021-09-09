@@ -4,6 +4,9 @@ cask "font-jetbrains-mono-nerd-font"
 cask "aws-vault"
 
 brew "tmux"
+brew "reattach-to-user-namespace"
+brew "tmuxinator"
+
 brew "neovim"
 brew "ripgrep"
 brew "the_silver_searcher"
@@ -25,6 +28,7 @@ brew "ruby-build"
 brew "imagemagick"
 brew "zoxide"
 brew "exa"
+brew "dust"
 
 tap "gjbae1212/gossm"
 brew "gossm"
