@@ -18,10 +18,8 @@ cd ~/.dotfiles && brew bundle
 ln -f -s ~/.dotfiles/zshrc ~/.zshrc
 ln -s ~/.dotfiles/aliases ~/.aliases
 
-ln -s ~/.dotfiles/vim ~/.vim
-ln -s ~/.dotfiles/vimrc ~/.vimrc
-mkdir -p ~/.config/nvim
-ln -s ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+mkdir -p ~/.config
+ln -s ~/.dotfiles/nvim ~/.config/nvim
 
 ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/gemrc ~/.gemrc

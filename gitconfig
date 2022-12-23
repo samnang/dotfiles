@@ -9,6 +9,7 @@
 [alias]
   aa = add -A
   o = browse --
+  pv = !gh pr view --web
   st = status -sb
   ci = commit
   pf = push --force-with-lease

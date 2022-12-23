@@ -55,7 +55,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf httpie autoupdate)
+plugins=(asdf httpie autoupdate kubectl rust zoxide)
 
 # User configuration
 
@@ -65,7 +65,11 @@ plugins=(asdf httpie autoupdate)
 export EDITOR="nvim"
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
+
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.avm/bin:$PATH"
+export PATH="$PATH:$HOME/.foundry/bin"
 
 eval "$(hub alias -s)"
 eval "$(direnv hook zsh)"

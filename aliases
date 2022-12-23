@@ -20,3 +20,4 @@ alias tree='exa --tree'
 alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
 
 alias vm='asdf'
+alias mux=tmuxinator

@@ -29,6 +29,7 @@ brew "imagemagick"
 brew "zoxide"
 brew "exa"
 brew "dust"
+brew "gh"
 
 tap "gjbae1212/gossm"
 brew "gossm"
