@@ -1,1 +1,1 @@
-vim.g["test#strategy"] = 'neovim'
+vim.g["test#strategy"] = "toggleterm"

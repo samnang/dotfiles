@@ -1,86 +1,89 @@
-local keymap = vim.keymap
+local which_key = require("which-key")
 
-vim.g.mapleader = " "       -- set leader key to space
-
----------------------
--- General Keymaps
----------------------
-
-keymap.set("i", "jk", "<ESC>")                         -- use jk to exit insert mode
-keymap.set("n", "<CR>", ":nohl<CR>", { silent=true })  -- clear search highlights
-
-
--- increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>") -- increment
-keymap.set("n", "<leader>-", "<C-x>") -- decrement
-
--- window management
-
--- Easier navigation between split windows
-keymap.set("n", "<C-j>", "<C-w>j")
-keymap.set("n", "<C-k>", "<C-w>k")
-keymap.set("n", "<C-h>", "<C-w>h")
-keymap.set("n", "<C-l>", "<C-w>l")
-
-keymap.set("n", "<leader>sv", "<C-w>v")        -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s")        -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=")        -- make split windows equal width & height
-keymap.set("n", "<leader>sx", ":close<CR>")    -- close current split window
-keymap.set("n", "<leader>|", "<C-w>v")         -- split window vertically
-keymap.set("n", "<leader>-", "<C-w>s")         -- split window horizontally
-keymap.set("n", "<leader>=", "<C-w>=")         -- make split windows equal width & height
-
-keymap.set("n", "<leader>to", ":tabnew<CR>")   -- open new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
-keymap.set("n", "<leader>tn", ":tabn<CR>")     --  go to next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>")     --  go to previous tab
+vim.g.mapleader = " " -- set leader key to space
 
 -- clipboard
-keymap.set({"n", "v"}, "<leader>y", [["+y]])
-keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+which_key.register({
+	["jk"] = { "<ESC>", "Escape Mode", mode = "i" },
+	["<CR>"] = { "<cmd>nohl<CR>", "Clear Search Highlight" },
 
-----------------------
--- Plugin Keybinds
-----------------------
+	["<leader>+"] = { "<C-a>", "Increment" },
+	["<leader>-"] = { "<C-x>", "Decrement" },
+})
 
--- vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")     -- toggle split window maximization
+-- Easier navigation between split windows
+which_key.register({
+	["<C-j>"] = { "<C-w>j", "Window | Move Down" },
+	["<C-k>"] = { "<C-w>k", "Window | Move Up" },
+	["<C-h>"] = { "<C-w>h", "Window | Move Left" },
+	["<C-l>"] = { "<C-w>l", "Window | Move Right" },
 
--- undotree
-keymap.set("n", "<leader>u", ":UndotreeToggle<CR>")
+	["<leader>s"] = {
+		name = "+split",
+		v = { "<C-w>v", "Vertical" },
+		h = { "<C-w>s", "Horizontal" },
+		e = { "<C-w>=", "Equal Size" },
+		x = { "<cmd>close<cr>", "Close" },
+		["|"] = { "<C-w>v", "Vertical" },
+		["-"] = { "<C-w>s", "Horizontal" },
+		["="] = { "<C-w>=", "Equal Size" },
 
--- nvim-tree
-keymap.set("n", "\\", ":NvimTreeToggle<CR>")     -- toggle file explorer
-keymap.set("n", "|", ":NvimTreeFindFile<CR>")    -- Find file in file explorer
+		-- vim-maximizer
+		m = { "<cmd>MaximizerToggle<cr>", "Toggle Maximize" },
+	},
 
--- telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")   -- find files within current working directory, respects .gitignore
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")    -- find string in current working directory as you type
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")  -- find string under cursor in current working directory
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")      -- list open buffers in current neovim instance
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")    -- list available help tags
+	["<leader>t"] = {
+		name = "+tab",
+		o = { "<cmd>tabnew<cr>", "New" },
+		n = { "<cmd>tabn<cr>", "Next" },
+		p = { "<cmd>tabp<cr>", "Previous" },
+		x = { "<cmd>tabclose<cr>", "Close" },
+	},
+})
 
--- vim-test
-keymap.set("n", "<leader>t", ":TestNearest<CR>", { silent=true })
-keymap.set("n", "<leader>T", ":TestFile<CR>", { silent=true })
-keymap.set("n", "<leader>l", ":TestLast<CR>", { silent=true })
+which_key.register({
+	-- undotree
+	["<leader>u"] = { "<cmd>UndotreeToggle<cr>", "UndoTree | Toggle" },
 
--- Language Server Protocol
-keymap.set("n", "<leader>rs", ":LspRestart<CR>")       -- mapping to restart lsp if necessary
-keymap.set("n", "<leader>fm", ":LspZeroFormat<CR> :w<CR>") -- Format current buffer
+	-- vim-test
+	["<leader>rt"] = { "<cmd>TestNearest<cr>", "Test | Nearest" },
+	["<leader>T"] = { "<cmd>TestFile<cr>", "Test | File" },
+	["<leader>l"] = { "<cmd>TestLast<cr>", "Test | File" },
+
+	-- nvim-tree
+	["\\"] = { "<cmd>NvimTreeToggle<cr>", "File Explorer | Toggle" },
+	["|"] = { "<cmd>NvimTreeFindFile<cr>", "File Explorer | Reveal File" },
+
+	-- telescope
+	["<leader>f"] = {
+		name = "+file",
+		f = { "<cmd>Telescope find_files<cr>", "File | Find" },
+		s = { "<cmd>Telescope live_grep<cr>", "File | Find String" },
+		c = { "<cmd>Telescope grep_string<cr>", "File | Find String Under Cursor" },
+		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+		b = { "<cmd>Telescope buffers<cr>", "Open Buffer" },
+
+		-- LSP
+		m = { "<cmd>LspZeroFormat<cr>", "Format File" },
+	},
+})
 
 -- toggleterm
 function _G.set_terminal_keymaps()
-  local opts = {buffer = 0}
-  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+	local opts = { buffer = 0 }
+	vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+	vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
+	vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
+	vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
+	vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
+	vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-keymap.set("n", "<leader>`", ":ToggleTerm<CR>")
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+which_key.register({
+	["<leader>`"] = { "<cmd>ToggleTerm<cr>", "Terminal | Toggle" },
+})
