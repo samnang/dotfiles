@@ -1,6 +1,6 @@
 local status, bufferline = pcall(require, "bufferline")
 if not status then
-  return
+	return
 end
 
 bufferline.setup()

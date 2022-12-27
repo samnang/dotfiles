@@ -6,6 +6,11 @@ vim.g.mapleader = " " -- set leader key to space
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+
 which_key.register({
 	["jk"] = { "<ESC>", "Escape Mode", mode = "i" },
 	["<CR>"] = { "<cmd>nohl<CR>", "Clear Search Highlight" },
@@ -16,11 +21,6 @@ which_key.register({
 
 -- Easier navigation between split windows
 which_key.register({
-	["<C-j>"] = { "<C-w>j", "Window | Move Down" },
-	["<C-k>"] = { "<C-w>k", "Window | Move Up" },
-	["<C-h>"] = { "<C-w>h", "Window | Move Left" },
-	["<C-l>"] = { "<C-w>l", "Window | Move Right" },
-
 	["<leader>s"] = {
 		name = "+split",
 		v = { "<C-w>v", "Vertical" },
@@ -45,6 +45,9 @@ which_key.register({
 })
 
 which_key.register({
+	-- legendary
+	["<C-p>"] = { "<cmd>Legendary<cr>", "Show Command Palette" },
+
 	-- undotree
 	["<leader>u"] = { "<cmd>UndotreeToggle<cr>", "UndoTree | Toggle" },
 
@@ -68,6 +71,7 @@ which_key.register({
 
 		-- LSP
 		m = { "<cmd>LspZeroFormat<cr>", "Format File" },
+		["."] = { "<cmd>TroubleToggle<cr>", "Show Errors & Diagnostics" },
 	},
 })
 

@@ -143,6 +143,14 @@ return require("packer").startup(function(use)
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
 		},
+
+		use({
+			"folke/trouble.nvim", -- Show errors and diagnostics in quickfix window
+			requires = "kyazdani42/nvim-web-devicons",
+			config = function()
+				require("trouble").setup({})
+			end,
+		}),
 	})
 
 	-- Automatically set up your configuration after cloning packer.nvim

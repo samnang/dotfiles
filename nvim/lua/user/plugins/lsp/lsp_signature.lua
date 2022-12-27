@@ -1,8 +1,8 @@
 local status, lsp_signature = pcall(require, "lsp_signature")
 if not status then
-  return
+	return
 end
 
 lsp_signature.setup({
-  hint_enable = false
+	hint_enable = false,
 })
