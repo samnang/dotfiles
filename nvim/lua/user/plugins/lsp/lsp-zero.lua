@@ -11,6 +11,7 @@ lsp.ensure_installed({
 	"solargraph",
 	"terraformls",
 	"yamlls",
+	"solc",
 })
 
 lsp.on_attach(function(_, bufnr)

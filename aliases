@@ -14,9 +14,11 @@ alias -g T='| tail'
 alias -g CP='| pbcopy'
 
 alias cat='bat'
-alias l='exa'
-alias ll='exa --all --header --long'
-alias tree='exa --tree'
+alias ls='exa --icons'
+alias lS='exa --icons -1'
+alias ll='exa -lbF --git'
+alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'
+alias lt='exa --icons --tree --level=2'
 alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
 
 alias vm='asdf'
