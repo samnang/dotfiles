@@ -62,6 +62,7 @@ return require("packer").startup(function(use)
 	use("folke/zen-mode.nvim") -- Zen mode editor
 	use("mbbill/undotree")
 	use("wsdjeg/vim-fetch") -- open file with line number
+	use("mattn/webapi-vim")
 
 	use("vim-test/vim-test")
 	use({
