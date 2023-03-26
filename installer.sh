@@ -31,5 +31,9 @@ ln -s ~/.dotfiles/agignore ~/.agignore
 ln -s ~/.dotfiles/gitmessage ~/.gitmessage
 ln -s ~/.dotfiles/starship.toml ~/.starship.toml
 
+asdf plugin add ruby
+asdf plugin add nodejs
+asdf plugin add terraform
+
 ln -s ~/.dotfiles/nvim ~/.config/nvim
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'

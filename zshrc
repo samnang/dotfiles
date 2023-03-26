@@ -71,7 +71,6 @@ export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
 export PATH="$HOME/.avm/bin:$PATH"
 export PATH="$PATH:$HOME/.foundry/bin"
 
-eval "$(hub alias -s)"
 eval "$(zoxide init zsh)"
 
 export STARSHIP_CONFIG=~/.starship.toml
