@@ -55,7 +55,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf httpie autoupdate kubectl rust zoxide)
+plugins=(asdf httpie autoupdate kubectl zoxide)
 
 # User configuration
 
@@ -72,7 +72,6 @@ export PATH="$HOME/.avm/bin:$PATH"
 export PATH="$PATH:$HOME/.foundry/bin"
 
 eval "$(hub alias -s)"
-eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
 
 export STARSHIP_CONFIG=~/.starship.toml

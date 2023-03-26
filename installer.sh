@@ -15,11 +15,10 @@ git clone git://github.com/samnang/dotfiles.git ~/.dotfiles
 
 cd ~/.dotfiles && brew bundle
 
+mkdir -p ~/.config
+
 ln -f -s ~/.dotfiles/zshrc ~/.zshrc
 ln -s ~/.dotfiles/aliases ~/.aliases
-
-mkdir -p ~/.config
-ln -s ~/.dotfiles/nvim ~/.config/nvim
 
 ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/gemrc ~/.gemrc
@@ -32,4 +31,5 @@ ln -s ~/.dotfiles/agignore ~/.agignore
 ln -s ~/.dotfiles/gitmessage ~/.gitmessage
 ln -s ~/.dotfiles/starship.toml ~/.starship.toml
 
-vim +PlugInstall +qall
+ln -s ~/.dotfiles/nvim ~/.config/nvim
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'

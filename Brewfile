@@ -1,5 +1,9 @@
 tap "homebrew/cask-fonts"
 cask "font-jetbrains-mono-nerd-font"
+cask "font-fira-code-nerd-font"
+
+tap "gjbae1212/gossm"
+brew "gossm"
 
 cask "aws-vault"
 
@@ -23,13 +27,9 @@ brew "hub"
 brew "jq"
 brew "httpie"
 brew "yarn"
-brew "direnv"
 brew "ruby-build"
 brew "imagemagick"
 brew "zoxide"
 brew "exa"
 brew "dust"
 brew "gh"
-
-tap "gjbae1212/gossm"
-brew "gossm"
