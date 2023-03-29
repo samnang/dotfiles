@@ -4,7 +4,7 @@
 # dotfiles for Dev Containers #
 ###############################
 
-brew install starship diff-so-fancy bat brew gh
+brew install starship diff-so-fancy bat gh
 
 dotfiles="$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)"
 
