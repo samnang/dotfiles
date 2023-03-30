@@ -15,8 +15,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- autocommand that reloads neovim and installs/updates/removes plugins
--- when file is saved
+-- autocommand that reloads neovim and installs/updates/removes plugins when file is saved
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -35,23 +34,11 @@ return require("packer").startup(function(use)
 		},
 	})
 
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
-	})
+	use("nvim-treesitter/nvim-treesitter")
 
-	use({
-		"navarasu/onedark.nvim", -- preferred colorscheme
-		config = function()
-			require("onedark").load()
-		end,
-	})
+	use("navarasu/onedark.nvim") -- preferred colorscheme
 
 	use("akinsho/bufferline.nvim") -- pretty tabs / buffers
-
 	use("szw/vim-maximizer") -- maximizes and restores current window
 	use("tpope/vim-surround")
 	use("tpope/vim-rails") -- Rails commands
@@ -63,53 +50,13 @@ return require("packer").startup(function(use)
 	use("mbbill/undotree")
 	use("wsdjeg/vim-fetch") -- open file with line number
 	use("mattn/webapi-vim")
-
 	use("vim-test/vim-test")
-	use({
-		"akinsho/toggleterm.nvim",
-		config = function()
-			require("toggleterm").setup()
-		end,
-	})
-
-	use({
-		"echasnovski/mini.align", -- Align text interactively
-		config = function()
-			require("mini.align").setup()
-		end,
-	})
-
-	use({
-		"lewis6991/gitsigns.nvim", -- Git line modifications
-		config = function()
-			require("gitsigns").setup()
-		end,
-	})
-
-	use({
-		"windwp/nvim-autopairs", -- autoclose parens, brackets, quotes, etc...
-		config = function()
-			require("nvim-autopairs").setup()
-		end,
-	})
-
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup()
-		end,
-	})
-
-	use({
-		"johmsalas/text-case.nvim",
-		config = function()
-			require("textcase").setup({ prefix = "<leader>cc" })
-			require("telescope").load_extension("textcase")
-			vim.api.nvim_set_keymap("n", "<leader>cc.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
-			vim.api.nvim_set_keymap("v", "<leader>cc.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
-		end,
-	})
-
+	use("akinsho/toggleterm.nvim")
+	use("echasnovski/mini.align") -- Align text interactively
+	use("lewis6991/gitsigns.nvim") -- Git line modifications
+	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+	use("folke/which-key.nvim")
+	use("johmsalas/text-case.nvim")
 	use({
 		"nvim-tree/nvim-tree.lua", -- file explorer
 		requires = {
@@ -147,10 +94,7 @@ return require("packer").startup(function(use)
 
 		use({
 			"folke/trouble.nvim", -- Show errors and diagnostics in quickfix window
-			requires = "kyazdani42/nvim-web-devicons",
-			config = function()
-				require("trouble").setup({})
-			end,
+			requires = "kyazdani42/nvim-web-devicons"
 		}),
 	})
 

@@ -1,3 +1,11 @@
+local setup, treesitter_install = pcall(require, "nvim-treesitter.install")
+if not setup then
+	return
+end
+
+local ts_update = treesitter_install.update({ with_sync = true })
+ts_update()
+
 local status, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status then
 	return

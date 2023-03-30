@@ -1,4 +1,8 @@
-local lsp = require("lsp-zero")
+local status, lsp = pcall(require, "lsp-zero")
+if not status then
+	return
+end
+
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -6,7 +10,6 @@ lsp.ensure_installed({
 	"eslint",
 	"rust_analyzer",
 	"lua_ls",
-	"gopls",
 	"jsonls",
 	"solargraph",
 	"terraformls",

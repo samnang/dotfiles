@@ -21,7 +21,6 @@ null_ls.setup({
 		formatting.rubocop,
 		formatting.rustfmt,
 
-		diagnostics.eslint,
 		diagnostics.rubocop,
 	},
 
