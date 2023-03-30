@@ -13,13 +13,14 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g CP='| pbcopy'
 
-alias cat='bat'
 alias ls='exa --icons'
 alias lS='exa --icons -1'
 alias ll='exa -lbF --git'
 alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'
 alias lt='exa --icons --tree --level=2'
-alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
 
+
+alias cat='bat'
+alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
 alias vm='asdf'
 alias mux=tmuxinator

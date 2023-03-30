@@ -36,4 +36,3 @@ asdf plugin add nodejs
 asdf plugin add terraform
 
 ln -s ~/.dotfiles/nvim ~/.config/nvim
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
