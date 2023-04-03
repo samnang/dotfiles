@@ -35,4 +35,10 @@ asdf plugin add ruby
 asdf plugin add nodejs
 asdf plugin add terraform
 
+$(brew --prefix)/opt/fzf/install
+
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~/.tmux/plugins/tpm/bin/install_plugins
+
 ln -s ~/.dotfiles/nvim ~/.config/nvim
