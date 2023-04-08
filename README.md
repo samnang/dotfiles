@@ -1,7 +1,6 @@
 This is my `dotfiles` that I use on Macbook Pro.
 
-Installation/Usage
-==================
+# Installation/Usage
 
 Run the following command and enjoy the fireworks!
 

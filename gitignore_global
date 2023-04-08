@@ -211,5 +211,6 @@ gradle-app.setting
 # Ignore `brew bundle` lock file
 Brewfile.lock.json
 
-# Vim Packer
+# NVim / VIM
 packer_compiled.lua
+nvim/undodir

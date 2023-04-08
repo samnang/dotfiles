@@ -32,7 +32,7 @@ opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or 
 opt.backup = false -- Don't make a backup before overwriting a file.
 opt.writebackup = false -- And again.
 opt.swapfile = false -- no swap files
-vim.opt.undodir = vim.env.HOME .. "/.vim/undodir"
+vim.opt.undodir = vim.fn.stdpath("config") .. "/undodir"
 vim.opt.undofile = true
 
 -- split windows
