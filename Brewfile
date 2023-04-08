@@ -6,7 +6,7 @@ tap "gjbae1212/gossm"
 brew "gossm"
 
 tap "1password/tap"
-brew "1password-cli"
+cask "1password-cli"
 
 cask "aws-vault"
 
