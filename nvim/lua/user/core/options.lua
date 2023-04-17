@@ -1,4 +1,9 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 local opt = vim.opt
+
+opt.completeopt = "menu,menuone,noselect"
 
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
