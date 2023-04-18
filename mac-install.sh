@@ -31,6 +31,9 @@ ln -s ~/.dotfiles/agignore ~/.agignore
 ln -s ~/.dotfiles/gitmessage ~/.gitmessage
 ln -s ~/.dotfiles/starship.toml ~/.starship.toml
 
+mkdir -p ~/.config/bat
+ln -s ~/.dotfiles/bat_config ~/.config/bat/config
+
 asdf plugin add ruby
 asdf plugin add nodejs
 asdf plugin add terraform
