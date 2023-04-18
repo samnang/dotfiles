@@ -16,4 +16,22 @@ return {
       opts.section.header.val = vim.split(logo, "\n", { trimempty = true })
     end,
   },
+  {
+    "folke/noice.nvim",
+    opts = {
+      routes = {
+        {
+          -- Hide written messages
+          filter = {
+            event = "msg_show",
+            find = "%dL, %d",
+            kind = "",
+          },
+          opts = {
+            skip = true,
+          },
+        },
+      },
+    },
+  },
 }
