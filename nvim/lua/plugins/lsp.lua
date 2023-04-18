@@ -4,8 +4,8 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "solargraph",
-        "rust_analyzer",
-        "yamlls",
+        "rust-analyzer",
+        "yaml-language-server",
       })
     end,
   },
