@@ -33,6 +33,17 @@ return {
             skip = true,
           },
         },
+        {
+          -- Hide deprecated messages
+          filter = {
+            event = "notify",
+            find = "treesitter",
+            kind = "warn",
+          },
+          opts = {
+            skip = true,
+          },
+        },
       },
     },
   },
