@@ -16,6 +16,8 @@ end
 -- clipboard
 map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 
+map("n", "<leader>ft", [[<cmd>Telescop filetypes<cr>]], { desc = "Select language mode" })
+
 -- Don't touch unnamed register when pasting over visual selection
 map("x", "p", function()
   return 'pgv"' .. vim.v.register .. "y"
