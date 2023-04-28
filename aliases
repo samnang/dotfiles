@@ -25,3 +25,5 @@ alias cat='bat'
 alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
 alias vm='asdf'
 alias mux=tmuxinator
+
+alias tldr-list='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'

@@ -12,14 +12,6 @@ return {
     },
     config = function()
       require("neotest").setup({
-        quickfix = {
-          open = true,
-          enabled = true,
-        },
-        output = {
-          enabled = true,
-          open_on_run = false,
-        },
         adapters = {
           require("neotest-jest"),
           require("neotest-rspec"),
@@ -32,7 +24,7 @@ return {
           name = "+test",
           t = { '<cmd>lua require("neotest").run.run()<cr>', "Run Nearest Test" },
           ["."] = { '<cmd>lua require("neotest").run.run_last()<cr>', "Run Last Test" },
-          a = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))cr>', "Run All" },
+          a = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>', "Run All" },
           o = { '<cmd>lua require("neotest").output.open({ last_run = true, enter = true })<cr>', "Show Output" },
           O = { '<cmd>lua require("neotest").output.open({ short = true })<cr>', "Show Current Test Output" },
           s = { '<cmd>lua require("neotest").summary.toggle()<cr>', "Toggle Summary" },
