@@ -18,6 +18,7 @@ return {
       opts.section.header.val = vim.split(logo, "\n", { trimempty = true })
     end,
   },
+
   {
     "folke/noice.nvim",
     opts = {
