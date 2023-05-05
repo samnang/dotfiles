@@ -1,4 +1,23 @@
 return {
+  { "tpope/vim-fugitive" },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      filesystem = {
+        filtered_items = {
+          always_show = {
+            ".github",
+          },
+          never_show = {
+            ".DS_Store",
+            "thumbs.db",
+          },
+        },
+      },
+    },
+  },
+
   {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
