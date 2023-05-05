@@ -13,9 +13,7 @@ return {
     config = function()
       require("neotest").setup({
         adapters = {
-          require("neotest-jest")({
-            jestCommand = "npm test --",
-          }),
+          require("neotest-jest"),
           require("neotest-rspec"),
           require("neotest-rust"),
         },

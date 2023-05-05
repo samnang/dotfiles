@@ -5,6 +5,7 @@
 local opt = vim.opt
 
 opt.clipboard = "" -- don't sync with system clipboard
+opt.exrc = true -- per-project configuration
 
 -- vim.opt.fillchars = {
 --   foldopen = "",

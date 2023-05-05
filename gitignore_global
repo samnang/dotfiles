@@ -214,3 +214,7 @@ Brewfile.lock.json
 # NVim / VIM
 packer_compiled.lua
 nvim/undodir
+# per-project configuration (exrc)
+.nvim.lua
+.nvimrc
+.exrc
