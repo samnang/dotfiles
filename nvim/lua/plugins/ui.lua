@@ -24,22 +24,26 @@ return {
     opts = {
       routes = {
         {
-          -- Hide written messages
           filter = {
-            event = "msg_show",
-            find = "%dL, %d",
-            kind = "",
-          },
-          opts = {
-            skip = true,
-          },
-        },
-        {
-          -- Hide deprecated messages
-          filter = {
-            event = "notify",
-            find = "treesitter",
-            kind = "warn",
+            any = {
+              -- Hide written messages
+              {
+                event = "msg_show",
+                find = "%dL, %d",
+                kind = "",
+              },
+              -- Hide deprecated messages
+              {
+                event = "notify",
+                find = "treesitter",
+                kind = "warn",
+              },
+              -- Hide yanked messages
+              {
+                event = "msg_show",
+                find = "%d lines yanked",
+              },
+            },
           },
           opts = {
             skip = true,
