@@ -3,7 +3,7 @@ alias v=$VIM_PATH
 alias vi=$VIM_PATH
 alias vim=$VIM_PATH
 
-alias dotfiles='nvim ~/.dotfiles' # Quick access to the ~/.dotfiles
+alias dotfiles='cd ~/.dotfiles && nvim .' # Quick access to the ~/.dotfiles
 alias zshrc='nvim ~/.zshrc' # Quick access to the ~/.zshrc file
 
 alias grep='grep --color'

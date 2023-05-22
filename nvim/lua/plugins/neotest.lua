@@ -27,7 +27,7 @@ return {
           a = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>', "Run All" },
           o = { '<cmd>lua require("neotest").output.open({ last_run = true, enter = true })<cr>', "Show Output" },
           O = { '<cmd>lua require("neotest").output.open({ short = true })<cr>', "Show Current Test Output" },
-          s = { '<cmd>lua require("neotest").summary.toggle()<cr>', "Toggle Summary" },
+          s = { '<cmd>lua require("neotest").summary.toggle()<cr>', "Toggle Summary" }, -- `:h neotest.setup()` Summary mappings
           n = { '<cmd>lua require("neotest").jump.next({ status = "failed" })<cr>', "Jump to Next Failed" },
           N = { '<cmd>lua require("neotest").jump.prev({ status = "failed" })<cr>', "Jump to Preview Failed" },
         },
