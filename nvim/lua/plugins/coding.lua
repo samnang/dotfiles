@@ -5,4 +5,9 @@ return {
       require("mini.align").setup()
     end,
   },
+
+  {
+    "kylechui/nvim-surround",
+    config = true,
+  },
 }
