@@ -43,20 +43,6 @@ return {
   },
 
   {
-    "andymass/vim-matchup",
-    event = "BufReadPost",
-    config = function()
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-
-      require("nvim-treesitter.configs").setup({
-        matchup = {
-          enable = true,
-        },
-      })
-    end,
-  },
-
-  {
     "declancm/maximize.nvim",
     keys = {
       { "<Leader>wz", "<Cmd>lua require('maximize').toggle()<CR>", desc = "Window Maximizer Toggle" },
