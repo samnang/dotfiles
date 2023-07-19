@@ -1,5 +1,6 @@
 return {
   { "tpope/vim-fugitive" },
+  { "max397574/better-escape.nvim", config = true },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
