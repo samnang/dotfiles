@@ -1,6 +1,7 @@
 return {
   { "tpope/vim-fugitive" },
   { "max397574/better-escape.nvim", config = true },
+  { "aserowy/tmux.nvim", opts = { navigation = { enable_default_keybindings = false } } },
 
   {
     "nvim-neo-tree/neo-tree.nvim",

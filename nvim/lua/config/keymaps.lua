@@ -18,6 +18,13 @@ map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 
 map("n", "<leader>ft", [[<cmd>Telescop filetypes<cr>]], { desc = "Select language mode" })
 
+-- Interfere with window nevigation in LazyVim
+-- https://github.com/LazyVim/LazyVim/discussions/277
+map({ "n", "t" }, "<C-h>", [[<CMD>lua require("tmux").move_left()<CR>]])
+map({ "n", "t" }, "<C-l>", [[<CMD>lua require("tmux").move_right()<CR>]])
+map({ "n", "t" }, "<C-k>", [[<CMD>lua require("tmux").move_top()<CR>]])
+map({ "n", "t" }, "<C-j>", [[<CMD>lua require("tmux").move_bottom()<CR>]])
+
 -- Don't touch unnamed register when pasting over visual selection
 map("x", "p", function()
   return 'pgv"' .. vim.v.register .. "y"
