@@ -25,6 +25,9 @@ map({ "n", "t" }, "<C-l>", [[<CMD>lua require("tmux").move_right()<CR>]])
 map({ "n", "t" }, "<C-k>", [[<CMD>lua require("tmux").move_top()<CR>]])
 map({ "n", "t" }, "<C-j>", [[<CMD>lua require("tmux").move_bottom()<CR>]])
 
+-- Faster to quit
+map({ "n", "v", "t" }, "<C-q>", [[<CMD>:q<CR>]])
+
 -- Don't touch unnamed register when pasting over visual selection
 map("x", "p", function()
   return 'pgv"' .. vim.v.register .. "y"

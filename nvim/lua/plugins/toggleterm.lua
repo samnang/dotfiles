@@ -2,7 +2,7 @@ return {
   {
     "akinsho/toggleterm.nvim",
     keys = {
-      { "<leader>$", "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle Term" },
+      { "<leader>$", "<Cmd>ToggleTerm direction=horizontal<CR>", desc = "Toggle Term" },
     },
     config = function()
       require("toggleterm").setup()
@@ -14,7 +14,7 @@ return {
         vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
       end
 
-      vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+      vim.cmd("autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()")
     end,
   },
 }
