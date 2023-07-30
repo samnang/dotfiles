@@ -5,6 +5,7 @@ return {
       vim.list_extend(opts.ensure_installed, {
         "rust-analyzer",
         "yaml-language-server",
+        "css-lsp",
       })
     end,
   },
