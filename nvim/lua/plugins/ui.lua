@@ -16,6 +16,10 @@ return {
 ]]
 
       opts.section.header.val = vim.split(logo, "\n", { trimempty = true })
+      opts.section.header.val = vim.split(logo, "\n", { trimempty = true })
+
+      opts.section.header.val = vim.split(logo, "\n", { trimempty = true })
+      opts.section.header.val = vim.split(logo, "\n", { trimempty = true })
     end,
   },
 
@@ -31,6 +35,23 @@ return {
                 event = "msg_show",
                 find = "%dL, %d",
                 kind = "",
+              },
+              -- Hide yank/delete/undo messages
+              {
+                event = "msg_show",
+                find = "%d more line?",
+              },
+              {
+                event = "msg_show",
+                find = "%d fewer line?",
+              },
+              {
+                event = "msg_show",
+                find = "%d lines? less",
+              },
+              {
+                event = "msg_show",
+                find = "%d changes?; before",
               },
               -- Hide deprecated messages
               {

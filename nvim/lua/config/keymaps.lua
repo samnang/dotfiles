@@ -28,6 +28,12 @@ map({ "n", "t" }, "<C-j>", [[<CMD>lua require("tmux").move_bottom()<CR>]])
 -- Faster to quit
 map({ "n", "v", "t" }, "<C-q>", [[<CMD>:q<CR>]])
 
+-- Override existing flash.nvim: Flash Treesitter
+map("v", "S", "<Esc><Cmd>lua require'nvim-surround'.visual_surround({ line_mode = false })<CR>", {
+  desc = "Add a surrounding pair around a visual selection",
+  silent = true,
+})
+
 -- Don't touch unnamed register when pasting over visual selection
 map("x", "p", function()
   return 'pgv"' .. vim.v.register .. "y"
