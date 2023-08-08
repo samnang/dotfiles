@@ -38,3 +38,5 @@ map("v", "S", "<Esc><Cmd>lua require'nvim-surround'.visual_surround({ line_mode 
 map("x", "p", function()
   return 'pgv"' .. vim.v.register .. "y"
 end, { remap = false, expr = true })
+
+map("n", "<leader>bX", [[<CMD>%bdelete|edit#|bdelete#<CR>]], { desc = "Close all buffers except the current" })

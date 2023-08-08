@@ -2,6 +2,24 @@ return {
   { "tpope/vim-fugitive" },
   { "max397574/better-escape.nvim", config = true },
   { "aserowy/tmux.nvim", opts = { navigation = { enable_default_keybindings = false } } },
+  {
+    "nvim-pack/nvim-spectre",
+    opts = { live_update = true },
+    keys = {
+      {
+        "<leader>sf",
+        '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
+        mode = { "n" },
+        desc = "Search on current file (Spectre)",
+      },
+      {
+        "<leader>sf",
+        '<cmd>lua require("spectre").open_file_search()<CR>',
+        mode = { "v" },
+        desc = "Search on current file (Spectre)",
+      },
+    },
+  },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
