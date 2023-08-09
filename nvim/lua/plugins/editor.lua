@@ -1,5 +1,6 @@
 return {
-  { "tpope/vim-fugitive" },
+  { "tpope/vim-rhubarb", dependencies = "tpope/vim-fugitive" },
+  { "wsdjeg/vim-fetch" },
   { "max397574/better-escape.nvim", config = true },
   { "aserowy/tmux.nvim", opts = { navigation = { enable_default_keybindings = false } } },
   {
