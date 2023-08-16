@@ -1,6 +1,9 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    keys = {
+      { "|", "<Cmd>Neotree<CR>", desc = "File tree" },
+    },
     opts = {
       window = {
         mappings = {

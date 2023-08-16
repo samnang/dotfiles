@@ -40,6 +40,13 @@ return {
   },
 
   {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      { "<leader>ft", "<cmd>Telescop filetypes<cr>", desc = "Select filetype" },
+    },
+  },
+
+  {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
     event = "BufReadPost",

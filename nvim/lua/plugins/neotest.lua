@@ -29,7 +29,7 @@ return {
         desc = "Run Last Test",
       },
       {
-        "<leader>ta",
+        "<leader>tR",
         function()
           require("neotest").run.run()
 
