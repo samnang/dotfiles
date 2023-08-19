@@ -4,10 +4,3 @@
 
 -- Filetype detection
 vim.filetype.add({ filename = { ["Brewfile"] = "ruby" } })
-
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "ruby" },
-  callback = function()
-    vim.b.autoformat = false
-  end,
-})
