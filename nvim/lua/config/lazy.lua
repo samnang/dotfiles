@@ -36,14 +36,14 @@ require("lazy").setup({
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
   install = { colorscheme = { "onedark" } },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = { enabled = true, frequency = 604800 }, -- weekly automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
         "matchit",
-        -- "matchparen",
+        "matchparen",
         "netrwPlugin",
         "tarPlugin",
         "tohtml",

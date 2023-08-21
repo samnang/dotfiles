@@ -4,6 +4,11 @@ return {
   { "max397574/better-escape.nvim", config = true },
   { "aserowy/tmux.nvim", opts = { navigation = { enable_default_keybindings = false } } },
   {
+    "andymass/vim-matchup",
+    event = "BufReadPost",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+  },
+  {
     "nvim-pack/nvim-spectre",
     opts = { live_update = true },
     keys = {
