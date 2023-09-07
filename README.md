@@ -5,5 +5,5 @@ This is my `dotfiles` that I use on Macbook Pro.
 Run the following command and enjoy the fireworks!
 
 ```
-curl https://raw.github.com/samnang/dotfiles/master/mac-install.sh | sh
+curl -fsSL https://raw.github.com/samnang/dotfiles/master/install.sh | sh
 ```

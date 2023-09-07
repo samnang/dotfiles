@@ -30,6 +30,9 @@ brew "yarn"
 brew "zoxide"
 brew "zsh-completions"
 
+brew "ffmpeg"
+brew "vips"
+
 tap "homebrew/cask-fonts"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-fira-code-nerd-font"
@@ -41,3 +44,5 @@ cask "aws-vault"
 
 tap "1password/tap"
 cask "1password-cli"
+
+cask "git-credential-manager"
