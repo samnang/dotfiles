@@ -3,6 +3,7 @@ return {
   { "wsdjeg/vim-fetch" },
   { "max397574/better-escape.nvim", config = true },
   { "aserowy/tmux.nvim", opts = { navigation = { enable_default_keybindings = false } } },
+  { "sitiom/nvim-numbertoggle" },
   {
     "andymass/vim-matchup",
     event = "BufReadPost",
