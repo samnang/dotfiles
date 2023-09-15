@@ -73,4 +73,11 @@ return {
       },
     },
   },
+
+  {
+    "akinsho/bufferline.nvim",
+    keys = {
+      { "<leader>bC", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close all other visible buffers" },
+    },
+  },
 }
