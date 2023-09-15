@@ -46,3 +46,4 @@ tap "1password/tap"
 cask "1password-cli"
 
 cask "git-credential-manager"
+cask "calibre"
