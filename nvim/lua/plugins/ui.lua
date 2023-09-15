@@ -77,7 +77,21 @@ return {
   {
     "akinsho/bufferline.nvim",
     keys = {
-      { "<leader>bC", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close all other visible buffers" },
+      { "<leader>bX", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close all other visible buffers" },
+    },
+    opts = {
+      options = {
+        tab_size = 24,
+        separator_style = "slant",
+        offsets = {
+          {
+            filetype = "neo-tree",
+            text = "File Explorer",
+            highlight = "Directory",
+            text_align = "center",
+          },
+        },
+      },
     },
   },
 }

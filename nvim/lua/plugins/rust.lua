@@ -1,6 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "mattn/webapi-vim" },
     opts = {
       servers = {
         rust_analyzer = {
