@@ -5,6 +5,7 @@ return {
       opts.matchup = { enable = true } -- vim-matchup integration
       vim.list_extend(opts.ensure_installed, {
         "solidity",
+        "css",
         "scss",
       })
     end,

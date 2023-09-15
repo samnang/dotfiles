@@ -6,12 +6,13 @@ local opt = vim.opt
 
 opt.clipboard = "" -- don't sync with system clipboard
 opt.exrc = true -- per-project configuration
+opt.conceallevel = 0
 
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.o.foldcolumn = "0"
-vim.opt.fillchars = {
+opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.foldcolumn = "0"
+opt.fillchars = {
   horiz = "━",
   horizup = "┻",
   horizdown = "┳",
