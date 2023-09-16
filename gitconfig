@@ -33,13 +33,20 @@
   ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags'"
   publish = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
   unpublish = "!git push origin :\"$(git rev-parse --abbrev-ref HEAD)\""
-[pager]
-  diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [core]
   excludesfile = ~/.gitignore_global
 	autocrlf = input
+  pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color
+[diff]
+  colorMoved = default
 [merge]
   tool = vimdiff
+  conflictstyle = diff3
 [push]
 	default = simple
 [heroku]
@@ -57,8 +64,6 @@
   template = ~/.gitmessage
 [url "https://github.com"]
 	insteadOf = git://github.com
-[diff-so-fancy]
-	markEmptyLines = false
 [credential]
 	helper = osxkeychain
 	helper =
