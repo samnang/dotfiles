@@ -166,6 +166,10 @@ terraform.rc
 ##########################
 .tool-versions
 
+# Solana #
+##########
+test-ledger
+
 
 # Java #
 ########

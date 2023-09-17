@@ -31,6 +31,7 @@ ln -s ~/.dotfiles/ackrc ~/.ackrc
 ln -s ~/.dotfiles/agignore ~/.agignore
 ln -s ~/.dotfiles/gitmessage ~/.gitmessage
 ln -s ~/.dotfiles/starship.toml ~/.starship.toml
+ln -s ~/.dotfiles/.editorconfig ~/.editorconfig
 
 mkdir -p ~/.config/bat
 ln -s ~/.dotfiles/bat_config ~/.config/bat/config
