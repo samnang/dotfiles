@@ -14,13 +14,10 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g CP='| pbcopy'
 
-alias ls='exa --icons'
-alias lS='exa -1'
-alias ll='ls -lbF --git'
-alias la='ls -lbhHigUmuSa --time-style=long-iso --git --color-scale'
-alias lt='ls --tree --level=2'
+alias ls='lsd'
+alias ll='ls -lah --git'
+alias lt='ls --tree --depth=2'
 alias tree='lt'
-
 
 alias cd='z'
 alias cat='bat'
