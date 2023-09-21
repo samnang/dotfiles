@@ -15,7 +15,6 @@ alias -g T='| tail'
 alias -g CP='| pbcopy'
 
 alias ls='lsd'
-alias ll='ls -lah --git'
 alias lt='ls --tree --depth=2'
 alias tree='lt'
 
