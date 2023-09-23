@@ -1,5 +1,17 @@
 return {
   {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      sections = {
+        lualine_y = {
+          { "filetype", separator = " |", padding = { left = 1, right = 0 } },
+          { "progress", separator = "", padding = { left = 1, right = 0 } },
+          { "location", padding = { left = 0, right = 1 } },
+        },
+      },
+    },
+  },
+  {
     "goolord/alpha-nvim",
     opts = function(_, opts)
       local logo = [[

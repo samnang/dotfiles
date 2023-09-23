@@ -2,10 +2,12 @@ return {
   {
     "akinsho/toggleterm.nvim",
     keys = {
-      { "<leader>$", "<Cmd>ToggleTerm direction=horizontal<CR>", desc = "Toggle Term" },
+      { "<leader>>", "<Cmd>ToggleTerm direction=horizontal<CR>", desc = "Toggle Term" },
     },
     config = function()
-      require("toggleterm").setup()
+      require("toggleterm").setup({
+        size = 20,
+      })
 
       -- https://github.com/akinsho/toggleterm.nvim#terminal-window-mappings
       function _G.set_terminal_keymaps()

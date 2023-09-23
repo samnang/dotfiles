@@ -8,7 +8,6 @@ brew "reattach-to-user-namespace"
 brew "tmuxinator"
 
 brew "bat"
-brew "cargo-nextest"
 brew "ctags"
 brew "git-delta"
 brew "dust"
@@ -29,6 +28,9 @@ brew "the_silver_searcher"
 brew "yarn"
 brew "zoxide"
 brew "zsh-completions"
+
+brew "cargo-nextest"
+brew "cargo-watch"
 
 brew "ffmpeg"
 brew "vips"
