@@ -30,11 +30,31 @@ return {
 
   {
     "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      {
+        "s1n7ax/nvim-window-picker",
+        name = "window-picker",
+        event = "VeryLazy",
+        opts = {
+          hint = "floating-big-letter",
+          show_prompt = false,
+        },
+      },
+    },
     opts = {
+      window = {
+        mappings = {
+          ["<c-x>"] = "open_split",
+          ["<c-v>"] = "open_vsplit",
+        },
+      },
       filesystem = {
         filtered_items = {
           always_show = {
             ".github",
+            ".tool-versions",
+            ".editorconfig",
+            ".gitignore",
           },
           never_show = {
             ".DS_Store",
