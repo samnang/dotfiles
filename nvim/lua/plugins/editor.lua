@@ -5,6 +5,34 @@ return {
   { "aserowy/tmux.nvim", opts = { navigation = { enable_default_keybindings = false } } },
   { "sitiom/nvim-numbertoggle" },
   {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+    keys = {
+      { "<Tab>", false, mode = "i" },
+      { "<C-]>", false, mode = "i" },
+      {
+        "<C-;>",
+        function()
+          return vim.fn["codeium#Accept"]()
+        end,
+        mode = { "i" },
+        expr = true,
+        silent = true,
+        desc = "Accept Codeium's suggestion",
+      },
+      {
+        "<C-x>",
+        function()
+          return vim.fn["codeium#Clear"]()
+        end,
+        mode = { "i" },
+        expr = true,
+        silent = true,
+        desc = "Clear Codeium's suggestion",
+      },
+    },
+  },
+  {
     "andymass/vim-matchup",
     event = "BufReadPost",
     dependencies = "nvim-treesitter/nvim-treesitter",

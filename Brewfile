@@ -1,5 +1,7 @@
-brew "asdf"
 brew "coreutils"
+brew "gnu-sed"
+
+brew "asdf"
 brew "neovim"
 brew "starship"
 
