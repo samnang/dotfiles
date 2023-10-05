@@ -12,6 +12,14 @@ return {
     },
   },
   {
+    "echasnovski/mini.indentscope",
+    opts = function(_, opts)
+      require("mini.indentscope").setup(opts)
+
+      vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#98C379" })
+    end,
+  },
+  {
     "goolord/alpha-nvim",
     opts = function(_, opts)
       local logo = [[

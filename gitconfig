@@ -44,6 +44,8 @@
   line-numbers = true
   dark = true
   syntax-theme = TwoDark
+  plus-style = syntax "#184b54"
+  minus-style = syntax "#642f33"
 [diff]
   colorMoved = default
 [merge]
@@ -74,9 +76,9 @@
 	defaultBranch = main
 [credential "https://github.com"]
 	helper =
-	helper = !gh auth git-credential
+	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper =
-	helper = !gh auth git-credential
+	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://dev.azure.com"]
 	useHttpPath = true

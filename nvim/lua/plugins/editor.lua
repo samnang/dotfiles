@@ -7,30 +7,23 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
-    keys = {
-      { "<Tab>", false, mode = "i" },
-      { "<C-]>", false, mode = "i" },
-      {
-        "<C-;>",
-        function()
-          return vim.fn["codeium#Accept"]()
-        end,
-        mode = { "i" },
-        expr = true,
-        silent = true,
-        desc = "Accept Codeium's suggestion",
-      },
-      {
-        "<C-x>",
-        function()
-          return vim.fn["codeium#Clear"]()
-        end,
-        mode = { "i" },
-        expr = true,
-        silent = true,
-        desc = "Clear Codeium's suggestion",
-      },
-    },
+    config = function()
+      vim.keymap.set("i", "<M-;>", function()
+        return vim.fn["codeium#Accept"]()
+      end, { expr = true, silent = true, desc = "Codeium: Accept suggestion" })
+      vim.keymap.set("i", "<M-]>", function()
+        return vim.fn["codeium#CycleCompletions"](1)
+      end, { expr = true, desc = "Codeium: Next suggestion" })
+      vim.keymap.set("i", "<M-[>", function()
+        return vim.fn["codeium#CycleCompletions"](-1)
+      end, { expr = true, desc = "Codeium: Previous suggestion" })
+      vim.keymap.set("i", "<M-Space>", function()
+        return vim.fn["codeium#Complete"](-1)
+      end, { expr = true, desc = "Codeium: Trigger suggestion" })
+      vim.keymap.set("i", "<c-x>", function()
+        return vim.fn["codeium#Clear"]()
+      end, { expr = true, desc = "Codeium: Clear suggestion" })
+    end,
   },
   {
     "andymass/vim-matchup",
@@ -52,43 +45,6 @@ return {
         '<cmd>lua require("spectre").open_file_search()<CR>',
         mode = { "v" },
         desc = "Search on current file (Spectre)",
-      },
-    },
-  },
-
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    dependencies = {
-      {
-        "s1n7ax/nvim-window-picker",
-        name = "window-picker",
-        event = "VeryLazy",
-        opts = {
-          hint = "floating-big-letter",
-          show_prompt = false,
-        },
-      },
-    },
-    opts = {
-      window = {
-        mappings = {
-          ["<c-x>"] = "open_split",
-          ["<c-v>"] = "open_vsplit",
-        },
-      },
-      filesystem = {
-        filtered_items = {
-          always_show = {
-            ".github",
-            ".tool-versions",
-            ".editorconfig",
-            ".gitignore",
-          },
-          never_show = {
-            ".DS_Store",
-            "thumbs.db",
-          },
-        },
       },
     },
   },
