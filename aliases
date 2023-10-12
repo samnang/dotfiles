@@ -1,4 +1,4 @@
-VIM_PATH='/opt/homebrew/bin/nvim'
+VIM_PATH='$(brew --prefix)/bin/nvim'
 alias v=$VIM_PATH
 alias vi=$VIM_PATH
 alias vim=$VIM_PATH

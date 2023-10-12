@@ -71,14 +71,14 @@
 [credential]
 	helper = osxkeychain
 	helper =
-	helper = /usr/local/bin/git-credential-manager
+	helper = git-credential-manager
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
 	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
 	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [credential "https://dev.azure.com"]
 	useHttpPath = true
