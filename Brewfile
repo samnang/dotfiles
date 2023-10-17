@@ -1,5 +1,6 @@
 brew "coreutils"
 brew "gnu-sed"
+brew "wget"
 
 brew "asdf"
 brew "neovim"

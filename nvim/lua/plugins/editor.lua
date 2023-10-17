@@ -20,7 +20,7 @@ return {
       vim.keymap.set("i", "<M-Space>", function()
         return vim.fn["codeium#Complete"](-1)
       end, { expr = true, desc = "Codeium: Trigger suggestion" })
-      vim.keymap.set("i", "<c-x>", function()
+      vim.keymap.set("i", "<C-x>", function()
         return vim.fn["codeium#Clear"]()
       end, { expr = true, desc = "Codeium: Clear suggestion" })
     end,
