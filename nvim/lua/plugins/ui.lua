@@ -86,9 +86,6 @@ return {
 
   {
     "akinsho/bufferline.nvim",
-    keys = {
-      { "<leader>bX", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close all other visible buffers" },
-    },
     opts = {
       options = {
         tab_size = 24,

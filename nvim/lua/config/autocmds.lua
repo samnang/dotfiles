@@ -21,3 +21,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank({ timeout = 50 })
   end,
 })
+
+-- fix telescope opens file in insert mode bug
+-- https://github.com/nvim-telescope/telescope.nvim/issues/2501#issuecomment-1541009573
+-- https://github.com/nvim-telescope/telescope.nvim/issues/2027#issuecomment-1510001730
+vim.api.nvim_create_autocmd("WinLeave", {
+  callback = function()
+    if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "i", false)
+    end
+  end,
+})
