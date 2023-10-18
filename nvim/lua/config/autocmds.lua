@@ -6,12 +6,12 @@
 vim.filetype.add({ filename = { ["Brewfile"] = "ruby" } })
 
 -- disable autoformat on save
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "ruby" },
-  callback = function()
-    vim.b.autoformat = false
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--   pattern = { "ruby" },
+--   callback = function()
+--     vim.b.autoformat = false
+--   end,
+-- })
 
 -- Highlight on yank (override to have faster timeout which is default: 150)
 -- https://github.com/LazyVim/LazyVim/blob/a72a84972d85e5bbc6b9d60a0983b37efef21b8a/lua/lazyvim/config/autocmds.lua#L13-L19

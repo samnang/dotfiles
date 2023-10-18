@@ -29,18 +29,6 @@ return {
         desc = "Run Last Test",
       },
       {
-        "<leader>tR",
-        function()
-          require("neotest").run.run()
-
-          -- Wait until a test process started
-          vim.defer_fn(function()
-            require("neotest").run.attach()
-          end, 500)
-        end,
-        desc = "Run and attach to the nearest test",
-      },
-      {
         "<leader>tA",
         function()
           require("neotest").run.attach()
