@@ -86,4 +86,14 @@ return {
       { "<Leader>wz", "<Cmd>lua require('maximize').toggle()<CR>", desc = "Window Maximizer Toggle" },
     },
   },
+  {
+    "stevearc/aerial.nvim",
+    opts = function(_, opts)
+      return vim.tbl_deep_extend("force", opts, {
+        layout = {
+          min_width = { 15, 0.1 },
+        },
+      })
+    end,
+  },
 }
