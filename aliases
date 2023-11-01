@@ -3,9 +3,15 @@ alias v=$VIM_PATH
 alias vi=$VIM_PATH
 alias vim=$VIM_PATH
 
-alias dotfiles='cd ~/.dotfiles && nvim .' # Quick access to the ~/.dotfiles
-alias zshrc='nvim ~/.zshrc' # Quick access to the ~/.zshrc file
+alias ls='lsd'
+alias lt='ls --tree --depth=2'
+alias tree='lt'
 
+alias g='git'
+alias cd='z'
+alias cat='bat'
+alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
+alias vm='asdf'
 alias grep='grep --color'
 alias t='tail -f'
 
@@ -14,13 +20,7 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g CP='| pbcopy'
 
-alias ls='lsd'
-alias lt='ls --tree --depth=2'
-alias tree='lt'
-
-alias cd='z'
-alias cat='bat'
-alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
-alias vm='asdf'
+alias dotfiles='cd ~/.dotfiles && nvim .' # Quick access to the ~/.dotfiles
+alias zshrc='nvim ~/.zshrc' # Quick access to the ~/.zshrc file
 
 alias tldr-list='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'

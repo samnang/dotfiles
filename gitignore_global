@@ -170,6 +170,9 @@ terraform.rc
 ##########
 test-ledger
 
+# 1Password CLI #
+#################
+.op/
 
 # Java #
 ########
