@@ -5,6 +5,15 @@ return {
   { "aserowy/tmux.nvim", opts = { navigation = { enable_default_keybindings = false } } },
   { "sitiom/nvim-numbertoggle" },
   {
+    "folke/which-key.nvim",
+    optional = true,
+    opts = {
+      defaults = {
+        ["<leader>T"] = { name = "+vim-test" },
+      },
+    },
+  },
+  {
     "Exafunction/codeium.vim",
     event = "BufEnter",
     config = function()
