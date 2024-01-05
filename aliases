@@ -1,7 +1,6 @@
-VIM_PATH='$(brew --prefix)/bin/nvim'
-alias v=$VIM_PATH
-alias vi=$VIM_PATH
-alias vim=$VIM_PATH
+alias v=nvim
+alias vi=nvim
+alias vim=nvim
 
 alias ls='lsd'
 alias lt='ls --tree --depth=2'
