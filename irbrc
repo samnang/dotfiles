@@ -4,7 +4,6 @@ require 'rubygems' if RUBY_VERSION[2] == ?8 # rubygems is only needed in 1.8
 
 # IRB settings
 require 'irb/completion'
-require 'irb/ext/save-history'
 
 IRB.conf[:USE_READLINE] = true
 IRB.conf[:SAVE_HISTORY] = 1000
