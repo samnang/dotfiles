@@ -87,6 +87,11 @@ return {
             ".tool-versions",
             ".editorconfig",
             ".gitignore",
+            ".env",
+            ".env.example",
+            ".env.sample",
+            ".env.development",
+            ".env.test",
           },
           never_show = {
             ".DS_Store",
