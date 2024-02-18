@@ -24,6 +24,7 @@ brew "imagemagick"
 brew "jq"
 brew "lazygit"
 brew "ncdu"
+brew "overmind"
 brew "ripgrep"
 brew "ruby-build"
 brew "tealdeer"
@@ -49,5 +50,8 @@ cask "aws-vault"
 
 tap "1password/tap"
 cask "1password-cli"
+
+tap "espanso/espanso"
+cask "espanso"
 
 cask "git-credential-manager"
