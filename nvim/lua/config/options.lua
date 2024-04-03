@@ -8,6 +8,8 @@ opt.clipboard = "" -- don't sync with system clipboard
 opt.exrc = true -- per-project configuration
 opt.conceallevel = 0
 
+opt.relativenumber = false
+
 opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 opt.foldlevelstart = 99
 opt.foldenable = true

@@ -3,7 +3,6 @@ return {
   { "wsdjeg/vim-fetch" },
   { "max397574/better-escape.nvim", config = true },
   { "aserowy/tmux.nvim", opts = { navigation = { enable_default_keybindings = false } } },
-  { "sitiom/nvim-numbertoggle" },
   {
     "folke/which-key.nvim",
     optional = true,
@@ -44,7 +43,7 @@ return {
   },
   {
     "nvim-pack/nvim-spectre",
-    opts = { live_update = true },
+    opts = { live_update = true, color_devicons = true, lnum_for_results = true },
     keys = {
       {
         "<leader>sf",
@@ -57,6 +56,12 @@ return {
         '<cmd>lua require("spectre").open_file_search()<CR>',
         mode = { "v" },
         desc = "Search on current file (Spectre)",
+      },
+      {
+        "<leader>sr",
+        '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
+        mode = { "v" },
+        desc = "Search current word (Spectre)",
       },
     },
   },
