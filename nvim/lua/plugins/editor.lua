@@ -2,6 +2,19 @@ return {
   { "tpope/vim-rhubarb", dependencies = "tpope/vim-fugitive" },
   { "wsdjeg/vim-fetch" },
   { "max397574/better-escape.nvim", config = true },
+  {
+    "akinsho/git-conflict.nvim",
+    opts = {
+      default_mappings = {
+        ours = "<leader>gCo",
+        theirs = "<leader>gCt",
+        none = "<leader>gC0",
+        both = "<leader>gCb",
+        next = "<leader>gCn",
+        prev = "<leader>gCp",
+      },
+    },
+  },
   { "aserowy/tmux.nvim", opts = { navigation = { enable_default_keybindings = false } } },
   {
     "folke/which-key.nvim",

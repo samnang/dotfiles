@@ -24,6 +24,7 @@ ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/gemrc ~/.gemrc
 ln -s ~/.dotfiles/rubocop.yml ~/.rubocop.yml
 ln -s ~/.dotfiles/irbrc ~/.irbrc
+ln -s ~/.dotfiles/pryrc ~/.pryrc
 ln -s ~/.dotfiles/gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/gitignore_global ~/.gitignore_global
 ln -s ~/.dotfiles/ctags ~/.ctags
