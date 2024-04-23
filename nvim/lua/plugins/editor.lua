@@ -22,6 +22,7 @@ return {
     opts = {
       defaults = {
         ["<leader>T"] = { name = "+vim-test" },
+        ["<leader>r"] = { name = "+rest-http" },
       },
     },
   },
