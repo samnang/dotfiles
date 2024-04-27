@@ -225,3 +225,6 @@ nvim/undodir
 .nvim.lua
 .nvimrc
 .exrc
+
+# Tmuxinator
+.tmuxinator.yml

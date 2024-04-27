@@ -13,6 +13,7 @@ alias du="ncdu --color dark -x --exclude .git --exclude node_modules"
 alias vm='asdf'
 alias grep='grep --color'
 alias t='tail -f'
+alias mux='tmuxinator'
 
 alias -g G='| grep'
 alias -g H='| head'
