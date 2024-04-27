@@ -70,6 +70,8 @@
 [credential]
 	helper = osxkeychain
 	helper = git-credential-manager
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
