@@ -1,13 +1,13 @@
 # ================= Helper methods ======================
 
-def require_gem!(name)
+def __require_gem!(name)
   require name
   yield if block_given?
 rescue LoadError
   puts "=> Gem #{name} not found."
 end
 
-def toggle_autocomplete!
+def __toggle_autocomplete!
   bool = IRB.conf[:USE_AUTOCOMPLETE]
   IRB.conf[:USE_AUTOCOMPLETE] = !bool
   Reline.autocompletion = !bool
@@ -27,7 +27,7 @@ require "rubygems"
 require "irb"
 require "irb/completion"
 
-require_gem! "amazing_print" do
+__require_gem! "amazing_print" do
   AmazingPrint.irb!
 end
 
