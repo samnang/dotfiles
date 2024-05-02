@@ -42,6 +42,7 @@
   navigate = true
   line-numbers = true
   dark = true
+  side-by-side = true
   syntax-theme = TwoDark
   plus-style = syntax "#184b54"
   minus-style = syntax "#642f33"
@@ -70,7 +71,7 @@
 [credential]
 	helper = osxkeychain
 	helper = git-credential-manager
-	helper = 
+	helper =
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [init]
 	defaultBranch = main

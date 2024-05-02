@@ -117,6 +117,7 @@ return {
       { "<Leader>wz", "<Cmd>lua require('maximize').toggle()<CR>", desc = "Window Maximizer Toggle" },
     },
   },
+
   {
     "stevearc/aerial.nvim",
     opts = function(_, opts)
@@ -125,6 +126,39 @@ return {
           min_width = { 15, 0.1 },
         },
       })
+    end,
+  },
+
+  {
+    "debugloop/telescope-undo.nvim",
+    dependencies = {
+      {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+      },
+    },
+    keys = {
+      {
+        "<leader>U",
+        "<cmd>Telescope undo<cr>",
+        desc = "Undo history",
+      },
+    },
+    opts = {
+      extensions = {
+        undo = {
+          use_delta = true,
+          side_by_side = true,
+          layout_strategy = "vertical",
+          layout_config = {
+            preview_height = 0.7,
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      require("telescope").setup(opts)
+      require("telescope").load_extension("undo")
     end,
   },
 }
