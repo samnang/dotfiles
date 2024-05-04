@@ -33,7 +33,7 @@ export STARSHIP_CONFIG=~/.starship.toml
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 [ -f ~/.aliases ] && source ~/.aliases
 
-export TMUXINATOR_CONFIG="~/Documents/Apps/tmuxinator"
+export TMUXINATOR_CONFIG="$HOME/Documents/Apps/tmuxinator"
 
 # 1Password CLI
 if (( ${+commands[op]} )); then

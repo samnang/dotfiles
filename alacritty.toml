@@ -4,15 +4,19 @@ import = ["~/.config/alacritty/themes/themes/one_dark.toml"]
 TERM = "xterm-256color"
 
 [window]
-dynamic_title = true
-padding.x = 5
-padding.y = 5
+padding.x = 10
+padding.y = 10
 decorations = "Buttonless"
 option_as_alt = "Both"
 
 [font]
-normal.family = "FiraCode Nerd Font"
 size = 13
+normal.family = "FiraCode Nerd Font"
+normal.style = "Regular"
+bold.family = "FiraCode Nerd Font"
+bold.style = "Bold"
+italic.family = "FiraCode Nerd Font"
+italic.style = "Italic"
 
 [keyboard]
 bindings = [
