@@ -56,3 +56,5 @@ tap "espanso/espanso"
 cask "espanso"
 
 cask "git-credential-manager"
+
+cask "alacritty"

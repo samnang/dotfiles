@@ -37,6 +37,11 @@ ln -s ~/.dotfiles/.editorconfig ~/.editorconfig
 mkdir -p ~/.config/bat
 ln -s ~/.dotfiles/bat_config ~/.config/bat/config
 
+mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+ln -s ~/.dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml
+
 asdf plugin add ruby
 asdf plugin add nodejs
 asdf plugin add terraform
