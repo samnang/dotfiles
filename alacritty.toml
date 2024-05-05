@@ -10,7 +10,7 @@ decorations = "Buttonless"
 option_as_alt = "Both"
 
 [font]
-size = 13
+size = 14
 normal.family = "FiraCode Nerd Font"
 normal.style = "Regular"
 bold.family = "FiraCode Nerd Font"
