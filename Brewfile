@@ -42,8 +42,6 @@ brew "ncdu"
 brew "cargo-nextest"
 brew "cargo-watch"
 
-tap "homebrew/cask-fonts"
-cask "font-jetbrains-mono-nerd-font"
 cask "font-fira-code-nerd-font"
 
 tap "gjbae1212/gossm"
