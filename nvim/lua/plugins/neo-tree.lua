@@ -27,6 +27,7 @@ return {
           ["K"] = "last_sibling",
           ["h"] = "navigate_out",
           ["l"] = "navigate_in",
+          ["/"] = "noop",
         },
       },
       commands = {
