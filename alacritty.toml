@@ -23,6 +23,7 @@ bindings = [
   # opt + right and left jump between words
   { key = "Right", mods = "Alt", chars = "\u001BF" },
   { key = "Left", mods = "Alt", chars = "\u001BB" },
+  { key = "Slash", mods = "Control", chars = "\u001f" },
 ]
 
 [selection]

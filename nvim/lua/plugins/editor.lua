@@ -15,12 +15,17 @@ return {
       },
     },
   },
+  {
+    "sindrets/diffview.nvim",
+    keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "DiffView" } },
+  },
+
   { "aserowy/tmux.nvim", opts = { navigation = { enable_default_keybindings = false } } },
   {
     "folke/which-key.nvim",
     optional = true,
     opts = {
-      defaults = {
+      spec = {
         ["<leader>T"] = { name = "+vim-test" },
         ["<leader>r"] = { name = "+rest-http" },
       },
@@ -56,26 +61,19 @@ return {
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
   {
-    "nvim-pack/nvim-spectre",
-    opts = { live_update = true, color_devicons = true, lnum_for_results = true },
+    "MagicDuck/grug-far.nvim",
     keys = {
       {
         "<leader>sf",
-        '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
         mode = { "n" },
+        "<cmd>lua require('grug-far').grug_far({ prefills = { flags = vim.fn.expand('%') } })<CR>",
         desc = "Search on current file (Spectre)",
       },
       {
         "<leader>sf",
-        '<cmd>lua require("spectre").open_file_search()<CR>',
+        "<cmd>lua require('grug-far').with_visual_selection({ prefills = { flags = vim.fn.expand('%') } })<CR>",
         mode = { "v" },
         desc = "Search on current file (Spectre)",
-      },
-      {
-        "<leader>sr",
-        '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
-        mode = { "v" },
-        desc = "Search current word (Spectre)",
       },
     },
   },
