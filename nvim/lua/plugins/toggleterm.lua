@@ -2,8 +2,7 @@ return {
   {
     "akinsho/toggleterm.nvim",
     keys = {
-      { "<leader>_", "<Cmd>ToggleTerm direction=horizontal<CR>", desc = "Toggle Term", mode = { "n", "t" } },
-      { "<c-/>", "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle Term (float)", mode = { "n", "t" } },
+      { "<A-/>", "<Cmd>ToggleTerm direction=horizontal<CR>", desc = "Toggle Term", mode = { "n", "t" } },
     },
     config = function()
       require("toggleterm").setup({
@@ -14,6 +13,7 @@ return {
       function _G.set_terminal_keymaps()
         local opts = { buffer = 0 }
         vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+        vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
         vim.keymap.set({ "t", "n" }, "<esc><esc>", [[<Cmd>ToggleTerm<CR>]], opts)
       end
 
