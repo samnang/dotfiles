@@ -1,5 +1,3 @@
-vim.g.codeium_disable_bindings = 1
-
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
