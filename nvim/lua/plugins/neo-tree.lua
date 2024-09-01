@@ -93,6 +93,7 @@ return {
             ".env.sample",
             ".env.development",
             ".env.test",
+            ".env.local",
           },
           never_show = {
             ".DS_Store",

@@ -4,7 +4,10 @@ return {
     opts = function(_, opts)
       table.insert(opts.sections.lualine_x, "filetype")
       table.insert(opts.sections.lualine_x, {
-        "codeium#GetStatusString",
+        function()
+          local status = require("neocodeium").get_status()
+          return string.gsub(status, "%s+", "")
+        end,
         icon = "🤖",
         color = { gui = "bold" },
       })

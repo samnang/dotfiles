@@ -35,3 +35,10 @@ vim.opt.swapfile = false
 vim.g.loaded_ruby_provider = 0
 
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
+
+vim.filetype.add({
+  pattern = {
+    -- INFO: Match filenames like - ".env.example", ".env.local" and so on
+    ["%.env%.[%w_.-]+"] = "sh",
+  },
+})

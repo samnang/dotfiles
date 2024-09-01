@@ -32,29 +32,69 @@ return {
     },
   },
   {
-    "Exafunction/codeium.vim",
-    event = "BufEnter",
+    "monkoose/neocodeium",
+    event = "VeryLazy",
     config = function()
-      vim.g.codeium_disable_bindings = 1
-      vim.g.codeium_filetypes = { TelescopePrompt = false }
+      local neocodeium = require("neocodeium")
+      neocodeium.setup({
+        silent = true,
+      })
 
-      vim.keymap.set("i", "<M-;>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true, silent = true, desc = "Codeium: Accept suggestion" })
-      vim.keymap.set("i", "<M-]>", function()
-        return vim.fn["codeium#CycleCompletions"](1)
-      end, { expr = true, desc = "Codeium: Next suggestion" })
-      vim.keymap.set("i", "<M-[>", function()
-        return vim.fn["codeium#CycleCompletions"](-1)
-      end, { expr = true, desc = "Codeium: Previous suggestion" })
-      vim.keymap.set("i", "<M-Space>", function()
-        return vim.fn["codeium#Complete"](-1)
-      end, { expr = true, desc = "Codeium: Trigger suggestion" })
-      vim.keymap.set("i", "<C-x>", function()
-        return vim.fn["codeium#Clear"]()
-      end, { expr = true, desc = "Codeium: Clear suggestion" })
+      vim.keymap.set("i", "<A-;>", neocodeium.accept)
+      vim.keymap.set("i", "<A-w>", neocodeium.accept_word)
+      vim.keymap.set("i", "<A-l>", neocodeium.accept_line)
+      vim.keymap.set("i", "<A-]>", neocodeium.cycle_or_complete)
+      vim.keymap.set("i", "<A-[>", function()
+        require("neocodeium").cycle_or_complete(-1)
+      end)
+      vim.keymap.set("i", "<C-x>", neocodeium.clear)
+
+      local cmp = require("cmp")
+      local commands = require("neocodeium.commands")
+
+      cmp.event:on("menu_opened", function()
+        commands.disable()
+        neocodeium.clear()
+      end)
+
+      cmp.event:on("menu_closed", function()
+        commands.enable()
+      end)
+
+      cmp.setup({
+        completion = {
+          autocomplete = false,
+        },
+      })
     end,
+    dependencies = {
+      "nvim-cmp",
+    },
   },
+  -- {
+  --   "Exafunction/codeium.vim",
+  --   event = "BufEnter",
+  --   config = function()
+  --     vim.g.codeium_disable_bindings = 1
+  --     vim.g.codeium_filetypes = { TelescopePrompt = false }
+  --
+  --     vim.keymap.set("i", "<M-;>", function()
+  --       return vim.fn["codeium#Accept"]()
+  --     end, { expr = true, silent = true, desc = "Codeium: Accept suggestion" })
+  --     vim.keymap.set("i", "<M-]>", function()
+  --       return vim.fn["codeium#CycleCompletions"](1)
+  --     end, { expr = true, desc = "Codeium: Next suggestion" })
+  --     vim.keymap.set("i", "<M-[>", function()
+  --       return vim.fn["codeium#CycleCompletions"](-1)
+  --     end, { expr = true, desc = "Codeium: Previous suggestion" })
+  --     vim.keymap.set("i", "<M-Space>", function()
+  --       return vim.fn["codeium#Complete"](-1)
+  --     end, { expr = true, desc = "Codeium: Trigger suggestion" })
+  --     vim.keymap.set("i", "<C-x>", function()
+  --       return vim.fn["codeium#Clear"]()
+  --     end, { expr = true, desc = "Codeium: Clear suggestion" })
+  --   end,
+  -- },
   {
     "andymass/vim-matchup",
     event = "BufReadPost",

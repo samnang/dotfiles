@@ -226,5 +226,6 @@ nvim/undodir
 .nvimrc
 .exrc
 
-# Tmuxinator
+# Tmux
 .tmuxinator.yml
+.overmind.env
