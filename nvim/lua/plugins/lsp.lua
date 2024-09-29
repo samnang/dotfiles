@@ -13,7 +13,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      inlay_hints = { enabled = false },
       servers = {
+        -- https://github.com/LazyVim/LazyVim/pull/4406
+        ts_ls = {
+          enabled = false,
+        },
         cssls = {
           settings = {
             css = {
@@ -31,6 +36,13 @@ return {
           },
         },
       },
+    },
+    setup = {
+      -- https://github.com/LazyVim/LazyVim/pull/4406
+      ts_ls = function()
+        -- disable tsserver
+        return true
+      end,
     },
   },
 }
