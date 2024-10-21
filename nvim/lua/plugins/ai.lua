@@ -4,6 +4,13 @@ return {
     event = "VeryLazy",
     opts = {
       silent = true,
+      filetypes = {
+        ["NvimTree"] = false,
+
+        -- Disable for dressing.nvim
+        ["DressingSelect"] = false,
+        ["DressingInput"] = false,
+      },
     },
     config = function(_, opts)
       local neocodeium = require("neocodeium")
