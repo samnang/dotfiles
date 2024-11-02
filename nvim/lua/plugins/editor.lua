@@ -136,4 +136,20 @@ return {
       require("telescope").load_extension("undo")
     end,
   },
+
+  {
+    "otavioschwanck/arrow.nvim",
+    dependencies = {
+      { "echasnovski/mini.icons" },
+    },
+    opts = {
+      show_icons = true,
+      leader_key = ";",
+      buffer_leader_key = "m",
+      mappings = {
+        open_vertical = "|",
+        open_horizontal = "-",
+      },
+    },
+  },
 }
