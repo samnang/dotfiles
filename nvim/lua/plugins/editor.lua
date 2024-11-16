@@ -136,7 +136,6 @@ return {
       require("telescope").load_extension("undo")
     end,
   },
-
   {
     "otavioschwanck/arrow.nvim",
     dependencies = {

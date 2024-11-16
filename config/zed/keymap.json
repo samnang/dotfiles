@@ -1,0 +1,142 @@
+[
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      "space u h": "editor::ToggleInlayHints", // Toggle inlay hints
+      "space u w": "editor::ToggleSoftWrap", // Toggle soft wrap
+
+      // Open markdown preview
+      "space m p": "markdown::OpenPreview",
+      "space m P": "markdown::OpenPreviewToTheSide",
+
+      "space f p": "projects::OpenRecent", // Open recent project
+      "space s w": "pane::DeploySearch", // Search word under cursor
+      "g f": "editor::OpenExcerpts", // Go to file with `gf`
+
+      "space w z": "workspace::ToggleZoom" // Toggle maximized current pane
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      // Window movement bindings
+      // Ctrl jklk to move between panes
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+
+      // // +LSP
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDefinitionSplit",
+      "g i": "editor::GoToImplementation",
+      "g I": "editor::GoToImplementationSplit",
+      "g t": "editor::GoToTypeDefinition",
+      "g T": "editor::GoToTypeDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPrevDiagnostic",
+      // Go to next/prev error
+      "] e": "editor::GoToDiagnostic",
+      "[ e": "editor::GoToPrevDiagnostic",
+      // Symbol search
+      "space s s": "outline::Toggle",
+      "space s S": "project_symbols::Toggle",
+      "space x x": "diagnostics::Deploy", // Diagnostic
+      // +Git
+      // Git prev/next hunk
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPrevHunk",
+      // + Buffers
+      // Switch between buffers
+      "shift-h": "pane::ActivatePrevItem",
+      "shift-l": "pane::ActivateNextItem",
+      // Close active panel
+      "shift-q": "pane::CloseActiveItem",
+      "space b o": "pane::CloseInactiveItems", // Close other items
+      "ctrl-s": "workspace::Save", // Save file
+      "space space": "file_finder::Toggle", // File finder
+      "space e": "workspace::ToggleLeftDock", // Toggle file panel
+      "|": "pane::RevealInProjectPanel", // Show project panel with current file
+
+      "space -": "pane::SplitHorizontal",
+      "space |": "pane::SplitVertical"
+    }
+  },
+  // Better escape
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "j j": "vim::NormalBefore", // remap jj in insert mode to escape
+      "j k": "vim::NormalBefore" // remap jk in insert mode to escape
+    }
+  },
+  // File panel (netrw)
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "q": "workspace::ToggleLeftDock",
+      "space e": "workspace::ToggleLeftDock",
+      "space r": "project_panel::CollapseAllEntries"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+
+      // Switch between buffers
+      "shift-h": "pane::ActivatePrevItem",
+      "shift-l": "pane::ActivateNextItem"
+    }
+  },
+  // Empty pane, set of keybindings that are available when there is no active editor
+  {
+    "context": "EmptyPane || ShkaredScreen",
+    "bindings": {
+      "space space": "file_finder::Toggle", // Open file finder
+      "space f p": "projects::OpenRecent" // Open recent project
+    }
+  },
+  // Subword motion
+  // {
+  //   "context": "VimControl && !menu && vim_mode != operator",
+  //   "bindings": {
+  //     "w": "vim::NextSubwordStart",
+  //     "b": "vim::PreviousSubwordStart",
+  //     "e": "vim::NextSubwordEnd",
+  //     "g e": "vim::PreviousSubwordEnd"
+  //   }
+  // },
+  {
+    "context": "Workspace && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-/": "workspace::ToggleBottomDock", // Toggle terminal
+      "space w z": "workspace::ToggleZoom" // Toggle maximized current pane
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-s": [
+        "vim::PushOperator",
+        {
+          "AddSurrounds": {}
+        }
+      ]
+    }
+  }
+]
