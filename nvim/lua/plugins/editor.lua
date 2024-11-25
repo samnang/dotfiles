@@ -1,5 +1,4 @@
 return {
-  { "pteroctopus/faster.nvim" },
   { "tpope/vim-rhubarb", dependencies = "tpope/vim-fugitive" },
   { "wsdjeg/vim-fetch" },
   { "max397574/better-escape.nvim", config = true },

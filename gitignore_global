@@ -229,3 +229,5 @@ nvim/undodir
 # Tmux
 .tmuxinator.yml
 .overmind.env
+
+.zed/
