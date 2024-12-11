@@ -88,7 +88,7 @@ return {
   {
     "declancm/maximize.nvim",
     keys = {
-      { "<Leader>wz", "<Cmd>lua require('maximize').toggle()<CR>", desc = "Window Maximizer Toggle" },
+      { "<Leader>wz", "<Cmd>lua Snacks.zen.zoom()<CR>", desc = "Window Zoom Toggle" },
     },
   },
 

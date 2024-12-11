@@ -18,6 +18,10 @@ return {
     opts = {
       inlay_hints = { enabled = false },
       servers = {
+        ruby_lsp = {
+          mason = false,
+          cmd = { vim.fn.expand("~/.asdf/shims/ruby-lsp") },
+        },
         cssls = {
           settings = {
             css = {
@@ -36,6 +40,18 @@ return {
         },
 
         eslint = {},
+      },
+      setup = {
+        -- https://www.lazyvim.org/configuration/recipes#add-eslint-and-use-it-for-formatting
+        eslint = function()
+          require("lazyvim.util").lsp.on_attach(function(client)
+            if client.name == "eslint" then
+              client.server_capabilities.documentFormattingProvider = true
+            elseif client.name == "vtsls" then
+              client.server_capabilities.documentFormattingProvider = false
+            end
+          end)
+        end,
       },
     },
   },

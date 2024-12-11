@@ -34,6 +34,8 @@ opt.fillchars = {
 vim.opt.swapfile = false
 vim.g.loaded_ruby_provider = 0
 
+vim.lsp.set_log_level("off")
+
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 
 vim.filetype.add({
