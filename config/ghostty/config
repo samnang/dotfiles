@@ -1,0 +1,11 @@
+theme = "OneHalfDark"
+
+font-size = 14
+font-family = "FiraCode Nerd Font"
+
+
+copy-on-select = true
+mouse-hide-while-typing = true
+cursor-click-to-move = true
+
+window-padding-x = 10

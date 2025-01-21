@@ -8,7 +8,6 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
       "olimorris/neotest-rspec",
-      "rouge8/neotest-rust",
       "nvim-neotest/neotest-jest",
       "folke/which-key.nvim",
     },
@@ -25,7 +24,6 @@ return {
             })
           end,
         },
-        ["neotest-rust"] = {},
         ["neotest-jest"] = {},
       },
     },

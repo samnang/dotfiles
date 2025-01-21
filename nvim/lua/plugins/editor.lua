@@ -42,25 +42,17 @@ return {
       {
         "<leader>sf",
         mode = { "n" },
-        "<cmd>lua require('grug-far').grug_far({ prefills = { flags = vim.fn.expand('%') } })<CR>",
-        desc = "Search on current file (Spectre)",
+        "<cmd>lua require('grug-far').grug_far({ prefills = { paths = vim.fn.expand('%'), search = vim.fn.expand('<cword>') } })<CR>",
+        desc = "Search on current file",
       },
       {
         "<leader>sf",
-        "<cmd>lua require('grug-far').with_visual_selection({ prefills = { flags = vim.fn.expand('%') } })<CR>",
+        "<cmd>lua require('grug-far').with_visual_selection({ prefills = { paths = vim.fn.expand('%') } })<CR>",
         mode = { "v" },
-        desc = "Search on current file (Spectre)",
+        desc = "Search with selection on current file",
       },
     },
   },
-
-  {
-    "nvim-telescope/telescope.nvim",
-    keys = {
-      { "<leader>ft", "<cmd>Telescop filetypes<cr>", desc = "Select filetype" },
-    },
-  },
-
   {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
@@ -86,13 +78,6 @@ return {
   },
 
   {
-    "declancm/maximize.nvim",
-    keys = {
-      { "<Leader>wz", "<Cmd>lua Snacks.zen.zoom()<CR>", desc = "Window Zoom Toggle" },
-    },
-  },
-
-  {
     "stevearc/aerial.nvim",
     opts = function(_, opts)
       return vim.tbl_deep_extend("force", opts, {
@@ -103,38 +88,6 @@ return {
     end,
   },
 
-  {
-    "debugloop/telescope-undo.nvim",
-    dependencies = {
-      {
-        "nvim-telescope/telescope.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-      },
-    },
-    keys = {
-      {
-        "<leader>U",
-        "<cmd>Telescope undo<cr>",
-        desc = "Undo history",
-      },
-    },
-    opts = {
-      extensions = {
-        undo = {
-          use_delta = true,
-          side_by_side = true,
-          layout_strategy = "vertical",
-          layout_config = {
-            preview_height = 0.7,
-          },
-        },
-      },
-    },
-    config = function(_, opts)
-      require("telescope").setup(opts)
-      require("telescope").load_extension("undo")
-    end,
-  },
   {
     "otavioschwanck/arrow.nvim",
     dependencies = {

@@ -18,7 +18,7 @@ return {
     opts = {
       window = {
         mappings = {
-          ["<c-x>"] = "open_split",
+          ["<c-s>"] = "open_split",
           ["<c-v>"] = "open_vsplit",
           ["O"] = "system_open",
           ["J"] = "first_sibling",

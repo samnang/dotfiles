@@ -24,7 +24,7 @@ map({ "n", "t" }, "<C-k>", [[<CMD>lua require("tmux").move_top()<CR>]])
 map({ "n", "t" }, "<C-j>", [[<CMD>lua require("tmux").move_bottom()<CR>]])
 
 -- Faster to quit
-map({ "n", "v", "t" }, "<C-q>", [[<CMD>:q<CR>]])
+-- map({ "n", "v", "t" }, "<C-q>", [[<CMD>:q<CR>]])
 
 -- Override existing flash.nvim: Flash Treesitter
 map("v", "S", "<Esc><Cmd>lua require'nvim-surround'.visual_surround({ line_mode = false })<CR>", {

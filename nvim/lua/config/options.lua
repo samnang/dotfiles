@@ -37,6 +37,7 @@ vim.g.loaded_ruby_provider = 0
 vim.lsp.set_log_level("off")
 
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
+vim.g.lazyvim_picker = "snacks"
 
 vim.filetype.add({
   pattern = {
@@ -44,3 +45,5 @@ vim.filetype.add({
     ["%.env%.[%w_.-]+"] = "sh",
   },
 })
+
+vim.g.snacks_animate = false

@@ -4,8 +4,12 @@ return {
     event = "VeryLazy",
     opts = {
       silent = true,
+      completion = {
+        autocomplete = false,
+      },
       filetypes = {
         ["NvimTree"] = false,
+        ["snacks_picker_input"] = false,
 
         -- Disable for dressing.nvim
         ["DressingSelect"] = false,
@@ -24,28 +28,7 @@ return {
         require("neocodeium").cycle_or_complete(-1)
       end)
       vim.keymap.set("i", "<C-x>", neocodeium.clear)
-
-      local cmp = require("cmp")
-      local commands = require("neocodeium.commands")
-
-      cmp.event:on("menu_opened", function()
-        commands.disable()
-        neocodeium.clear()
-      end)
-
-      cmp.event:on("menu_closed", function()
-        commands.enable()
-      end)
-
-      cmp.setup({
-        completion = {
-          autocomplete = false,
-        },
-      })
     end,
-    dependencies = {
-      "nvim-cmp",
-    },
   },
 
   {
