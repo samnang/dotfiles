@@ -18,6 +18,7 @@ return {
     opts = {
       window = {
         mappings = {
+          ["<esc>"] = "clear_hl",
           ["<c-s>"] = "open_split",
           ["<c-v>"] = "open_vsplit",
           ["O"] = "system_open",
@@ -29,6 +30,9 @@ return {
         },
       },
       commands = {
+        clear_hl = function(state)
+          vim.api.nvim_command("noh")
+        end,
         -- https://github.com/nvim-neo-tree/neo-tree.nvim/wiki/Recipes#open-with-system-viewer
         system_open = function(state)
           local node = state.tree:get_node()

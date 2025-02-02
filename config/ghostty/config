@@ -2,10 +2,21 @@ theme = "OneHalfDark"
 
 font-size = 14
 font-family = "FiraCode Nerd Font"
+font-thicken = true
 
-
+scrollback-limit = 10000
 copy-on-select = true
 mouse-hide-while-typing = true
+
 cursor-click-to-move = true
+cursor-style-blink = true
+adjust-cursor-thickness = 3
 
 window-padding-x = 10
+window-padding-y = 5
+
+macos-titlebar-style = hidden
+macos-option-as-alt = true
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+keybind = super+shift+r=reload_config

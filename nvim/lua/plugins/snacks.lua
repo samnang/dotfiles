@@ -9,6 +9,13 @@ return {
       statuscolumn = { enabled = true },
       scroll = { enabled = true },
       zen = { enabled = true },
+      terminal = {
+        win = {
+          wo = {
+            winbar = "",
+          },
+        },
+      },
       dashboard = {
         row = 10,
         preset = {
