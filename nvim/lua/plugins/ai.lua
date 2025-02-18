@@ -6,9 +6,15 @@ return {
       silent = true,
       completion = {
         autocomplete = false,
+        menu = {
+          auto_show = function(ctx)
+            return ctx.mode ~= "default"
+          end,
+        },
       },
       filetypes = {
         ["NvimTree"] = false,
+        ["codecompanion"] = false,
         ["snacks_picker_input"] = false,
 
         -- Disable for dressing.nvim
@@ -18,6 +24,18 @@ return {
     },
     config = function(_, opts)
       local neocodeium = require("neocodeium")
+      local blink = require("blink.cmp")
+
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "BlinkCmpMenuOpen",
+        callback = function()
+          neocodeium.clear()
+        end,
+      })
+
+      opts.filter = function()
+        return not blink.is_visible()
+      end
       neocodeium.setup(opts)
 
       vim.keymap.set("i", "<A-;>", neocodeium.accept)
@@ -32,74 +50,60 @@ return {
   },
 
   {
-    "robitx/gp.nvim",
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
     keys = {
-      { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
       {
-        "<leader>aa",
-        "<cmd>GpChatToggle<cr>",
-        desc = "Toggle (AI Chat)",
+        "<C-a>",
+        "<cmd>CodeCompanionActions<cr>",
+        desc = "Open the CodeCompanion Actions Palette",
         mode = { "n", "v" },
+        noremap = true,
+        silent = true,
       },
       {
-        "<leader>ax",
-        "<cmd>GpChatDelete<cr>",
-        desc = "Delete (AI Chat)",
+        "<leader>a",
+        "<cmd>CodeCompanionChat Toggle<cr>",
+        desc = "Toggle a CodeCompanion chat buffer",
         mode = { "n", "v" },
-      },
-      {
-        "<leader>ap",
-        "<cmd>GpChatPaste<cr>",
-        desc = "Paste the selection (AI Chat)",
-        mode = { "n", "v" },
-      },
-      {
-        "<leader>ai",
-        "<cmd>GpImplement<cr>",
-        desc = "Implement code from comments in a visual selection (AI Chat)",
-        mode = { "n", "v" },
-      },
-      {
-        "<leader>ai",
-        "<cmd>GpImplement<cr>",
-        desc = "Implement code from comments in a visual selection (AI Chat)",
-        mode = { "n", "v" },
+        noremap = true,
+        silent = true,
       },
     },
-    config = function()
-      local conf = {
-        openai_api_key = os.getenv("ANTHROPIC_API_KEY"),
-        providers = {
-          anthropic = {
-            endpoint = "https://api.anthropic.com/v1/messages",
-          },
-
-          googleai = {
-            endpoint = "https://generativelanguage.googleapis.com/v1beta/models/{{model}}:streamGenerateContent?key={{secret}}",
-            secret = os.getenv("GOOGLEAI_API_KEY"),
-          },
+    opts = {
+      strategies = {
+        chat = {
+          adapter = "gemini",
         },
-
-        hooks = {
-          Explain = function(gp, params)
-            local template = "I have the following code from {{filename}}:\n\n"
-              .. "```{{filetype}}\n{{selection}}\n```\n\n"
-              .. "Please respond by explaining the code above."
-            local agent = gp.get_chat_agent()
-            gp.Prompt(params, gp.Target.popup, agent, template)
-          end,
-
-          CodeReview = function(gp, params)
-            local template = "I have the following code from {{filename}}:\n\n"
-              .. "```{{filetype}}\n{{selection}}\n```\n\n"
-              .. "Please analyze for code smells and suggest improvements."
-            local agent = gp.get_chat_agent()
-            gp.Prompt(params, gp.Target.enew("markdown"), agent, template)
-          end,
+        inline = {
+          adapter = "gemini",
         },
-      }
+      },
+      adapters = {
+        anthropic = function()
+          return require("codecompanion.adapters").extend("anthropic", {
+            env = {
+              api_key = "cmd:op read op://Personal/5tg2exq5jmnt7n3zagyjzcxuci/credential --no-newline",
+            },
+          })
+        end,
+        gemini = function()
+          return require("codecompanion.adapters").extend("gemini", {
+            env = {
+              api_key = "cmd:op read op://Personal/5tg2exq5jmnt7n3zagyjzcxuci/credential --no-newline",
+            },
+          })
+        end,
+      },
+    },
+    config = function(_, opts)
+      require("codecompanion").setup(opts)
 
-      require("gp").setup(conf)
+      -- Expand 'cc' into 'CodeCompanion' in the command line
+      vim.cmd([[cab cc CodeCompanion]])
     end,
   },
 }

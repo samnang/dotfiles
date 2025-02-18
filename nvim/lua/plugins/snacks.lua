@@ -9,6 +9,7 @@ return {
       statuscolumn = { enabled = true },
       scroll = { enabled = true },
       zen = { enabled = true },
+      image = { enabled = true },
       terminal = {
         win = {
           wo = {
