@@ -1,4 +1,43 @@
 return {
+  -- {
+  --   "milanglacier/minuet-ai.nvim",
+  --   opts = {
+  --     enabled = false,
+  --     virtualtext = {
+  --       auto_trigger_ft = { "*" },
+  --       auto_trigger_ignore_ft = {
+  --         "NvimTree",
+  --         "codecompanion",
+  --         "snacks_picker_input",
+  --         "DressingSelect",
+  --         "DressingInput",
+  --       },
+  --       keymap = {
+  --         -- accept whole completion
+  --         accept = "<A-;>",
+  --         -- accept one line
+  --         accept_line = "<A-w>",
+  --         -- accept n lines (prompts for number)
+  --         -- e.g. "A-l 2 CR" will accept 2 lines
+  --         accept_n_lines = "<A-l>",
+  --         -- Cycle to prev completion item, or manually invoke completion
+  --         prev = "<A-[>",
+  --         -- Cycle to next completion item, or manually invoke completion
+  --         next = "<A-]>",
+  --         dismiss = "<A-x>",
+  --       },
+  --       show_on_completion_menu = false,
+  --     },
+  --     provider = "claude",
+  --     provider_options = {
+  --       claude = {
+  --         max_tokens = 128,
+  --         model = "claude-3-7-sonnet-20250219",
+  --       },
+  --     },
+  --   },
+  -- },
+
   {
     "monkoose/neocodeium",
     event = "VeryLazy",
@@ -76,27 +115,11 @@ return {
     opts = {
       strategies = {
         chat = {
-          adapter = "gemini",
+          adapter = "anthropic",
         },
         inline = {
-          adapter = "gemini",
+          adapter = "anthropic",
         },
-      },
-      adapters = {
-        anthropic = function()
-          return require("codecompanion.adapters").extend("anthropic", {
-            env = {
-              api_key = "cmd:op read op://Personal/5tg2exq5jmnt7n3zagyjzcxuci/credential --no-newline",
-            },
-          })
-        end,
-        gemini = function()
-          return require("codecompanion.adapters").extend("gemini", {
-            env = {
-              api_key = "cmd:op read op://Personal/5tg2exq5jmnt7n3zagyjzcxuci/credential --no-newline",
-            },
-          })
-        end,
       },
     },
     config = function(_, opts)

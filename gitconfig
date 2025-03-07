@@ -7,13 +7,13 @@
   ui = true
 [alias]
   aa = add -A
-  o = !gh browse
-  pv = !gh pr view --web
+  o = !gh browse -b $(git symbolic-ref --short HEAD)
+  pr = !gh pr view --web
   st = status -sb
   ci = commit
   pf = push --force-with-lease
   amend = commit -a --amend
-  br = branch
+  br = !git branch --sort=-committerdate --format='%(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - (%(color:green)%(committerdate:relative)%(color:reset))' --color=always | fzf --ansi --height=30% --reverse --info=inline | awk '{print $1}' | xargs git switch
   bl = for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(authordate:short) %(color:red)%(objectname:short) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - (%(color:green)%(committerdate:relative)%(color:reset))'
   co = checkout
   df = diff
@@ -21,8 +21,8 @@
   up = pull --rebase --prune
   wip = !git add -A && git commit -m "WIP"
   undo = reset HEAD~1 --mixed
-  bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
-  bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+  bclean = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs git branch -d; }; f"
+  bdone = "!f() { git checkout ${1-main} && git up && git bclean ${1-main}; }; f"
   l = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative --color -n 20
   lg = log --graph --decorate --pretty=oneline --abbrev-commit --all --color
   lga = log --all --graph --decorate --oneline --simplify-by-decoration
@@ -71,7 +71,7 @@
 [credential]
 	helper = osxkeychain
 	helper = git-credential-manager
-	helper = 
+	helper =
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [init]
 	defaultBranch = main

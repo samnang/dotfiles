@@ -22,12 +22,12 @@
       // put key-bindings here if you want them to work only in normal mode
       // Window movement bindings
       // Ctrl jklk to move between panes
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
 
-      // // +LSP
+      // +LSP
       "space c a": "editor::ToggleCodeActions",
       "space c r": "editor::Rename",
       "g d": "editor::GoToDefinition",
@@ -56,6 +56,7 @@
       "shift-l": "pane::ActivateNextItem",
       // Close active panel
       "shift-q": "pane::CloseActiveItem",
+      "space b d": "pane::CloseActiveItem",
       "space b o": "pane::CloseInactiveItems", // Close other items
       "ctrl-s": "workspace::Save", // Save file
       "space space": "file_finder::Toggle", // File finder
@@ -84,6 +85,7 @@
       "d": "project_panel::Delete",
       "x": "project_panel::Cut",
       "c": "project_panel::Copy",
+      "y": "project_panel::Copy",
       "p": "project_panel::Paste",
       "q": "workspace::ToggleLeftDock",
       "space e": "workspace::ToggleLeftDock",
@@ -93,10 +95,10 @@
   {
     "context": "Dock",
     "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
 
       // Switch between buffers
       "shift-h": "pane::ActivatePrevItem",
@@ -131,12 +133,7 @@
   {
     "context": "vim_mode == visual",
     "bindings": {
-      "shift-s": [
-        "vim::PushOperator",
-        {
-          "AddSurrounds": {}
-        }
-      ]
+      "shift-s": ["vim::PushAddSurrounds", {}]
     }
   }
 ]

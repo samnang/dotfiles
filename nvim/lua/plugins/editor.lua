@@ -3,6 +3,13 @@ return {
   { "wsdjeg/vim-fetch" },
   { "max397574/better-escape.nvim", config = true },
   {
+    "stevearc/quicker.nvim",
+    event = "FileType qf",
+    keys = {
+      { "<A-q>", "<cmd>lua require('quicker').toggle()<cr>", desc = "Toggle quickfix" },
+    },
+  },
+  {
     "akinsho/git-conflict.nvim",
     opts = {
       default_mappings = {

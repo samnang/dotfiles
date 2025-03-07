@@ -222,9 +222,10 @@ Brewfile.lock.json
 packer_compiled.lua
 nvim/undodir
 # per-project configuration (exrc)
-.nvim.lua
-.nvimrc
-.exrc
+# .nvim.lua
+# .nvimrc
+# .exrc
+.lazy.lua
 
 # Tmux
 .tmuxinator.yml

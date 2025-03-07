@@ -7,8 +7,16 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "assistant": {
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "version": "2"
+  },
+  "icon_theme": "Material Icon Theme",
   "features": {
-    "inline_completion_provider": "supermaven"
+    "edit_prediction_provider": "zed"
   },
   "base_keymap": "VSCode",
   "vim_mode": true,
