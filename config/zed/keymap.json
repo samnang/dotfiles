@@ -38,10 +38,10 @@
       "g T": "editor::GoToTypeDefinitionSplit",
       "g r": "editor::FindAllReferences",
       "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPrevDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
       // Go to next/prev error
       "] e": "editor::GoToDiagnostic",
-      "[ e": "editor::GoToPrevDiagnostic",
+      "[ e": "editor::GoToPreviousDiagnostic",
       // Symbol search
       "space s s": "outline::Toggle",
       "space s S": "project_symbols::Toggle",
@@ -49,10 +49,10 @@
       // +Git
       // Git prev/next hunk
       "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPrevHunk",
+      "[ h": "editor::GoToPreviousHunk",
       // + Buffers
       // Switch between buffers
-      "shift-h": "pane::ActivatePrevItem",
+      "shift-h": "pane::ActivatePreviousItem",
       "shift-l": "pane::ActivateNextItem",
       // Close active panel
       "shift-q": "pane::CloseActiveItem",
@@ -101,7 +101,7 @@
       "ctrl-j": "workspace::ActivatePaneDown",
 
       // Switch between buffers
-      "shift-h": "pane::ActivatePrevItem",
+      "shift-h": "pane::ActivatePreviousItem",
       "shift-l": "pane::ActivateNextItem"
     }
   },

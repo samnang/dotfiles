@@ -232,3 +232,5 @@ nvim/undodir
 .overmind.env
 
 .zed/
+
+tmp/
