@@ -1,0 +1,183 @@
+{
+  "workbench.statusBar.visible": true,
+  "editor.fontSize": 14,
+  "editor.fontFamily": "FiraCode Nerd Font, JetBrainsMono Nerd Font Mono, Menlo, Consolas, DejaVu Sans Mono, monospace",
+  "editor.fontLigatures": true,
+  "editor.tabSize": 2,
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "expand",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.fontSize": 14,
+  "files.trimTrailingWhitespace": true,
+  "[plaintext]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "files.exclude": {
+    ".byebug_history": true,
+    "**/.classpath": true,
+    "**/.DS_Store": true,
+    "**/.elasticbeanstalk": true,
+    "**/.factorypath": true,
+    "**/.git": true,
+    "**/.idea": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.terraform": true,
+    "**/.vscode": true,
+    "**/tags": true,
+    "rspec_examples.txt": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.git": true,
+    "tmp": true,
+    "vendor": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.terraform/*/**": true,
+    "**/.idea/*/**": true,
+    "tmp/*/**": true,
+    "vendor/*/**": true,
+    "logs/*": true
+  },
+  "ruby.specCommand": "./bin/rspec",
+  "githubPullRequests.defaultMergeMethod": "squash",
+  "git.autofetch": true,
+  "workbench.iconTheme": "vscode-great-icons",
+  "files.insertFinalNewline": true,
+  "editor.renderFinalNewline": "off",
+  "editor.suggestSelection": "first",
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "git-commit",
+    "go",
+    "handlebars",
+    "haskell",
+    "html",
+    "jade",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "pug",
+    "python",
+    "restructuredtext",
+    "rust",
+    "scala",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+    "yml"
+  ],
+  "editor.multiCursorModifier": "alt",
+  "editor.renderWhitespace": "none",
+  "editor.renderControlCharacters": false,
+  "markdown-table-formatter.markdownGrammarScopes": ["markdown", "ruby"],
+  "[solidity]": {
+    "editor.defaultFormatter": "NomicFoundation.hardhat-solidity"
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "misogi.ruby-rubocop",
+    "editor.formatOnSave": false
+  },
+  "ruby.rubocop.suppressRubocopWarnings": true,
+  "debug.allowBreakpointsEverywhere": true,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "redhat.telemetry.enabled": false,
+  "editor.minimap.enabled": false,
+  "screencastMode.verticalOffset": 10,
+  "screencastMode.mouseIndicatorColor": "#00FF00",
+  "screencastMode.mouseIndicatorSize": 30,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.fullScreen": false,
+  "zenMode.centerLayout": false,
+  "breadcrumbs.enabled": false,
+  "go.toolsManagement.autoUpdate": true,
+  "githubPullRequests.pullBranch": "never",
+  "terraform.languageServer.enable": true,
+  "prettier.requireConfig": true,
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "lldb.suppressUpdateNotifications": true,
+  "jest.nodeEnv": {
+    "NODE_OPTIONS": "--experimental-vm-modules"
+  },
+  "jest.runMode": "on-demand",
+  "editor.linkedEditing": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
+  },
+  "editor.accessibilitySupport": "off",
+  "solidity.telemetry": false,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "remote.SSH.defaultExtensions": ["gitpod.gitpod-remote-ssh"],
+  "rust-analyzer.check.command": "clippy",
+  "editor.fontVariations": false,
+  "remote.SSH.remotePlatform": {
+    "*.gitpod.io": "linux"
+  },
+  "jest.monitorLongRun": "",
+  "cursor.cpp.disabledLanguages": ["plaintext", "markdown", "scminput"],
+  "workbench.activityBar.orientation": "vertical",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.compositeKeys": {
+    "jj": {
+      "command": "vscode-neovim.escape"
+    },
+    "jk": {
+      "command": "vscode-neovim.lua",
+      "args": [
+        [
+          "local code = require('vscode')",
+          "code.action('vscode-neovim.escape')",
+          "code.action('workbench.action.files.save')"
+        ]
+      ]
+    }
+  },
+  "vscode-neovim.NVIM_APPNAME": "vscode-nvim",
+  "workbench.colorTheme": "One Dark Pro"
+}

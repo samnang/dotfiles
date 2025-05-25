@@ -231,6 +231,10 @@ nvim/undodir
 .tmuxinator.yml
 .overmind.env
 
+# Zed Editor
 .zed/
+
+# Spelling
+cspell.json
 
 tmp/
