@@ -1,6 +1,7 @@
 [user]
   name = Samnang Chhun
   email = samnang.chhun@gmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILHLeSNH6zIvXxE860Fd8b/DO3cBKE2wxA0V9oaLydoc
 [github]
   user = samnang
 [color]
@@ -66,6 +67,7 @@
 	enabled = true
 [commit]
   template = ~/.gitmessage
+	gpgsign = true
 [url "https://github.com"]
 	insteadOf = git://github.com
 [credential]
@@ -83,3 +85,7 @@
 	helper = !gh auth git-credential
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
