@@ -31,13 +31,21 @@ map("n", "gr", function()
   vscode.action("editor.action.referenceSearch.trigger")
 end, { desc = "Go to references" })
 
-map("n", "gi", function()
+map("n", "gI", function()
   vscode.action("editor.action.goToImplementation")
 end, { desc = "Go to implementation" })
 
 map("n", "<leader>ca", function()
   vscode.action("editor.action.quickFix")
 end, { desc = "Code Actions" })
+
+map("n", "<leader>r", function()
+  vscode.action("editor.action.refactor")
+end, { desc = "Refactor" })
+
+map("n", "<leader>cr", function()
+  vscode.action("editor.action.rename")
+end, { desc = "Rename symbol" })
 
 map("n", "<leader>cl", function()
   vscode.action("workbench.actions.view.problems")
@@ -86,3 +94,7 @@ end, { desc = "Close other editors" })
 map("n", "<leader>bd", function()
   vscode.action("workbench.action.closeActiveEditor")
 end, { desc = "Close other editors" })
+
+vim.api.nvim_create_user_command("A", function()
+  vscode.action("rubyLsp.goToRelevantFile")
+end, {})

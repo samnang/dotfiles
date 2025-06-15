@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaultsauto[]
 [
   // Vim Navigation
   {
@@ -26,5 +25,10 @@
     "key": "alt+/",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "neovim.mode == 'normal'"
+  },
+  {
+    "key": "space e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarFocus"
   }
 ]
