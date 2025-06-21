@@ -234,6 +234,9 @@ nvim/undodir
 # Zed Editor
 .zed/
 
+# Cursor Editor
+.cursor
+
 # Spelling
 cspell.json
 

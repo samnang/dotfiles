@@ -2,6 +2,10 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- Unbind "=" to support re-indent in visual mode
+-- See https://github.com/vscode-neovim/vscode-neovim/discussions/2301
+vim.api.nvim_del_keymap("v", "=")
+
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
   ---@cast keys LazyKeysHandler

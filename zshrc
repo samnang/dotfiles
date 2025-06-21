@@ -7,7 +7,7 @@ unsetopt nomatch
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-plugins=(asdf autoupdate fzf httpie starship zoxide)
+plugins=(asdf autoupdate fzf httpie starship zoxide direnv)
 
 source $ZSH/oh-my-zsh.sh
 
