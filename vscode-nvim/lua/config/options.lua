@@ -4,6 +4,6 @@
 
 local opt = vim.opt
 
-opt.clipboard = "" -- don't sync with system clipboard
+-- opt.clipboard = "" -- don't sync with system clipboard
 
 opt.relativenumber = false

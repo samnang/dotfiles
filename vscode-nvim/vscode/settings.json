@@ -1,5 +1,4 @@
 {
-  "workbench.statusBar.visible": true,
   "editor.fontSize": 14,
   "editor.fontFamily": "FiraCode Nerd Font, JetBrainsMono Nerd Font Mono, Menlo, Consolas, DejaVu Sans Mono, monospace",
   "editor.fontLigatures": true,
@@ -23,14 +22,16 @@
     "**/.project": true,
     "**/.settings": true,
     "**/.terraform": true,
-    "**/.vscode": true,
+    "**/.yarn": true,
     "**/tags": true,
     "rspec_examples.txt": true
   },
   "search.exclude": {
     "**/node_modules": true,
     "**/.git": true,
+    "**/.yarn": true,
     "tmp": true,
+    "dist": true,
     "vendor": true
   },
   "files.watcherExclude": {
@@ -43,7 +44,6 @@
     "vendor/*/**": true,
     "logs/*": true
   },
-  "ruby.specCommand": "./bin/rspec",
   "githubPullRequests.defaultMergeMethod": "squash",
   "git.autofetch": true,
   "workbench.iconTheme": "vscode-great-icons",
@@ -96,10 +96,8 @@
     "editor.formatOnSave": true
   },
   "[ruby]": {
-    "editor.defaultFormatter": "misogi.ruby-rubocop",
     "editor.formatOnSave": false
   },
-  "ruby.rubocop.suppressRubocopWarnings": true,
   "debug.allowBreakpointsEverywhere": true,
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
@@ -141,7 +139,15 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnType": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always",
+      "source.fixAll.eslint": "always",
+      "source.fixAll.ts": "explicit"
+    }
   },
   "[markdown]": {
     "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
@@ -160,6 +166,7 @@
   "jest.monitorLongRun": "",
   "cursor.cpp.disabledLanguages": ["plaintext", "markdown", "scminput"],
   "workbench.activityBar.orientation": "vertical",
+  "workbench.activityBar.location": "default",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
@@ -179,5 +186,6 @@
     }
   },
   "vscode-neovim.NVIM_APPNAME": "vscode-nvim",
-  "workbench.colorTheme": "One Dark Pro"
+  "workbench.colorTheme": "One Dark Pro",
+  "vscode-neovim.compositeTimeout": 200
 }

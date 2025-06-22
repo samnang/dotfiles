@@ -1,3 +1,4 @@
+// Place your key bindings in this file to override the defaults
 [
   // Vim Navigation
   {
@@ -27,8 +28,13 @@
     "when": "neovim.mode == 'normal'"
   },
   {
+    "key": "alt+cmd+z",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "panelAlignment == 'center' || panelPosition != 'bottom' && panelPosition != 'top'"
+  },
+  {
     "key": "space e",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "sideBarFocus"
+    "when": "filesExplorerFocus && !textInputFocus"
   }
 ]

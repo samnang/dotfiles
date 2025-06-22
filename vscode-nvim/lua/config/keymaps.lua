@@ -20,7 +20,7 @@ end
 local vscode = require("vscode")
 
 -- clipboard
-map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
+-- map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 
 -- Don't touch unnamed register when pasting over visual selection
 map("x", "p", function()
