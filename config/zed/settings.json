@@ -7,7 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "assistant": {
+  "agent": {
     "default_model": {
       "provider": "anthropic",
       "model": "claude-3-7-sonnet-latest"
@@ -34,6 +34,11 @@
   "git": {
     "inline_blame": {
       "enabled": false
+    }
+  },
+  "languages": {
+    "Ruby": {
+      "language_servers": ["ruby-lsp", "!rubocop", "!solargraph"]
     }
   }
 }
