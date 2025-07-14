@@ -12,3 +12,6 @@ disabled = false
 
 [terraform]
 disabled = true
+
+[docker_context]
+disabled = true
