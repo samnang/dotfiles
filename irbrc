@@ -4,7 +4,7 @@ def __require_gem!(name)
   require name
   yield if block_given?
 rescue LoadError
-  puts "=> Gem #{name} not found."
+  # puts "=> Gem #{name} not found."
 end
 
 def __toggle_autocomplete!
@@ -37,11 +37,11 @@ IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 IRB.conf[:AUTO_INDENT]  = true
 IRB.conf[:PROMPT][:CUSTOM] = {
-  :PROMPT_I => ">> ",
-  :PROMPT_S => "%l>> ",
-  :PROMPT_C => ".. ",
-  :PROMPT_N => ".. ",
-  :RETURN => "=> %s\n"
+  PROMPT_I: ">> ",
+  PROMPT_S: "%l>> ",
+  PROMPT_C: ".. ",
+  PROMPT_N: ".. ",
+  RETURN: "=> %s\n",
 }
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 if defined? Reline::Face

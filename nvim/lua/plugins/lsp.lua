@@ -1,6 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "typos-lsp",
@@ -44,12 +44,11 @@ return {
       setup = {
         -- https://www.lazyvim.org/configuration/recipes#add-eslint-and-use-it-for-formatting
         eslint = function()
-          require("lazyvim.util").lsp.on_attach(function(client)
-            if client.name == "eslint" then
-              client.server_capabilities.documentFormattingProvider = true
-            elseif client.name == "vtsls" then
-              client.server_capabilities.documentFormattingProvider = false
-            end
+          Snacks.util.lsp.on({ name = "eslint" }, function(_, client)
+            client.server_capabilities.documentFormattingProvider = true
+          end)
+          Snacks.util.lsp.on({ name = "vtsls" }, function(_, client)
+            client.server_capabilities.documentFormattingProvider = false
           end)
         end,
       },

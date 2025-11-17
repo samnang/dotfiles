@@ -9,8 +9,8 @@ return {
   {
     "mxsdev/nvim-dap-vscode-js",
     config = function()
-      local mason_registry = require("mason-registry")
-      local js_debug_path = mason_registry.get_package("js-debug-adapter"):get_install_path()
+      local mason_root = vim.env.MASON or (vim.fn.stdpath("data") .. "/mason")
+      local js_debug_path = mason_root .. "/packages/js-debug-adapter"
 
       require("dap-vscode-js").setup({
         debugger_path = js_debug_path,

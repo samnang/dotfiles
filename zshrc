@@ -19,11 +19,6 @@ export EDITOR="nvim"
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# Web3
-export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
-export PATH="$HOME/.avm/bin:$PATH"
-export PATH="$PATH:$HOME/.foundry/bin"
-
 #########################
 # Plugins Customization #
 #########################

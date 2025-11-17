@@ -13,6 +13,7 @@ brew "tmux"
 brew "reattach-to-user-namespace"
 brew "tmuxinator"
 
+brew "tree-sitter-cli"
 brew "bat"
 brew "ctags"
 brew "lsd"

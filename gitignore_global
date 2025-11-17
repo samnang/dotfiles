@@ -241,3 +241,5 @@ nvim/undodir
 cspell.json
 
 tmp/
+
+AGENTS.md

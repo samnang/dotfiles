@@ -14,7 +14,7 @@ return {
     end,
   },
   {
-    "echasnovski/mini.indentscope",
+    "nvim-mini/mini.indentscope",
     opts = function(_, opts)
       require("mini.indentscope").setup(opts)
 

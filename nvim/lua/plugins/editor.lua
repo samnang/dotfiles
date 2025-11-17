@@ -98,7 +98,7 @@ return {
   {
     "otavioschwanck/arrow.nvim",
     dependencies = {
-      { "echasnovski/mini.icons" },
+      { "nvim-mini/mini.icons" },
     },
     opts = {
       show_icons = true,

@@ -9,10 +9,9 @@
 {
   "agent": {
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-3-7-sonnet-latest"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-thinking"
     },
-    "version": "2"
   },
   "icon_theme": "Material Icon Theme",
   "features": {

@@ -9,7 +9,7 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 max_line_length = 100
 
-[*.{rs,sol,py}]
+[*.{rs,sol,py,kt}]
 indent_size = 4
 
 [*.{md,markdown}]
