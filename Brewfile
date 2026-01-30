@@ -48,7 +48,7 @@ cask "font-fira-code-nerd-font"
 tap "gjbae1212/gossm"
 brew "gossm"
 brew "awscli"
-cask "aws-vault"
+cask "aws-vault-binary"
 
 tap "1password/tap"
 cask "1password-cli"

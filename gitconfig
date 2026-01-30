@@ -73,7 +73,7 @@
 [credential]
 	helper = osxkeychain
 	helper = git-credential-manager
-	helper =
+	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [init]
 	defaultBranch = main
@@ -83,9 +83,9 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !gh auth git-credential
-[credential "https://dev.azure.com"]
-	useHttpPath = true
 [gpg]
 	format = ssh
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[credential "https://dev.azure.com"]
+	useHttpPath = true
