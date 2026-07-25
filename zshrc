@@ -31,9 +31,9 @@ export STARSHIP_CONFIG=~/.starship.toml
 export TMUXINATOR_CONFIG="$HOME/Documents/Apps/tmuxinator"
 
 # 1Password CLI
-if (( ${+commands[op]} )); then
-  eval "$(op completion zsh)"
-  compdef _op op
-
-  [ -f ~/.config/op/plugins.sh ] && source ~/.config/op/plugins.sh
-fi
+# if (( ${+commands[op]} )); then
+#   eval "$(op completion zsh)"
+#   compdef _op op
+#
+#   [ -f ~/.config/op/plugins.sh ] && source ~/.config/op/plugins.sh
+# fi

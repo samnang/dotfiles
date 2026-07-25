@@ -243,3 +243,4 @@ cspell.json
 tmp/
 
 AGENTS.md
+.agents/

@@ -7,3 +7,7 @@ local opt = vim.opt
 -- opt.clipboard = "" -- don't sync with system clipboard
 
 opt.relativenumber = false
+
+-- disable auto-open the Output messages
+-- https://github.com/vscode-neovim/vscode-neovim/issues/2507
+opt.cmdheight = 100
