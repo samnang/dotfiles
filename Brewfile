@@ -45,8 +45,6 @@ brew "cargo-watch"
 
 cask "font-fira-code-nerd-font"
 
-tap "gjbae1212/gossm"
-brew "gossm"
 brew "awscli"
 cask "aws-vault-binary"
 

@@ -40,6 +40,9 @@
     "**/node_modules/*/**": true,
     "**/.terraform/*/**": true,
     "**/.idea/*/**": true,
+    "**/build/**": true,
+    "**/.next/**": true,
+    "**/dist/**": true,
     "tmp/*/**": true,
     "vendor/*/**": true,
     "logs/*": true
@@ -87,7 +90,10 @@
   "editor.multiCursorModifier": "alt",
   "editor.renderWhitespace": "none",
   "editor.renderControlCharacters": false,
-  "markdown-table-formatter.markdownGrammarScopes": ["markdown", "ruby"],
+  "markdown-table-formatter.markdownGrammarScopes": [
+    "markdown",
+    "ruby"
+  ],
   "[solidity]": {
     "editor.defaultFormatter": "NomicFoundation.hardhat-solidity"
   },
@@ -157,14 +163,20 @@
   "[python]": {
     "editor.formatOnType": true
   },
-  "remote.SSH.defaultExtensions": ["gitpod.gitpod-remote-ssh"],
+  "remote.SSH.defaultExtensions": [
+    "gitpod.gitpod-remote-ssh"
+  ],
   "rust-analyzer.check.command": "clippy",
   "editor.fontVariations": false,
   "remote.SSH.remotePlatform": {
     "*.gitpod.io": "linux"
   },
   "jest.monitorLongRun": "",
-  "cursor.cpp.disabledLanguages": ["plaintext", "markdown", "scminput"],
+  "cursor.cpp.disabledLanguages": [
+    "plaintext",
+    "markdown",
+    "scminput"
+  ],
   "workbench.activityBar.orientation": "vertical",
   "workbench.activityBar.location": "default",
   "extensions.experimental.affinity": {
@@ -187,5 +199,9 @@
   },
   "vscode-neovim.NVIM_APPNAME": "vscode-nvim",
   "workbench.colorTheme": "One Dark Pro",
-  "vscode-neovim.compositeTimeout": 200
+  "vscode-neovim.compositeTimeout": 200,
+  "workbench.settings.applyToAllProfiles": [
+    "jest.jestCommandLine"
+  ],
+  "jest.jestCommandLine": "npm run jest --"
 }

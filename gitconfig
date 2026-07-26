@@ -37,6 +37,8 @@
   excludesfile = ~/.gitignore_global
 	autocrlf = input
   pager = delta
+	fsmonitor = true
+	untrackedCache = true
 [interactive]
   diffFilter = delta --color-only
 [delta]
