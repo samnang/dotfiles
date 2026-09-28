@@ -14,6 +14,7 @@ adjust-cursor-thickness = 3
 
 window-padding-x = 10
 window-padding-y = 5
+window-padding-balance = true
 quick-terminal-position = bottom
 
 macos-titlebar-style = hidden
