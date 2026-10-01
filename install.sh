@@ -20,6 +20,9 @@ mkdir -p ~/.config
 ln -f -s ~/.dotfiles/zshrc ~/.zshrc
 ln -s ~/.dotfiles/aliases ~/.aliases
 
+# Add .zshrc.local
+# export PATH="$HOME/.dotfiles/bin:$PATH"
+
 ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/gemrc ~/.gemrc
 ln -s ~/.dotfiles/rubocop.yml ~/.rubocop.yml
